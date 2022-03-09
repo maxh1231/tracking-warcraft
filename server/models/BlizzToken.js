@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const tokenSchema = new Schema(
     {
-        username: {
+        token: {
             type: String,
             required: true,
         },
