@@ -8,8 +8,8 @@ const typeDefs = gql`
     createdAt: String!
   }
 
-  type Token {
-    token: String!
+  type blizzToken {
+    access_token: String!
     createdAt: String!
   }
 
@@ -25,7 +25,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addToken(token: String!): Token
+    addToken(access_token: String!): blizzToken
   }
 `;
 

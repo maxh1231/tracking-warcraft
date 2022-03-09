@@ -25,13 +25,9 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_BLIZZTOKEN = gql`
-  mutation addToken($token: String!) {
-    addToken(token: $token) {
-      token
-      user {
-        _id
-        username
-      }
+  mutation addToken($access_token: String!) {
+    addToken(access_token: $access_token) {
+      access_token
     }
   }
 `;

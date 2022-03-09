@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const tokenSchema = new Schema(
     {
-        token: {
+        access_token: {
             type: String,
             required: true,
         },
