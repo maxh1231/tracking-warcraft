@@ -1,4 +1,4 @@
 const User = require('./User');
-const Token = require('./BlizzToken');
+const BlizzToken = require('./BlizzToken');
 
-module.exports = { User, Token };
+module.exports = { User, BlizzToken };

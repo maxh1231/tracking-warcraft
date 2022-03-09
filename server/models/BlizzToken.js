@@ -20,6 +20,6 @@ const tokenSchema = new Schema(
 );
 
 
-const Token = model('Token', tokenSchema);
+const BlizzToken = model('Token', tokenSchema);
 
-module.exports = Token;
+module.exports = BlizzToken;
