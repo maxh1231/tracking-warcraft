@@ -36,8 +36,9 @@ const resolvers = {
             return { token, user };
         },
         addToken: async (parent, args) => {
-            const token = await BlizzToken.create(args);
+            const token = await BlizzToken.create(args.access_token);
 
+            console.log(args);
             return { token }
         },
     }
