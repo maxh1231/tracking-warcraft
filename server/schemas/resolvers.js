@@ -13,6 +13,9 @@ const resolvers = {
             }
             throw new AuthenticationError('Log in required');
         },
+        getToken: async () => {
+            return await BlizzToken.find({})
+        },
     },
 
     Mutation: {
@@ -36,10 +39,10 @@ const resolvers = {
             return { token, user };
         },
         addToken: async (parent, args) => {
-            const token = await BlizzToken.create(args.access_token);
+            const token = await BlizzToken.create(args);
 
             console.log(args);
-            return { token }
+            return token;
         },
     }
 }

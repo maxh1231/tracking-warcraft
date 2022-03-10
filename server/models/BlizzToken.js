@@ -19,6 +19,6 @@ const tokenSchema = new Schema(
 );
 
 
-const BlizzToken = model('Token', tokenSchema);
+const BlizzToken = model('BlizzToken', tokenSchema);
 
 module.exports = BlizzToken;
