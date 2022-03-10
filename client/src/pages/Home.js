@@ -7,6 +7,16 @@ const Home = () => {
     const { loading, data } = useQuery(QUERY_TOKEN);
 
     if (!loading) {
+        if (data.getToken.length === 0) {
+            fetch("https://us.battle.net/oauth/token", {
+                body: "grant_type=client_credentials",
+                headers: {
+                    Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                method: "POST"
+            }).then(response => console.log(response.json()))
+        }
         console.log(data);
         console.log('hi');
     }
