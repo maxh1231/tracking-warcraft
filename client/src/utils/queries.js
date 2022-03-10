@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_TOKEN = gql`
-    query {
+    query getToken {
         getToken {
             createdAt
         }

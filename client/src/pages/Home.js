@@ -14,6 +14,7 @@ const Home = () => {
     return (
         <section>
             <h1>Hello</h1>
+            <p>fdlakjfldakl</p>
         </section>
     )
 }
