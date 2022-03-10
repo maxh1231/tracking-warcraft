@@ -14,7 +14,7 @@ const resolvers = {
             throw new AuthenticationError('Log in required');
         },
         getToken: async () => {
-            return await BlizzToken.find({})
+            return await BlizzToken.find()
         },
     },
 

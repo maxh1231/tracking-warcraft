@@ -9,8 +9,8 @@ const typeDefs = gql`
   }
 
   type blizzToken {
-    access_token: String
-    createdAt: String
+    access_token: String!
+    createdAt: String!
   }
 
   type Auth {
