@@ -4,6 +4,7 @@ export const QUERY_TOKEN = gql`
     query getToken {
         getToken {
             createdAt
+            access_token
         }
     }
     

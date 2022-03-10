@@ -15,10 +15,9 @@ const Home = () => {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
                 method: "POST"
-            }).then(response => console.log(response.json()))
+            }).then(response => response.json()).then(fetchData => console.log(fetchData.access_token))
         }
         console.log(data);
-        console.log('hi');
     }
 
     return (
