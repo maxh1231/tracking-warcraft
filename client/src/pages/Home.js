@@ -3,6 +3,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TOKEN } from '../utils/queries';
 import { ADD_BLIZZTOKEN } from '../utils/mutations';
 
+import Search from '../components/Search'
+
 
 
 const Home = () => {
@@ -11,37 +13,38 @@ const Home = () => {
 
     let access_token;
     useEffect(() => {
-        if (!loading) {
-            if (data.getToken.length === 0) {
-                fetch("https://us.battle.net/oauth/token", {
-                    body: "grant_type=client_credentials",
-                    headers: {
-                        Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    method: "POST"
-                }).then(response => response.json())
-                    .then((fetchData) => {
-                        console.log(fetchData.access_token)
-                        access_token = fetchData.access_token;
-                        addToken({
-                            variables: { access_token }
-                        })
-                    })
-            } else {
-                access_token = data.getToken[0].access_token;
-            }
-        }
-    }, [])
+        if (!loading && data.getToken.length === 0) {
 
-    if (!loading) {
-        console.log(access_token);
-    }
+            fetch("https://us.battle.net/oauth/token", {
+                body: "grant_type=client_credentials",
+                headers: {
+                    Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                method: "POST"
+            }).then(response => response.json())
+                .then((fetchData) => {
+                    console.log(fetchData.access_token)
+                    access_token = fetchData.access_token;
+                    addToken({
+                        variables: { access_token }
+                    })
+                })
+        } else if (!loading && data.getToken.length > 0) {
+            access_token = data.getToken[0].access_token;
+        }
+    }, [data])
+
+    // if (!loading) {
+    //     console.log(data.getToken[0].access_token);
+
+    // }
 
     return (
         <section>
             <h1>Hello</h1>
             <p>fdlakjfldakl</p>
+            {(!loading && data.getToken.length > 0) ? <Search access_token={data.getToken[0].access_token} /> : <Search access_token={access_token} />}
         </section>
     )
 }
