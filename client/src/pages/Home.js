@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TOKEN } from '../utils/queries';
+import { ADD_BLIZZTOKEN } from '../utils/mutations';
 
 
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_TOKEN);
+    const [addToken] = useMutation(ADD_BLIZZTOKEN)
 
     let access_token;
     useEffect(() => {
@@ -21,7 +23,10 @@ const Home = () => {
                 }).then(response => response.json())
                     .then((fetchData) => {
                         console.log(fetchData.access_token)
-                        access_token = fetchData.access_token
+                        access_token = fetchData.access_token;
+                        addToken({
+                            variables: { access_token }
+                        })
                     })
             } else {
                 access_token = data.getToken[0].access_token;
