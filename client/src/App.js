@@ -10,6 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
 
 import Home from './pages/Home';
+import SearchResults from './pages/SearchResults'
 
 const uploadLink = createUploadLink({
   uri: '/graphql',
@@ -37,7 +38,7 @@ function App() {
         <Routes>
 
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/" element={} /> */}
+          <Route exact path="/search-results/:name" element={<SearchResults />} />
           {/* <Route exact path="/" element={} /> */}
           {/* <Route exact path="/" element={} /> */}
 
