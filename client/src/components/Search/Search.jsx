@@ -11,9 +11,7 @@ const Search = ({ access_token }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/search?term=${field}`).then(response => response.json()).then((charData) => {
-        //     return <Navigate to='search-results' charData={charData} />
-        // })
+
 
     }
 
