@@ -18,51 +18,36 @@ const SearchResults = () => {
     let field = useParams();
     console.log(field);
 
-    // let charArr = [];
-    // fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/search?term=${field.name}`).then(response => response.json()).then(charData => {
-    //     console.log(charData)
-
-    // })
-    //     console.log(setCharacters)
-    //     for (let i = 0; i < charData.matches.length; i++) {
-    //         charArr.push(charData.matches[i])
-
-    //     }
-    // })
-
-
-
     console.log(characters);
     return (
 
         <section>
-
             {characters && (
                 <div>
-                    {characters.matches.map((character, index) => (
+                    {characters.matches.map((item, index) => (
                         <div key={index}>
-                            <h2>{character.name}</h2>
+
+                            {item.type === 'guild' && (
+                                <div>
+                                    <span>{item.name}</span>
+                                    <span>{item.data.faction}</span>
+                                    <span>{item.data.region.short_name}</span>
+                                    <span>{item.data.realm.name}</span>
+                                </div>
+                            )}
+                            {item.type === 'character' && (
+                                <div>
+                                    <span>{item.name}</span>
+                                    <span>{item.data.faction}</span>
+                                    <span>{item.data.class.name}</span>
+                                    <span>{item.data.region.short_name}</span>
+                                    <span>{item.data.realm.name}</span>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
             )}
-
-            {/* {(charArr.length > 0) ? (
-                {
-                    charArr.map((character) => (
-                        <span key={character.id}>
-                            <h1>{character.name}</h1>
-                        </span>
-
-                    ))
-                )} : <span>no results</span>} */}
-
-            {/* <div>
-                {(charArr.length > 0) ? (charArr.map((character) => (
-                    <span key={character.data.id}></span>
-                ))) : (<span>No results</span>)}
-
-            </div> */}
         </section>
     )
 }
