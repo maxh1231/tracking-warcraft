@@ -37,7 +37,7 @@ const SearchResults = () => {
                             )}
                             {item.type === 'character' && (
                                 <div>
-                                    <span>{item.name}</span>
+                                    <span><Link to={`/character/${item.data.region.slug}/${item.data.realm.slug}/${item.name}`}>{item.name}</Link></span>
                                     <span>{item.data.faction}</span>
                                     <span>{item.data.class.name}</span>
                                     <span>{item.data.region.short_name}</span>

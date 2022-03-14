@@ -12,6 +12,7 @@ import { createUploadLink } from 'apollo-upload-client';
 import Home from './pages/Home';
 import SearchResults from './pages/SearchResults'
 import GuildPage from './pages/GuildPage'
+import CharacterPage from './pages/CharacterPage'
 
 const uploadLink = createUploadLink({
   uri: '/graphql',
@@ -41,7 +42,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
-          {/* <Route exact path="/" element={} /> */}
+          <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
 
         </Routes>
       </Router>
