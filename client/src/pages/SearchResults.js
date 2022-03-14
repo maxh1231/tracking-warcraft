@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const SearchResults = () => {
     const [characters, setCharacters] = useState(null)
@@ -29,7 +29,7 @@ const SearchResults = () => {
 
                             {item.type === 'guild' && (
                                 <div>
-                                    <span>{item.name}</span>
+                                    <span><Link to={`/guild/${item.data.region.slug}/${item.data.realm.slug}/${item.name}`}>{item.name}</Link></span>
                                     <span>{item.data.faction}</span>
                                     <span>{item.data.region.short_name}</span>
                                     <span>{item.data.realm.name}</span>
