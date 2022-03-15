@@ -71,50 +71,49 @@ const CharacterPage = () => {
                     </div>
                     <div>
                         <div>
-                            <span>{character.gear.items.head.name}</span>
-                            <a href="#" data-wowhead={`item=${character.gear.items.head.item_id}`}>{character.gear.items.head.name}</a>
+                            <a href="#" data-wowhead={`item=${character.gear.items.head.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.head.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.neck.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.neck.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.neck.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.shoulder.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.shoulder.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.shoulder.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.back.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.back.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.back.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.chest.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.chest.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.chest.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.wrist.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.wrist.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.wrist.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.hands.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.hands.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.hands.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.waist.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.waist.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.waist.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.legs.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.legs.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.legs.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.feet.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.feet.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.feet.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.finger1.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.finger1.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.finger1.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.finger2.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.finger2.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.finger2.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.trinket1.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.trinket1.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.trinket1.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.trinket2.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.trinket2.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.trinket2.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <span>{character.gear.items.mainhand.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.mainhand.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${character.gear.items.mainhand.icon}.jpg`}></img></a>
                         </div>
                     </div>
                 </div>
