@@ -7,6 +7,7 @@ const CharacterPage = () => {
 
 
     const params = useParams();
+    const charName = params.name.toLowerCase()
     console.log(params)
 
     const api = new BlizzAPI({
@@ -26,7 +27,7 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            const response = await fetch('https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/v1/characters/profile?region=us&realm=tichondrius&name=maxh&fields=gear')
+            const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&name=${charName}&fields=gear`)
             const data = await response.json()
 
             setCharacter(data)
