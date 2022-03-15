@@ -6,7 +6,7 @@ import { ADD_BLIZZTOKEN } from '../utils/mutations';
 import Search from '../components/Search'
 
 
-
+console.log(process.env.REACT_APP_client_id_secret)
 const Home = () => {
     const { loading, data } = useQuery(QUERY_TOKEN);
     const [addToken] = useMutation(ADD_BLIZZTOKEN)
