@@ -63,6 +63,62 @@ const CharacterPage = () => {
                         </div>
                     </div>
                 </div>}
+
+            {character !== null && (
+                <div>
+                    <div>
+                        <span>{character.gear.item_level_equipped} Item Level</span>
+                    </div>
+                    <div>
+                        <div>
+                            <span>{character.gear.items.head.name}</span>
+                            <a href="#" data-wowhead={`item=${character.gear.items.head.item_id}`}>{character.gear.items.head.name}</a>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.neck.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.shoulder.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.back.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.chest.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.wrist.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.hands.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.waist.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.legs.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.feet.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.finger1.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.finger2.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.trinket1.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.trinket2.name}</span>
+                        </div>
+                        <div>
+                            <span>{character.gear.items.mainhand.name}</span>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     )
 }
