@@ -4,6 +4,7 @@ import { QUERY_TOKEN } from '../utils/queries';
 import { ADD_BLIZZTOKEN } from '../utils/mutations';
 
 import Search from '../components/Search'
+import { responsePathAsArray } from 'graphql';
 
 
 console.log(process.env.REACT_APP_client_id_secret)
@@ -14,31 +15,30 @@ const Home = () => {
     let access_token;
     useEffect(() => {
         if (!loading && data.getToken.length === 0) {
-
-            fetch("https://us.battle.net/oauth/token", {
-                body: "grant_type=client_credentials",
-                headers: {
-                    Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                method: "POST"
-            }).then(response => response.json())
-                .then((fetchData) => {
-                    console.log(fetchData.access_token)
-                    access_token = fetchData.access_token;
-                    addToken({
-                        variables: { access_token }
-                    })
-                })
+            fetchToken()
         } else if (!loading && data.getToken.length > 0) {
             access_token = data.getToken[0].access_token;
         }
     }, [data])
 
-    // if (!loading) {
-    //     console.log(data.getToken[0].access_token);
+    const fetchToken = async () => {
+        const response = await fetch("https://us.battle.net/oauth/token", {
+            body: "grant_type=client_credentials",
+            headers: {
+                Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST"
+        })
 
-    // }
+        const token = await response.json();
+        console.log(token)
+
+        addToken({
+            variables: token
+        })
+    }
+
 
     return (
         <section>

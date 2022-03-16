@@ -41,7 +41,7 @@ const resolvers = {
         addToken: async (parent, args) => {
             const token = await BlizzToken.create(args);
 
-            console.log(args);
+            console.log('posted to DB');
             return token;
         },
     }

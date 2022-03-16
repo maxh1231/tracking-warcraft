@@ -1,9 +1,14 @@
 import { useParams } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_TOKEN } from '../utils/queries';
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
+    const [talents, setTalents] = useState(null);
+
+    // const [loading, data] = useQuery(QUERY_TOKEN);
 
 
     const params = useParams();
@@ -45,6 +50,13 @@ const CharacterPage = () => {
 
         }
     }, [setEquipment])
+
+    useEffect(() => {
+
+        async function blizzFetch() {
+            const response = await fetch()
+        }
+    })
 
     console.log(equipment)
 
