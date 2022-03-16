@@ -1,8 +1,41 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_TOKEN } from '../../utils/queries';
+import { ADD_BLIZZTOKEN } from '../../utils/mutations';
 
-const Search = ({ access_token }) => {
+const Search = () => {
     const [field, setField] = useState('')
+
+    const { loading, data } = useQuery(QUERY_TOKEN);
+    const [addToken] = useMutation(ADD_BLIZZTOKEN)
+
+    let access_token;
+    useEffect(() => {
+        if (!loading && data.getToken.length === 0) {
+            fetchToken()
+        } else if (!loading && data.getToken.length > 0) {
+            access_token = data.getToken[0].access_token;
+        }
+    }, [data])
+
+    const fetchToken = async () => {
+        const response = await fetch("https://us.battle.net/oauth/token", {
+            body: "grant_type=client_credentials",
+            headers: {
+                Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST"
+        })
+
+        const token = await response.json();
+        console.log(token)
+
+        addToken({
+            variables: token
+        })
+    }
 
 
     const handleChange = (event) => {
@@ -15,13 +48,9 @@ const Search = ({ access_token }) => {
 
     }
 
-    // fetch(`https://us.api.blizzard.com/data/wow/search/character/max/realm/?namespace=profile-us&access_token=${access_token}`)
 
-    const handleClick = () => {
-        return <Link to='/search-results' field={field} />
-    }
 
-    console.log(access_token)
+
     return (
         <section>
             <form onSubmit={handleSubmit}>

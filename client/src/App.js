@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {
   ApolloClient,
@@ -8,6 +9,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
+
 
 import Home from './pages/Home';
 import SearchResults from './pages/SearchResults'
@@ -34,6 +36,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+
+
   return (
     <ApolloProvider client={client}>
       <Router>
