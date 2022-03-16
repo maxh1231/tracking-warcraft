@@ -6,16 +6,16 @@ import { ADD_BLIZZTOKEN } from '../../utils/mutations';
 
 const Search = () => {
     const [field, setField] = useState('')
+    const [accessToken, setAccessToken] = useState(null)
 
     const { loading, data } = useQuery(QUERY_TOKEN);
     const [addToken] = useMutation(ADD_BLIZZTOKEN)
 
-    let access_token;
     useEffect(() => {
         if (!loading && data.getToken.length === 0) {
             fetchToken()
         } else if (!loading && data.getToken.length > 0) {
-            access_token = data.getToken[0].access_token;
+            setAccessToken(data.getToken[0].access_token)
         }
     }, [data])
 
@@ -35,6 +35,8 @@ const Search = () => {
         addToken({
             variables: token
         })
+
+        setAccessToken(token.access_token)
     }
 
 
@@ -49,7 +51,7 @@ const Search = () => {
     }
 
 
-
+    console.log(accessToken)
 
     return (
         <section>
