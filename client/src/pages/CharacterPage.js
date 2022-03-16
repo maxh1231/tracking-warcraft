@@ -28,7 +28,17 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&name=${charName}&fields=gear%2Ccovenant%2Craid%2Cguild`)
+            // const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&name=${charName}&fields=gear%2Ccovenant%2Craid%2Cguild`)
+            // const data = await response.json()
+
+            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild&name=${charName}`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "raider-io.p.rapidapi.com",
+                    "x-rapidapi-key": process.env.REACT_APP_RADERIO_KEY
+                }
+            })
+
             const data = await response.json()
 
             setCharacter(data)

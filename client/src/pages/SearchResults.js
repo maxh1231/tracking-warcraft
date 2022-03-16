@@ -8,7 +8,13 @@ const SearchResults = () => {
         getData();
 
         async function getData() {
-            const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/search?term=${field.name}`)
+            const response = await fetch(`https://raider.io/api/search?term=${field.name}`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "raider-io.p.rapidapi.com",
+                    "x-rapidapi-key": process.env.REACT_APP_RADERIO_KEY
+                }
+            })
             const data = await response.json();
 
             setCharacters(data)
