@@ -60,7 +60,7 @@ const Search = () => {
                     type="text"
                     onChange={handleChange}
                 />
-                <button type='submit'><Link to={`search-results/${field}`}>Submit</Link></button>
+                <button type='submit'><Link to={{ pathname: `search-results/${field}`, state: { accessToken } }}>Submit</Link></button>
             </form>
         </section>
     )

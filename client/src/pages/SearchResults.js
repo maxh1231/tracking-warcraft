@@ -3,12 +3,14 @@ import { useParams, Link } from "react-router-dom";
 
 const SearchResults = () => {
     const [characters, setCharacters] = useState(null)
+    let field = useParams();
+    console.log(field);
 
     useEffect(() => {
         getData();
 
         async function getData() {
-            const response = await fetch(`https://raider.io/api/search?term=${field.name}`, {
+            const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/search?term=${field.name}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -21,8 +23,7 @@ const SearchResults = () => {
         }
     }, [setCharacters])
 
-    let field = useParams();
-    console.log(field);
+
 
     console.log(characters);
     return (
