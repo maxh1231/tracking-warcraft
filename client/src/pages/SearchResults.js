@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 
-const SearchResults = () => {
+const SearchResults = ({ accessToken }) => {
     const [characters, setCharacters] = useState(null)
+    const location = useLocation()
+    console.log(location)
     let field = useParams();
     console.log(field);
 
@@ -10,7 +12,7 @@ const SearchResults = () => {
         getData();
 
         async function getData() {
-            const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/search?term=${field.name}`, {
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/search?term=${field.name}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -24,7 +26,7 @@ const SearchResults = () => {
     }, [setCharacters])
 
 
-
+    console.log(location.state)
     console.log(characters);
     return (
 
