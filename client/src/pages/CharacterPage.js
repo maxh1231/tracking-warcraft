@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
 import { useQuery, useMutation } from '@apollo/client';
@@ -7,6 +7,7 @@ import { QUERY_TOKEN } from '../utils/queries';
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
     const [talents, setTalents] = useState(null);
+    const location = useLocation()
 
     // const [loading, data] = useQuery(QUERY_TOKEN);
 
@@ -54,11 +55,12 @@ const CharacterPage = () => {
     useEffect(() => {
 
         async function blizzFetch() {
-            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.region}/${charName}/specializations?namespace=profile-us&locale=en_US&access_token=${}`)
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.region}/${charName}/specializations?namespace=profile-us&locale=en_US&access_token=${location.state}`)
         }
     })
 
     console.log(equipment)
+    console.log(location.state)
 
     return (
         <section>

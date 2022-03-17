@@ -38,7 +38,7 @@ const SearchResults = ({ accessToken }) => {
 
                             {item.type === 'guild' && (
                                 <div>
-                                    <span><Link to={`/guild/${item.data.region.slug}/${item.data.realm.slug}/${item.name}`}>{item.name}</Link></span>
+                                    <span><Link to={`/guild/${item.data.region.slug}/${item.data.realm.slug}/${item.name}`} state={location.state}>{item.name}</Link></span>
                                     <span>{item.data.faction}</span>
                                     <span>{item.data.region.short_name}</span>
                                     <span>{item.data.realm.name}</span>
@@ -46,7 +46,7 @@ const SearchResults = ({ accessToken }) => {
                             )}
                             {item.type === 'character' && (
                                 <div>
-                                    <span><Link to={`/character/${item.data.region.slug}/${item.data.realm.slug}/${item.name}`}>{item.name}</Link></span>
+                                    <span><Link to={`/character/${item.data.region.slug}/${item.data.realm.slug}/${item.name}`} state={location.state}>{item.name}</Link></span>
                                     <span>{item.data.faction}</span>
                                     <span>{item.data.class.name}</span>
                                     <span>{item.data.region.short_name}</span>
