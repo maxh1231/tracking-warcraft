@@ -53,14 +53,19 @@ const CharacterPage = () => {
     }, [setEquipment])
 
     useEffect(() => {
+        blizzFetch()
 
         async function blizzFetch() {
-            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.region}/${charName}/specializations?namespace=profile-us&locale=en_US&access_token=${location.state}`)
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${location.state}`)
+
+            const data = await response.json()
+
+            setTalents(data)
         }
-    })
+    }, [setTalents])
 
     console.log(equipment)
-    console.log(location.state)
+    console.log(talents)
 
     return (
         <section>
