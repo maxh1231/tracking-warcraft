@@ -54,7 +54,7 @@ const CharacterPage = () => {
     useEffect(() => {
 
         async function blizzFetch() {
-            const response = await fetch()
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.region}/${charName}/specializations?namespace=profile-us&locale=en_US&access_token=${}`)
         }
     })
 

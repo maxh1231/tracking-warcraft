@@ -52,7 +52,6 @@ const Search = () => {
 
 
     console.log(accessToken)
-    console.log(typeof (accessToken))
 
     return (
         <section>
@@ -61,7 +60,7 @@ const Search = () => {
                     type="text"
                     onChange={handleChange}
                 />
-                <button type='submit'><Link to={{ pathname: `/search-results/${field}`, state: { name: 'hi' } }}>Submit</Link></button>
+                <button type='submit'><Link to={`/search-results/${field}`} state={accessToken}>Submit</Link></button>
                 {/* <button type='submit'><Link to={`/search-results/${field}`} component={accessToken}>Submit</Link></button> */}
             </form>
         </section>
