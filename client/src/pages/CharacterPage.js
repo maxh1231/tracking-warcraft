@@ -37,7 +37,7 @@ const CharacterPage = () => {
             // const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&name=${charName}&fields=gear%2Ccovenant%2Craid%2Cguild`)
             // const data = await response.json()
 
-            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild&name=${charName}`, {
+            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents&name=${charName}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -60,7 +60,7 @@ const CharacterPage = () => {
 
             const data = await response.json()
 
-            setTalents(data)
+            setTalents(data.specializations[0].talents)
         }
     }, [setTalents])
 
@@ -144,6 +144,21 @@ const CharacterPage = () => {
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {(talents && equipment) !== null && (
+                <div>
+                    <div>
+                        <h3>Talents</h3>
+                    </div>
+                    <div>
+                        {talents.map((item, index) => (
+                            <div key={index}>
+                                <a href="#" data-wowhead={`spell=${item.spell_tooltip.spell.id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.talents[index].icon}.jpg`}></img></a>
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}
