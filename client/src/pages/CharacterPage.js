@@ -49,6 +49,7 @@ const CharacterPage = () => {
 
             setEquipment(data)
 
+
         }
     }, [setEquipment])
 
@@ -106,7 +107,7 @@ const CharacterPage = () => {
                             <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
                         </div>
                         <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
+                            <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}&bonus=7013:6647:6648`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
                         </div>
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.back.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.back.icon}.jpg`}></img></a>
