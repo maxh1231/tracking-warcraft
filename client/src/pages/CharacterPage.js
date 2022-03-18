@@ -180,9 +180,25 @@ const CharacterPage = () => {
     }
 
     const addWristBonus = () => {
-        const bonusStr = equipment.gear.items.wrist.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
+        if (equipment.gear.items.wrist.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.wrist.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.wrist.gems.length > 0) {
+            gemStr = equipment.gear.items.wrist.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.wrist.enchant !== undefined) {
+            enchStr = equipment.gear.items.wrist.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
     }
 
     const addHandsBonus = () => {
@@ -298,15 +314,10 @@ const CharacterPage = () => {
                             {addChestBonus()}
                         </div>
 
+                        <div>
+                            {addWristBonus()}
+                        </div>
 
-                        {equipment.gear.items.wrist.bonuses.length === 0 ?
-                            <div>
-                                <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
-                            </div>
-                            : <div>
-                                {addWristBonus()}
-                            </div>
-                        }
 
                         {equipment.gear.items.hands.bonuses.length === 0 ?
                             <div>
