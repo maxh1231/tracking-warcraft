@@ -246,9 +246,25 @@ const CharacterPage = () => {
     }
 
     const addLegsBonus = () => {
-        const bonusStr = equipment.gear.items.legs.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
+        if (equipment.gear.items.legs.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.legs.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.legs.gems.length > 0) {
+            gemStr = equipment.gear.items.legs.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.legs.enchant !== undefined) {
+            enchStr = equipment.gear.items.legs.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
     }
 
     const addFeetBonus = () => {
@@ -358,15 +374,10 @@ const CharacterPage = () => {
                             {addWaistBonus()}
                         </div>
 
+                        <div>
+                            {addLegsBonus()}
+                        </div>
 
-                        {equipment.gear.items.legs.bonuses.length === 0 ?
-                            <div>
-                                <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
-                            </div>
-                            : <div>
-                                {addLegsBonus()}
-                            </div>
-                        }
 
                         {equipment.gear.items.feet.bonuses.length === 0 ?
                             <div>
