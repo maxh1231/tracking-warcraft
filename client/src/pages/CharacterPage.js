@@ -312,9 +312,25 @@ const CharacterPage = () => {
     }
 
     const addFinger2Bonus = () => {
-        const bonusStr = equipment.gear.items.finger2.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
+        if (equipment.gear.items.finger2.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.finger2.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.finger2.gems.length > 0) {
+            gemStr = equipment.gear.items.finger2.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.finger2.enchant !== undefined) {
+            enchStr = equipment.gear.items.finger2.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
     }
 
     const addTrinket1Bonus = () => {
@@ -418,15 +434,10 @@ const CharacterPage = () => {
                             {addFinger1Bonus()}
                         </div>
 
+                        <div>
+                            {addFinger2Bonus()}
+                        </div>
 
-                        {equipment.gear.items.finger2.bonuses.length === 0 ?
-                            <div>
-                                <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
-                            </div>
-                            : <div>
-                                {addFinger2Bonus()}
-                            </div>
-                        }
 
                         {equipment.gear.items.trinket1.bonuses.length === 0 ?
                             <div>
