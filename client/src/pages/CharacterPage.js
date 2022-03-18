@@ -153,6 +153,12 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket2.item_id}&ilvl=${equipment.gear.items.trinket2.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket2.icon}.jpg`}></img></a>
     }
 
+    const addMainhandBonus = () => {
+        const bonusStr = equipment.gear.items.mainhand.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
+    }
+
     // if (equipment) {
     //     addBonus()
     // }
@@ -317,9 +323,15 @@ const CharacterPage = () => {
                                 {addTrinket2Bonus()}
                             </div>
                         }
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
-                        </div>
+
+                        {equipment.gear.items.mainhand.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addMainhandBonus()}
+                            </div>
+                        }
                     </div>
                 </div>
             )}
