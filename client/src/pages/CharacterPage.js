@@ -135,6 +135,24 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.finger1.item_id}&ilvl=${equipment.gear.items.finger1.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger1.icon}.jpg`}></img></a>
     }
 
+    const addFinger2Bonus = () => {
+        const bonusStr = equipment.gear.items.finger2.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
+    }
+
+    const addTrinket1Bonus = () => {
+        const bonusStr = equipment.gear.items.trinket1.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
+    }
+
+    const addTrinket2Bonus = () => {
+        const bonusStr = equipment.gear.items.trinket2.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket2.item_id}&ilvl=${equipment.gear.items.trinket2.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket2.icon}.jpg`}></img></a>
+    }
+
     // if (equipment) {
     //     addBonus()
     // }
@@ -272,15 +290,33 @@ const CharacterPage = () => {
                                 {addFinger1Bonus()}
                             </div>
                         }
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
-                        </div>
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
-                        </div>
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.trinket2.item_id}&ilvl=${equipment.gear.items.trinket2.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket2.icon}.jpg`}></img></a>
-                        </div>
+
+                        {equipment.gear.items.finger2.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addFinger2Bonus()}
+                            </div>
+                        }
+
+                        {equipment.gear.items.trinket1.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addTrinket1Bonus()}
+                            </div>
+                        }
+
+                        {equipment.gear.items.trinket2.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.trinket2.item_id}&ilvl=${equipment.gear.items.trinket2.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket2.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addTrinket2Bonus()}
+                            </div>
+                        }
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
                         </div>
