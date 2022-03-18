@@ -218,9 +218,16 @@ const CharacterPage = () => {
                                 {addHandsBonus()}
                             </div>
                         }
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
-                        </div>
+
+                        {equipment.gear.items.waist.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addWaistBonus()}
+                            </div>
+                        }
+
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
                         </div>
