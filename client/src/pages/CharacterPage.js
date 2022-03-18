@@ -1,22 +1,17 @@
 import { useParams, useLocation } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
-import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_TOKEN } from '../utils/queries';
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
     const [talents, setTalents] = useState(null);
     const location = useLocation()
-
-    // const [loading, data] = useQuery(QUERY_TOKEN);
-
-
     const params = useParams();
     const charName = params.name.toLowerCase()
     const upperCaseRegion = params.region.toUpperCase();
     console.log(params)
 
+    // unknown if will use
     const api = new BlizzAPI({
         region: `${params.region}`,
         clientId: process.env.REACT_APP_client_id,
@@ -34,9 +29,6 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            // const response = await fetch(`https://hidden-retreat-58836.herokuapp.com/https://raider.io/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&name=${charName}&fields=gear%2Ccovenant%2Craid%2Cguild`)
-            // const data = await response.json()
-
             const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents&name=${charName}`, {
                 "method": "GET",
                 "headers": {
@@ -46,11 +38,7 @@ const CharacterPage = () => {
             })
 
             const data = await response.json()
-
             setEquipment(data)
-
-
-
         }
     }, [setEquipment])
 
@@ -61,7 +49,6 @@ const CharacterPage = () => {
             const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${location.state}`)
 
             const data = await response.json()
-
             setTalents(data.specializations[0].talents)
         }
     }, [setTalents])
@@ -388,14 +375,6 @@ const CharacterPage = () => {
 
         return <a href="#" data-wowhead={`item=${equipment.gear.items.offhand.item_id}&ilvl=${equipment.gear.items.offhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.offhand.icon}.jpg`}></img></a>
     }
-
-
-
-    // if (equipment) {
-    //     addBonus()
-    // }
-
-
 
     return (
         <section>
