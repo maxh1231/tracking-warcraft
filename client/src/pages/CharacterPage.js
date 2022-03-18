@@ -70,21 +70,69 @@ const CharacterPage = () => {
     console.log(talents)
 
     const addHelmBonus = () => {
-        const bonusStr = equipment.gear.items.head.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
+        if (equipment.gear.items.head.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.head.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.head.gems.length > 0) {
+            gemStr = equipment.gear.items.head.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.head.enchant !== undefined) {
+            enchStr = equipment.gear.items.head.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
     }
 
     const addNeckBonus = () => {
-        const bonusStr = equipment.gear.items.neck.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
+        if (equipment.gear.items.neck.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.neck.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.neck.gems.length > 0) {
+            gemStr = equipment.gear.items.neck.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.neck.enchant !== undefined) {
+            enchStr = equipment.gear.items.neck.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
     }
 
     const addShoulderBonus = () => {
-        const bonusStr = equipment.gear.items.shoulder.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
+        if (equipment.gear.items.shoulder.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.shoulder.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.shoulder.gems.length > 0) {
+            gemStr = equipment.gear.items.shoulder.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.shoulder.enchant !== undefined) {
+            enchStr = equipment.gear.items.shoulder.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
     }
 
     const addBackBonus = () => {
@@ -198,14 +246,11 @@ const CharacterPage = () => {
                     </div>
                     <div>
 
-                        {equipment.gear.items.head.bonuses.length === 0 ?
-                            <div>
-                                <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
-                            </div>
-                            : <div>
-                                {addHelmBonus()}
-                            </div>
-                        }
+
+                        <div>
+                            {addHelmBonus()}
+                        </div>
+
 
                         {equipment.gear.items.neck.bonuses.length === 0 ?
                             <div>
