@@ -93,6 +93,12 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.back.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.back.icon}.jpg`}></img></a>
     }
 
+    const addChestBonus = () => {
+        const bonusStr = equipment.gear.items.chest.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.chest.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
+    }
+
     // if (equipment) {
     //     addBonus()
     // }
@@ -167,9 +173,15 @@ const CharacterPage = () => {
                                 {addBackBonus()}
                             </div>
                         }
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.chest.item_id}&ilvl=${equipment.gear.items.chest.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
-                        </div>
+
+                        {equipment.gear.items.chest.bonuses.length < 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.chest.item_id}&ilvl=${equipment.gear.items.chest.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addChestBonus()}
+                            </div>
+                        }
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
                         </div>
