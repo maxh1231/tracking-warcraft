@@ -69,12 +69,15 @@ const CharacterPage = () => {
     console.log(equipment)
     console.log(talents)
 
-    const addBonus = () => {
+    const addHelmBonus = () => {
         const bonusStr = equipment.gear.items.head.bonuses.join(':')
-        console.log(bonusStr)
 
         return <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
+    }
+    const addNeckBonus = () => {
+        const bonusStr = equipment.gear.items.neck.bonuses.join(':')
 
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
     }
 
     // if (equipment) {
@@ -121,13 +124,18 @@ const CharacterPage = () => {
                                 <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
                             </div>
                             : <div>
-                                {addBonus()}
+                                {addHelmBonus()}
                             </div>
                         }
 
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
-                        </div>
+                        {equipment.gear.items.neck.bonuses.length < 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addNeckBonus()}
+                            </div>
+                        }
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}&bonus=`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
                         </div>
