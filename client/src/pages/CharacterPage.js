@@ -117,6 +117,24 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
     }
 
+    const addLegsBonus = () => {
+        const bonusStr = equipment.gear.items.legs.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
+    }
+
+    const addFeetBonus = () => {
+        const bonusStr = equipment.gear.items.feet.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.feet.item_id}&ilvl=${equipment.gear.items.feet.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.feet.icon}.jpg`}></img></a>
+    }
+
+    const addFinger1Bonus = () => {
+        const bonusStr = equipment.gear.items.finger1.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.finger1.item_id}&ilvl=${equipment.gear.items.finger1.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger1.icon}.jpg`}></img></a>
+    }
+
     // if (equipment) {
     //     addBonus()
     // }
@@ -228,15 +246,32 @@ const CharacterPage = () => {
                             </div>
                         }
 
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
-                        </div>
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.feet.item_id}&ilvl=${equipment.gear.items.feet.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.feet.icon}.jpg`}></img></a>
-                        </div>
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.finger1.item_id}&ilvl=${equipment.gear.items.finger1.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger1.icon}.jpg`}></img></a>
-                        </div>
+                        {equipment.gear.items.legs.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addLegsBonus()}
+                            </div>
+                        }
+
+                        {equipment.gear.items.feet.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.feet.item_id}&ilvl=${equipment.gear.items.feet.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.feet.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addFeetBonus()}
+                            </div>
+                        }
+
+                        {equipment.gear.items.finger1.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.finger1.item_id}&ilvl=${equipment.gear.items.finger1.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger1.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addFinger1Bonus()}
+                            </div>
+                        }
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
                         </div>
