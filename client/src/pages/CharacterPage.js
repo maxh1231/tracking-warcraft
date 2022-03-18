@@ -96,7 +96,25 @@ const CharacterPage = () => {
     const addChestBonus = () => {
         const bonusStr = equipment.gear.items.chest.bonuses.join(':')
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.chest.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.chest.item_id}&ilvl=${equipment.gear.items.chest.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
+    }
+
+    const addWristBonus = () => {
+        const bonusStr = equipment.gear.items.wrist.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
+    }
+
+    const addHandsBonus = () => {
+        const bonusStr = equipment.gear.items.hands.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.hands.item_id}&ilvl=${equipment.gear.items.hands.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.hands.icon}.jpg`}></img></a>
+    }
+
+    const addWaistBonus = () => {
+        const bonusStr = equipment.gear.items.waist.bonuses.join(':')
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
     }
 
     // if (equipment) {
@@ -138,7 +156,7 @@ const CharacterPage = () => {
                     </div>
                     <div>
 
-                        {equipment.gear.items.head.bonuses.length < 0 ?
+                        {equipment.gear.items.head.bonuses.length === 0 ?
                             <div>
                                 <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
                             </div>
@@ -147,7 +165,7 @@ const CharacterPage = () => {
                             </div>
                         }
 
-                        {equipment.gear.items.neck.bonuses.length < 0 ?
+                        {equipment.gear.items.neck.bonuses.length === 0 ?
                             <div>
                                 <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
                             </div>
@@ -156,7 +174,7 @@ const CharacterPage = () => {
                             </div>
                         }
 
-                        {equipment.gear.items.shoulder.bonuses.length < 0 ?
+                        {equipment.gear.items.shoulder.bonuses.length === 0 ?
                             <div>
                                 <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
                             </div>
@@ -165,7 +183,7 @@ const CharacterPage = () => {
                             </div>
                         }
 
-                        {equipment.gear.items.back.bonuses.length < 0 ?
+                        {equipment.gear.items.back.bonuses.length === 0 ?
                             <div>
                                 <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.back.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.back.icon}.jpg`}></img></a>
                             </div>
@@ -174,7 +192,7 @@ const CharacterPage = () => {
                             </div>
                         }
 
-                        {equipment.gear.items.chest.bonuses.length < 0 ?
+                        {equipment.gear.items.chest.bonuses.length === 0 ?
                             <div>
                                 <a href="#" data-wowhead={`item=${equipment.gear.items.chest.item_id}&ilvl=${equipment.gear.items.chest.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
                             </div>
@@ -182,12 +200,24 @@ const CharacterPage = () => {
                                 {addChestBonus()}
                             </div>
                         }
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
-                        </div>
-                        <div>
-                            <a href="#" data-wowhead={`item=${equipment.gear.items.hands.item_id}&ilvl=${equipment.gear.items.hands.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.hands.icon}.jpg`}></img></a>
-                        </div>
+
+                        {equipment.gear.items.wrist.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addWristBonus()}
+                            </div>
+                        }
+
+                        {equipment.gear.items.hands.bonuses.length === 0 ?
+                            <div>
+                                <a href="#" data-wowhead={`item=${equipment.gear.items.hands.item_id}&ilvl=${equipment.gear.items.hands.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.hands.icon}.jpg`}></img></a>
+                            </div>
+                            : <div>
+                                {addHandsBonus()}
+                            </div>
+                        }
                         <div>
                             <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
                         </div>
