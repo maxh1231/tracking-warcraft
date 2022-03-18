@@ -399,6 +399,30 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
     }
 
+    const addOffhandBonus = () => {
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
+
+        if (equipment.gear.items.offhand.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.offhand.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.offhand.gems.length > 0) {
+            gemStr = equipment.gear.items.offhand.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.offhand.enchant !== undefined) {
+            enchStr = equipment.gear.items.offhand.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.offhand.item_id}&ilvl=${equipment.gear.items.offhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.offhand.icon}.jpg`}></img></a>
+    }
+
+
+
     // if (equipment) {
     //     addBonus()
     // }
@@ -497,6 +521,12 @@ const CharacterPage = () => {
                         <div>
                             {addMainhandBonus()}
                         </div>
+
+                        {equipment.gear.items.offhand !== undefined && (
+                            <div>
+                                {addOffhandBonus()}
+                            </div>
+                        )}
 
                     </div>
                 </div>
