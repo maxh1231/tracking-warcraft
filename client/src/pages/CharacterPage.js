@@ -69,7 +69,7 @@ const CharacterPage = () => {
     console.log(equipment)
     console.log(talents)
 
-    const addHelmBonus = () => {
+    const addHelmParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -89,7 +89,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
     }
 
-    const addNeckBonus = () => {
+    const addNeckParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -109,7 +109,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
     }
 
-    const addShoulderBonus = () => {
+    const addShoulderParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -129,7 +129,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
     }
 
-    const addBackBonus = () => {
+    const addBackParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -149,7 +149,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.back.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.back.icon}.jpg`}></img></a>
     }
 
-    const addChestBonus = () => {
+    const addChestParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -169,7 +169,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.chest.item_id}&ilvl=${equipment.gear.items.chest.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
     }
 
-    const addWristBonus = () => {
+    const addWristParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -189,7 +189,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
     }
 
-    const addHandsBonus = () => {
+    const addHandsParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -209,7 +209,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.hands.item_id}&ilvl=${equipment.gear.items.hands.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.hands.icon}.jpg`}></img></a>
     }
 
-    const addWaistBonus = () => {
+    const addWaistParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -229,7 +229,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
     }
 
-    const addLegsBonus = () => {
+    const addLegsParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -249,7 +249,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
     }
 
-    const addFeetBonus = () => {
+    const addFeetParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -269,7 +269,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.feet.item_id}&ilvl=${equipment.gear.items.feet.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.feet.icon}.jpg`}></img></a>
     }
 
-    const addFinger1Bonus = () => {
+    const addFinger1Params = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -289,7 +289,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.finger1.item_id}&ilvl=${equipment.gear.items.finger1.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger1.icon}.jpg`}></img></a>
     }
 
-    const addFinger2Bonus = () => {
+    const addFinger2Params = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -309,7 +309,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
     }
 
-    const addTrinket1Bonus = () => {
+    const addTrinket1Params = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -329,7 +329,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
     }
 
-    const addTrinket2Bonus = () => {
+    const addTrinket2Params = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -349,7 +349,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket2.item_id}&ilvl=${equipment.gear.items.trinket2.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket2.icon}.jpg`}></img></a>
     }
 
-    const addMainhandBonus = () => {
+    const addMainhandParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -369,7 +369,7 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
     }
 
-    const addOffhandBonus = () => {
+    const addOffhandParams = () => {
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -431,68 +431,68 @@ const CharacterPage = () => {
                     <div>
 
                         <div>
-                            {addHelmBonus()}
+                            {addHelmParams()}
                         </div>
 
                         <div>
-                            {addNeckBonus()}
+                            {addNeckParams()}
                         </div>
 
                         <div>
-                            {addShoulderBonus()}
+                            {addShoulderParams()}
                         </div>
 
                         <div>
-                            {addBackBonus()}
+                            {addBackParams()}
                         </div>
 
                         <div>
-                            {addChestBonus()}
+                            {addChestParams()}
                         </div>
 
                         <div>
-                            {addWristBonus()}
+                            {addWristParams()}
                         </div>
 
                         <div>
-                            {addHandsBonus()}
+                            {addHandsParams()}
                         </div>
 
                         <div>
-                            {addWaistBonus()}
+                            {addWaistParams()}
                         </div>
 
                         <div>
-                            {addLegsBonus()}
+                            {addLegsParams()}
                         </div>
 
                         <div>
-                            {addFeetBonus()}
+                            {addFeetParams()}
                         </div>
 
                         <div>
-                            {addFinger1Bonus()}
+                            {addFinger1Params()}
                         </div>
 
                         <div>
-                            {addFinger2Bonus()}
+                            {addFinger2Params()}
                         </div>
 
                         <div>
-                            {addTrinket1Bonus()}
+                            {addTrinket1Params()}
                         </div>
 
                         <div>
-                            {addTrinket2Bonus()}
+                            {addTrinket2Params()}
                         </div>
 
                         <div>
-                            {addMainhandBonus()}
+                            {addMainhandParams()}
                         </div>
 
                         {equipment.gear.items.offhand !== undefined && (
                             <div>
-                                {addOffhandBonus()}
+                                {addOffhandParams()}
                             </div>
                         )}
 
