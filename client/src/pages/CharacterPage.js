@@ -76,12 +76,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.head.bonuses.length > 0) {
             bonusStr = equipment.gear.items.head.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.head.gems.length > 0) {
             gemStr = equipment.gear.items.head.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.head.enchant !== undefined) {
@@ -98,12 +96,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.neck.bonuses.length > 0) {
             bonusStr = equipment.gear.items.neck.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.neck.gems.length > 0) {
             gemStr = equipment.gear.items.neck.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.neck.enchant !== undefined) {
@@ -120,12 +116,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.shoulder.bonuses.length > 0) {
             bonusStr = equipment.gear.items.shoulder.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.shoulder.gems.length > 0) {
             gemStr = equipment.gear.items.shoulder.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.shoulder.enchant !== undefined) {
@@ -142,12 +136,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.back.bonuses.length > 0) {
             bonusStr = equipment.gear.items.back.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.back.gems.length > 0) {
             gemStr = equipment.gear.items.back.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.back.enchant !== undefined) {
@@ -164,12 +156,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.chest.bonuses.length > 0) {
             bonusStr = equipment.gear.items.chest.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.chest.gems.length > 0) {
             gemStr = equipment.gear.items.chest.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.chest.enchant !== undefined) {
@@ -186,12 +176,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.wrist.bonuses.length > 0) {
             bonusStr = equipment.gear.items.wrist.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.wrist.gems.length > 0) {
             gemStr = equipment.gear.items.wrist.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.wrist.enchant !== undefined) {
@@ -208,12 +196,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.hands.bonuses.length > 0) {
             bonusStr = equipment.gear.items.hands.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.hands.gems.length > 0) {
             gemStr = equipment.gear.items.hands.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.hands.enchant !== undefined) {
@@ -230,12 +216,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.waist.bonuses.length > 0) {
             bonusStr = equipment.gear.items.waist.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.waist.gems.length > 0) {
             gemStr = equipment.gear.items.waist.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.waist.enchant !== undefined) {
@@ -252,12 +236,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.legs.bonuses.length > 0) {
             bonusStr = equipment.gear.items.legs.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.legs.gems.length > 0) {
             gemStr = equipment.gear.items.legs.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.legs.enchant !== undefined) {
@@ -274,12 +256,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.feet.bonuses.length > 0) {
             bonusStr = equipment.gear.items.feet.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.feet.gems.length > 0) {
             gemStr = equipment.gear.items.feet.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.feet.enchant !== undefined) {
@@ -296,12 +276,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.finger1.bonuses.length > 0) {
             bonusStr = equipment.gear.items.finger1.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.finger1.gems.length > 0) {
             gemStr = equipment.gear.items.finger1.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.finger1.enchant !== undefined) {
@@ -318,12 +296,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.finger2.bonuses.length > 0) {
             bonusStr = equipment.gear.items.finger2.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.finger2.gems.length > 0) {
             gemStr = equipment.gear.items.finger2.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.finger2.enchant !== undefined) {
@@ -340,12 +316,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.trinket1.bonuses.length > 0) {
             bonusStr = equipment.gear.items.trinket1.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.trinket1.gems.length > 0) {
             gemStr = equipment.gear.items.trinket1.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.trinket1.enchant !== undefined) {
@@ -362,12 +336,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.trinket2.bonuses.length > 0) {
             bonusStr = equipment.gear.items.trinket2.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.trinket2.gems.length > 0) {
             gemStr = equipment.gear.items.trinket2.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.trinket2.enchant !== undefined) {
@@ -384,12 +356,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.mainhand.bonuses.length > 0) {
             bonusStr = equipment.gear.items.mainhand.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.mainhand.gems.length > 0) {
             gemStr = equipment.gear.items.mainhand.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.mainhand.enchant !== undefined) {
@@ -406,12 +376,10 @@ const CharacterPage = () => {
 
         if (equipment.gear.items.offhand.bonuses.length > 0) {
             bonusStr = equipment.gear.items.offhand.bonuses.join(':')
-            console.log(bonusStr)
         }
 
         if (equipment.gear.items.offhand.gems.length > 0) {
             gemStr = equipment.gear.items.offhand.gems[0]
-            console.log(gemStr)
         }
 
         if (equipment.gear.items.offhand.enchant !== undefined) {
