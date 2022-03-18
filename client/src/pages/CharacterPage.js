@@ -334,9 +334,25 @@ const CharacterPage = () => {
     }
 
     const addTrinket1Bonus = () => {
-        const bonusStr = equipment.gear.items.trinket1.bonuses.join(':')
+        let bonusStr = '';
+        let gemStr = '';
+        let enchStr = '';
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}&bonus=${bonusStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
+        if (equipment.gear.items.trinket1.bonuses.length > 0) {
+            bonusStr = equipment.gear.items.trinket1.bonuses.join(':')
+            console.log(bonusStr)
+        }
+
+        if (equipment.gear.items.trinket1.gems.length > 0) {
+            gemStr = equipment.gear.items.trinket1.gems[0]
+            console.log(gemStr)
+        }
+
+        if (equipment.gear.items.trinket1.enchant !== undefined) {
+            enchStr = equipment.gear.trinket1.wrist.enchant
+        }
+
+        return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
     }
 
     const addTrinket2Bonus = () => {
@@ -438,15 +454,10 @@ const CharacterPage = () => {
                             {addFinger2Bonus()}
                         </div>
 
+                        <div>
+                            {addTrinket1Bonus()}
+                        </div>
 
-                        {equipment.gear.items.trinket1.bonuses.length === 0 ?
-                            <div>
-                                <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
-                            </div>
-                            : <div>
-                                {addTrinket1Bonus()}
-                            </div>
-                        }
 
                         {equipment.gear.items.trinket2.bonuses.length === 0 ?
                             <div>
