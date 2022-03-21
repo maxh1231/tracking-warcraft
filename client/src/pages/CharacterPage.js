@@ -29,7 +29,7 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents&name=${charName}`, {
+            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs&name=${charName}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -493,6 +493,56 @@ const CharacterPage = () => {
                     </div>
                 </div>
             )}
+
+            <div>
+                <table>
+                    <th>
+                        <tr>
+                            <td>Dungeon</td>
+                            <td>Fortified</td>
+                            <td>Tyrannical</td>
+                            <td>Rating</td>
+                            <td>Best Time</td>
+                            <td>Best Affixes</td>
+                            <td>World</td>
+                            <td>Region</td>
+                        </tr>
+                    </th>
+                    <tbody>
+                        <tr>
+                            <td>The Necrotic Wake</td>
+                        </tr>
+                        <tr>
+                            <td>Mists of Tirna Scithe</td>
+                        </tr>
+                        <tr>
+                            <td>Halls of Atonement</td>
+                        </tr>
+                        <tr>
+                            <td>Spires of Ascension</td>
+                        </tr>
+                        <tr>
+                            <td>De Other Side</td>
+                        </tr>
+                        <tr>
+                            <td>Plaguefall</td>
+                        </tr>
+                        <tr>
+                            <td>Theater of Pain</td>
+                        </tr>
+                        <tr>
+                            <td>Sanguine Depths</td>
+                        </tr>
+                        <tr>
+                            <td>Tazavesh: Streets of Wonder</td>
+                        </tr>
+                        <tr>
+                            <td>Tazavesh: So'leah's Gambit</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </section>
     )
 }
