@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
     const [talents, setTalents] = useState(null);
+    const [dungeons, setDungeons] = useState(null);
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
@@ -53,8 +54,33 @@ const CharacterPage = () => {
         }
     }, [setTalents])
 
+    let tyranArr = []
+    let fortArr = []
+    useEffect(() => {
+        dungeonFetch()
+
+        async function dungeonFetch() {
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/mythic-keystone-profile/season/6?namespace=profile-us&locale=en_US&access_token=${location.state}`)
+
+            const data = await response.json()
+            setDungeons(data);
+            for (let i = 0; i < data.best_runs.length; i++) {
+                if (data.best_runs[i].keystone_affixes[0].name === 'Tyrannical') {
+                    tyranArr.push(data.best_runs[i])
+
+                    console.log(tyranArr)
+                } else {
+                    fortArr.push(data.best_runs)
+                    console.log(fortArr)
+                }
+            }
+        }
+    }, [setDungeons])
+
     console.log(equipment)
     console.log(talents)
+    console.log(dungeons)
+
 
     const addHelmParams = () => {
         let bonusStr = '';
@@ -375,6 +401,8 @@ const CharacterPage = () => {
 
         return <a href="#" data-wowhead={`item=${equipment.gear.items.offhand.item_id}&ilvl=${equipment.gear.items.offhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.offhand.icon}.jpg`}></img></a>
     }
+
+
 
     return (
         <section>
