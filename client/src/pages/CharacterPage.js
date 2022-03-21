@@ -63,17 +63,17 @@ const CharacterPage = () => {
             const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/mythic-keystone-profile/season/6?namespace=profile-us&locale=en_US&access_token=${location.state}`)
 
             const data = await response.json()
-            setDungeons(data);
+
             for (let i = 0; i < data.best_runs.length; i++) {
                 if (data.best_runs[i].keystone_affixes[0].name === 'Tyrannical') {
                     tyranArr.push(data.best_runs[i])
-
                     console.log(tyranArr)
                 } else {
-                    fortArr.push(data.best_runs)
+                    fortArr.push(data.best_runs[i])
                     console.log(fortArr)
                 }
             }
+            setDungeons(data);
         }
     }, [setDungeons])
 
