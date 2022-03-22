@@ -81,6 +81,8 @@ const CharacterPage = () => {
     console.log(equipment)
     console.log(talents)
     console.log(dungeons)
+    console.log("Tazavesh: So'leah's Gambit")
+
 
 
     const addHelmParams = () => {
@@ -638,12 +640,45 @@ const CharacterPage = () => {
                         </tr>
                         <tr>
                             <td>Sanguine Depths</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Sanguine Depths') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Sanguine Depths') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                         <tr>
                             <td>Tazavesh: Streets of Wonder</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Tazavesh: Streets of Wonder') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Tazavesh: Streets of Wonder') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                         <tr>
                             <td>Tazavesh: So'leah's Gambit</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes("Tazavesh: So'leah's Gambit") && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes("Tazavesh: So'leah's Gambit") && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                     </tbody>
                 </table>
