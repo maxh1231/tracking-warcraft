@@ -30,7 +30,7 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs&name=${charName}`, {
+            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs%2Cmythic_plus_scores_by_season:current&name=${charName}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -438,6 +438,9 @@ const CharacterPage = () => {
                         </div>
                         <div>
                             <span>{equipment.race}<span> {equipment.active_spec_name} {equipment.class}</span></span>
+                        </div>
+                        <div>
+                            <span>{equipment.mythic_plus_scores_by_season[0].scores.all} M+ Score</span>
                         </div>
                     </div>
                 </div>}
