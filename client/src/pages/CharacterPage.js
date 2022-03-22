@@ -416,6 +416,10 @@ const CharacterPage = () => {
 
     }
 
+    const aotcFormat = (value) => {
+        return `${value.slice(5, 7)}-${value.slice(8, 10)}-${value.slice(0, 4)}`
+    }
+
     return (
         <section>
 
@@ -444,13 +448,14 @@ const CharacterPage = () => {
                         </div>
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sanctum-of-domination')).map(item => (
                             <div>
-                                <span>Sanctum of Domination AOTC</span>
+                                <span>Sanctum of Domination AOTC on {aotcFormat(item.aotc)}</span>
                             </div>
+
                         ))}
 
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sepulcher-of-the-first-ones')).map(item => (
                             <div>
-                                <span>Sepulcher of the First Ones AOTC</span>
+                                <span>Sepulcher of the First Ones AOTC on {aotcFormat(item.aotc)}</span>
                             </div>
                         ))}
                     </div>
