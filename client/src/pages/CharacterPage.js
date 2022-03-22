@@ -568,9 +568,31 @@ const CharacterPage = () => {
                         </tr>
                         <tr>
                             <td>Halls of Atonement</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Halls of Atonement') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Halls of Atonement') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                         <tr>
                             <td>Spires of Ascension</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('De Other Side') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('De Other Side') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                         <tr>
                             <td>De Other Side</td>
