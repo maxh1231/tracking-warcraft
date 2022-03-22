@@ -30,7 +30,7 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs%2Cmythic_plus_scores_by_season:current%2Craid_progression%2Craid_achievement_curve:sepulcher-of-the-first-ones&name=${charName}`, {
+            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs%2Cmythic_plus_scores_by_season:current%2Craid_progression%2Craid_achievement_curve:sepulcher-of-the-first-ones:sanctum-of-domination&name=${charName}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -442,11 +442,17 @@ const CharacterPage = () => {
                         <div>
                             <span>{equipment.mythic_plus_scores_by_season[0].scores.all} M+ Score</span>
                         </div>
-                        {equipment.raid_achievement_curve.length > 0 && (
+                        {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sanctum-of-domination')).map(item => (
                             <div>
-                                <span>Sepulcher AOTC</span>
+                                <span>Sanctum of Domination AOTC</span>
                             </div>
-                        )}
+                        ))}
+
+                        {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sepulcher-of-the-first-ones')).map(item => (
+                            <div>
+                                <span>Sepulcher of the First Ones AOTC</span>
+                            </div>
+                        ))}
                     </div>
                 </div>}
 
