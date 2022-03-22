@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom"
+import { useParams, useLocation, Link } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
 
@@ -430,7 +430,7 @@ const CharacterPage = () => {
                         </div>
                         {equipment.guild !== null && (
                             <div>
-                                <span>{"<"}{equipment.guild.name}{">"}</span>
+                                <span><Link to={`/guild/${params.region}/${params.realm}/${equipment.guild.name}`}>{"<"}{equipment.guild.name}{">"}</Link></span>
                             </div>
                         )}
                         <div>
