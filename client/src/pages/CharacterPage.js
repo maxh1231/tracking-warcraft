@@ -405,7 +405,16 @@ const CharacterPage = () => {
         return <a href="#" data-wowhead={`item=${equipment.gear.items.offhand.item_id}&ilvl=${equipment.gear.items.offhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.offhand.icon}.jpg`}></img></a>
     }
 
+    const timeFormat = (value) => {
+        const date = new Date(value)
 
+        if (date.getSeconds() >= 10) {
+            return `${date.getMinutes()}:${date.getSeconds()}`
+        } else {
+            return `${date.getMinutes()}:0${date.getSeconds()}`
+        }
+
+    }
 
     return (
         <section>
@@ -530,36 +539,46 @@ const CharacterPage = () => {
                     <th>
                         <tr>
                             <td>Dungeon</td>
-                            <td>Affixes</td>
                             <td>Level</td>
+                            <td>Affixes</td>
                             <td>Time</td>
                         </tr>
                     </th>
                     <tbody>
-                        <tr>
-                            <td>The Necrotic Wake</td>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    item.affixes.map((affix) => (
-                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                    ))
-                                ))
-                            )}
 
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    item.affixes.map((affix) => (
+
+                        {dungeons !== null && (
+                            dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                <tr>
+                                    <td>{item.dungeon}</td>
+                                    <td>{`+${item.mythic_level}`}</td>
+                                    <td>{item.affixes.map(affix => (
                                         <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                    ))
+                                    ))}</td>
+                                    <td>{timeFormat(item.clear_time_ms)}</td>
+                                </tr>
+                            ))
+                        )}
+
+                        {dungeons !== null && (
+                            dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                item.affixes.map((affix) => (
+                                    <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
                                 ))
-                            )}
-                        </tr>
+                            ))
+                        )}
+
                         <tr>
                             <td>Mists of Tirna Scithe</td>
                             {dungeons !== null && (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes('Mists of Tirna Scithe') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
                                     item.affixes.map((affix) => (
-                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+
+                                        <td>
+                                            <a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a>
+                                            <span></span>
+                                        </td>
+
                                     ))
                                 ))
                             )}
