@@ -530,13 +530,9 @@ const CharacterPage = () => {
                     <th>
                         <tr>
                             <td>Dungeon</td>
-                            <td>Fortified</td>
-                            <td>Tyrannical</td>
-                            <td>Rating</td>
-                            <td>Best Time</td>
-                            <td>Best Affixes</td>
-                            <td>World</td>
-                            <td>Region</td>
+                            <td>Affixes</td>
+                            <td>Level</td>
+                            <td>Time</td>
                         </tr>
                     </th>
                     <tbody>
@@ -544,7 +540,9 @@ const CharacterPage = () => {
                             <td>The Necrotic Wake</td>
                             {dungeons !== null && (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <td>is tyrannical</td>
+                                    item.affixes.map((affix) => (
+                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                    ))
                                 ))
                             )}
 
