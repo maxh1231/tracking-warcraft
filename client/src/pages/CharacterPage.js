@@ -548,7 +548,9 @@ const CharacterPage = () => {
 
                             {dungeons !== null && (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <td>is fortified</td>
+                                    item.affixes.map((affix) => (
+                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                    ))
                                 ))
                             )}
                         </tr>
