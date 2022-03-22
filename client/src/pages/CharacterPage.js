@@ -655,20 +655,29 @@ const CharacterPage = () => {
                             )}
                         </tr>
                         <tr>
-                            <td>De Other Side</td>
                             {dungeons !== null && (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes('De Other Side') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    item.affixes.map((affix) => (
-                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                    ))
+                                    <tr>
+                                        <td>{item.dungeon}</td>
+                                        <td>{`+${item.mythic_level}`}</td>
+                                        <td>{item.affixes.map(affix => (
+                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                        ))}</td>
+                                        <td>{timeFormat(item.clear_time_ms)}</td>
+                                    </tr>
                                 ))
                             )}
 
                             {dungeons !== null && (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes('De Other Side') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    item.affixes.map((affix) => (
-                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                    ))
+                                    <tr>
+                                        <td>{item.dungeon}</td>
+                                        <td>{`+${item.mythic_level}`}</td>
+                                        <td>{item.affixes.map(affix => (
+                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                        ))}</td>
+                                        <td>{timeFormat(item.clear_time_ms)}</td>
+                                    </tr>
                                 ))
                             )}
                         </tr>
