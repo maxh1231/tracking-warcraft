@@ -420,6 +420,20 @@ const CharacterPage = () => {
         return `${value.slice(5, 7)}-${value.slice(8, 10)}-${value.slice(0, 4)}`
     }
 
+    const calcProg = () => {
+        if (equipment.raid_progression[`sanctum-of-domination`].mythic_bosses_killed > 0) {
+            return `${equipment.raid_progression['sanctum-of-domination'].mythic_bosses_killed}/11 M`;
+        } else if (equipment.raid_progression[`sanctum-of-domination`].heroic_bosses_killed > 0) {
+            return equipment.raid_progression[`sanctum-of-domination`].heroic_bosses_killed
+        } else {
+            return equipment.raid_progression[`sanctum-of-domination`].normal_bosses_killed
+        }
+    }
+
+    if (equipment) {
+        console.log(equipment.raid_progression[`sanctum-of-domination`].mythic_bosses_killed)
+    }
+
     return (
         <section>
 
@@ -448,6 +462,7 @@ const CharacterPage = () => {
                         </div>
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sanctum-of-domination')).map(item => (
                             <div>
+                                <span>{calcProg()} </span>
                                 <span>Sanctum of Domination AOTC on {aotcFormat(item.aotc)}</span>
                             </div>
 
