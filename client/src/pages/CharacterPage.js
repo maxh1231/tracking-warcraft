@@ -40,8 +40,9 @@ const CharacterPage = () => {
 
             const data = await response.json()
             setEquipment(data)
+            setDungeons(data.mythic_plus_best_runs)
         }
-    }, [setEquipment])
+    }, [setEquipment], [setDungeons])
 
     useEffect(() => {
         blizzFetch()
@@ -60,20 +61,20 @@ const CharacterPage = () => {
         dungeonFetch()
 
         async function dungeonFetch() {
-            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/mythic-keystone-profile/season/6?namespace=profile-us&locale=en_US&access_token=${location.state}`)
+            // const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/mythic-keystone-profile/season/7?namespace=profile-us&locale=en_US&access_token=${location.state}`)
+
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/characters/mythic-plus-runs?season=season-sl-3&characterId=91057123&role=all&mode=timed&affixes=tyrannical&dung=plaguefall&date=all`)
 
             const data = await response.json()
 
-            for (let i = 0; i < data.best_runs.length; i++) {
-                if (data.best_runs[i].keystone_affixes[0].name === 'Tyrannical') {
-                    tyranArr.push(data.best_runs[i])
-                    console.log(tyranArr)
-                } else {
-                    fortArr.push(data.best_runs[i])
-                    console.log(fortArr)
-                }
-            }
-            setDungeons(data);
+            // for (let i = 0; i < data.best_runs.length; i++) {
+            //     if (data.best_runs[i].keystone_affixes[0].name === 'Tyrannical') {
+            //         tyranArr.push(data.best_runs[i])
+            //     } else {
+            //         fortArr.push(data.best_runs[i])
+            //     }
+            // }
+            // setDungeons(data);
         }
     }, [setDungeons])
 
@@ -539,9 +540,31 @@ const CharacterPage = () => {
                     <tbody>
                         <tr>
                             <td>The Necrotic Wake</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                         <tr>
                             <td>Mists of Tirna Scithe</td>
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Mists of Tirna Scithe') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <td>is tyrannical</td>
+                                ))
+                            )}
+
+                            {dungeons !== null && (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes('Mists of Tirna Scithe') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <td>is fortified</td>
+                                ))
+                            )}
                         </tr>
                         <tr>
                             <td>Halls of Atonement</td>
