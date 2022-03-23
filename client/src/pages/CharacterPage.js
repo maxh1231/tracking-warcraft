@@ -7,6 +7,7 @@ const CharacterPage = () => {
     const [talents, setTalents] = useState(null);
     const [dungeons, setDungeons] = useState(null);
     const [currentRaid, setCurrentRaid] = useState('Sepulcher of the First Ones')
+    const [currentSeason, setCurrentSeason] = useState('SL3')
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
@@ -603,27 +604,42 @@ const CharacterPage = () => {
                 </div>
             )}
 
-            {equipment !== null && (<div>
+            {equipment !== null && (
                 <div>
-                    <h3>Raid Progression</h3>
-                    <select onChange={handleSelectChange}>
-                        <option>Sepulcher of the First Ones</option>
-                        <option>Sanctum of Domination</option>
-                        <option>Castle Nathria</option>
-                    </select>
-                </div>
+                    <div>
+                        <h3>Raid Progression</h3>
+                        <select onChange={handleSelectChange}>
+                            <option>Sepulcher of the First Ones</option>
+                            <option>Sanctum of Domination</option>
+                            <option>Castle Nathria</option>
+                        </select>
+                    </div>
 
-                <div>
                     <div>
-                        <h4>{currentRaid}</h4>
-                        <h4>Progress</h4>
-                        <h4>Kills</h4>
-                    </div>
-                    <div>
-                        {handleRaidInfo()}
+                        <div>
+                            <h4>{currentRaid}</h4>
+                            <h4>Progress</h4>
+                            <h4>Kills</h4>
+                        </div>
+                        <div>
+                            {handleRaidInfo()}
+                        </div>
                     </div>
                 </div>
-            </div>)}
+            )}
+
+            {equipment !== null && (
+                <div>
+                    <div>
+                        <h3>Mythic+ Progression</h3>
+                        <select>
+                            <option>Season 3</option>
+                            <option>Season 2</option>
+                            <option>Season 1</option>
+                        </select>
+                    </div>
+                </div>
+            )}
 
             <div>
                 <table>
