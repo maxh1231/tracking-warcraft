@@ -446,24 +446,24 @@ const CharacterPage = () => {
             return (
                 <ol>
                     <li>Mythic: {equipment.raid_progression['sepulcher-of-the-first-ones'].mythic_bosses_killed}/11 M</li>
-                    <li>Heroic: {equipment.raid_progression['sepulcher-of-the-first-ones'].heroic_bosses_killed}/11 M</li>
-                    <li>Normal: {equipment.raid_progression['sepulcher-of-the-first-ones'].normal_bosses_killed}/11 M</li>
+                    <li>Heroic: {equipment.raid_progression['sepulcher-of-the-first-ones'].heroic_bosses_killed}/11 H</li>
+                    <li>Normal: {equipment.raid_progression['sepulcher-of-the-first-ones'].normal_bosses_killed}/11 N</li>
                 </ol>
             )
         } else if (currentRaid === 'Sanctum of Domination') {
             return (
                 <ol>
                     <li>Mythic: {equipment.raid_progression['sanctum-of-domination'].mythic_bosses_killed}/11 M</li>
-                    <li>Heroic: {equipment.raid_progression['sanctum-of-domination'].heroic_bosses_killed}/11 M</li>
-                    <li>Normal: {equipment.raid_progression['sanctum-of-domination'].normal_bosses_killed}/11 M</li>
+                    <li>Heroic: {equipment.raid_progression['sanctum-of-domination'].heroic_bosses_killed}/11 H</li>
+                    <li>Normal: {equipment.raid_progression['sanctum-of-domination'].normal_bosses_killed}/11 N</li>
                 </ol>
             )
         } else if (currentRaid === 'Castle Nathria') {
             return (
                 <ol>
                     <li>Mythic: {equipment.raid_progression['castle-nathria'].mythic_bosses_killed}/10 M</li>
-                    <li>Heroic: {equipment.raid_progression['castle-nathria'].heroic_bosses_killed}/10 M</li>
-                    <li>Normal: {equipment.raid_progression['castle-nathria'].normal_bosses_killed}/10 M</li>
+                    <li>Heroic: {equipment.raid_progression['castle-nathria'].heroic_bosses_killed}/10 H</li>
+                    <li>Normal: {equipment.raid_progression['castle-nathria'].normal_bosses_killed}/10 N</li>
                 </ol>
             )
         }
