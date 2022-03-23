@@ -2,6 +2,8 @@ import { useParams, useLocation, Link } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
 
+import DpsClass from "../components/DpsClass";
+
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
     const [talents, setTalents] = useState(null);
@@ -638,6 +640,7 @@ const CharacterPage = () => {
                             <option>Season 1</option>
                         </select>
                     </div>
+                    <DpsClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
                 </div>
             )}
 
