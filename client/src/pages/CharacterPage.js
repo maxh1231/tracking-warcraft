@@ -569,6 +569,21 @@ const CharacterPage = () => {
             )}
 
             <div>
+                <div>
+                    <h3>Raid Progression</h3>
+                    <select>
+                        <option>Sepulcher of the First Ones</option>
+                        <option>Sanctum of Domination</option>
+                        <option>Castle Nathria</option>
+                    </select>
+                </div>
+
+                <div>
+                    <h4></h4>
+                </div>
+            </div>
+
+            <div>
                 <table>
                     <th>
                         <tr>
