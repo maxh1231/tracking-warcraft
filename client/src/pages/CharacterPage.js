@@ -6,6 +6,7 @@ const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
     const [talents, setTalents] = useState(null);
     const [dungeons, setDungeons] = useState(null);
+    const [currentRaid, setCurrentRaid] = useState('Sepulcher of the First Ones')
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
@@ -434,6 +435,40 @@ const CharacterPage = () => {
         console.log(equipment.raid_progression[`sanctum-of-domination`].mythic_bosses_killed)
     }
 
+    const handleSelectChange = (event) => {
+        let value = event.target.value;
+        console.log(value)
+        setCurrentRaid(value);
+    }
+
+    const handleRaidInfo = () => {
+        if (currentRaid === 'Sepulcher of the First Ones') {
+            return (
+                <ol>
+                    <li>Mythic: {equipment.raid_progression['sepulcher-of-the-first-ones'].mythic_bosses_killed}/11 M</li>
+                    <li>Heroic: {equipment.raid_progression['sepulcher-of-the-first-ones'].heroic_bosses_killed}/11 M</li>
+                    <li>Normal: {equipment.raid_progression['sepulcher-of-the-first-ones'].normal_bosses_killed}/11 M</li>
+                </ol>
+            )
+        } else if (currentRaid === 'Sanctum of Domination') {
+            return (
+                <ol>
+                    <li>Mythic: {equipment.raid_progression['sanctum-of-domination'].mythic_bosses_killed}/11 M</li>
+                    <li>Heroic: {equipment.raid_progression['sanctum-of-domination'].heroic_bosses_killed}/11 M</li>
+                    <li>Normal: {equipment.raid_progression['sanctum-of-domination'].normal_bosses_killed}/11 M</li>
+                </ol>
+            )
+        } else if (currentRaid === 'Castle Nathria') {
+            return (
+                <ol>
+                    <li>Mythic: {equipment.raid_progression['castle-nathria'].mythic_bosses_killed}/10 M</li>
+                    <li>Heroic: {equipment.raid_progression['castle-nathria'].heroic_bosses_killed}/10 M</li>
+                    <li>Normal: {equipment.raid_progression['castle-nathria'].normal_bosses_killed}/10 M</li>
+                </ol>
+            )
+        }
+    }
+
     return (
         <section>
 
@@ -568,10 +603,10 @@ const CharacterPage = () => {
                 </div>
             )}
 
-            <div>
+            {equipment !== null && (<div>
                 <div>
                     <h3>Raid Progression</h3>
-                    <select>
+                    <select onChange={handleSelectChange}>
                         <option>Sepulcher of the First Ones</option>
                         <option>Sanctum of Domination</option>
                         <option>Castle Nathria</option>
@@ -579,9 +614,16 @@ const CharacterPage = () => {
                 </div>
 
                 <div>
-                    <h4></h4>
+                    <div>
+                        <h4>{currentRaid}</h4>
+                        <h4>Progress</h4>
+                        <h4>Kills</h4>
+                    </div>
+                    <div>
+                        {handleRaidInfo()}
+                    </div>
                 </div>
-            </div>
+            </div>)}
 
             <div>
                 <table>
