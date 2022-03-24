@@ -5,15 +5,15 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
     let scores = [
         {
             "name": "Assassination",
-            "score": equipment.mythic_plus_scores_by_season[0].scores.spec_0
+            "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_0
         },
         {
             "name": "Outlaw",
-            "score": equipment.mythic_plus_scores_by_season[0].scores.spec_1
+            "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_1
         },
         {
             "name": "Subtlety",
-            "score": equipment.mythic_plus_scores_by_season[0].scores.spec_2
+            "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_2
         }
 
     ];
@@ -29,7 +29,7 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
             return (
                 <div>
                     <div>
-                        <p>{equipment.mythic_plus_scores_by_season[0].scores.dps}</p>
+                        <p>{equipment.mythic_plus_scores_by_season[currentSeason].scores.dps}</p>
                         <p>DPS</p>
                         <p>Mythic+ Score</p>
                     </div>

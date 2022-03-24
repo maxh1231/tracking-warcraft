@@ -9,7 +9,7 @@ const CharacterPage = () => {
     const [talents, setTalents] = useState(null);
     const [dungeons, setDungeons] = useState(null);
     const [currentRaid, setCurrentRaid] = useState('Sepulcher of the First Ones')
-    const [currentSeason, setCurrentSeason] = useState('SL3')
+    const [currentSeason, setCurrentSeason] = useState(2)
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
@@ -34,7 +34,7 @@ const CharacterPage = () => {
         ioFetch();
 
         async function ioFetch() {
-            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs%2Cmythic_plus_scores_by_season:current%2Craid_progression%2Craid_achievement_curve:sepulcher-of-the-first-ones:sanctum-of-domination&name=${charName}`, {
+            const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs%2Cmythic_plus_scores_by_season:season-sl-1:season-sl-2:season-sl-3%2Craid_progression%2Craid_achievement_curve:sepulcher-of-the-first-ones:sanctum-of-domination&name=${charName}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "raider-io.p.rapidapi.com",
@@ -472,6 +472,22 @@ const CharacterPage = () => {
         }
     }
 
+    const handleSeasonChange = (event) => {
+        let value = event.target.value
+
+        if (value === 'Season 3') {
+            setCurrentSeason(2)
+        }
+
+        if (value === 'Season 2') {
+            setCurrentSeason(1)
+        }
+
+        if (value === 'Season 1') {
+            setCurrentSeason(0)
+        }
+    }
+
     return (
         <section>
 
@@ -634,7 +650,7 @@ const CharacterPage = () => {
                 <div>
                     <div>
                         <h3>Mythic+ Progression</h3>
-                        <select>
+                        <select onChange={handleSeasonChange}>
                             <option>Season 3</option>
                             <option>Season 2</option>
                             <option>Season 1</option>
