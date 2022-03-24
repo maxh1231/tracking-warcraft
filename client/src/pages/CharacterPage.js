@@ -3,6 +3,7 @@ import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
 
 import DpsClass from "../components/DpsClass";
+import HybridClass from "../components/HybridClass";
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
@@ -661,7 +662,7 @@ const CharacterPage = () => {
                             ?
                             <DpsClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
                             :
-                            null
+                            <HybridClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
                     }
                 </div>
             )}
