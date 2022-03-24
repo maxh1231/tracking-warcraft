@@ -41,6 +41,42 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
                 ];
                 return;
+
+            case 'Hunter':
+                scores = [
+                    {
+                        "name": "Beast Mastery",
+                        "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_0
+                    },
+                    {
+                        "name": "Marksmanship",
+                        "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_1
+                    },
+                    {
+                        "name": "Survival",
+                        "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_2
+                    }
+
+                ];
+                return;
+
+            case 'Warlock':
+                scores = [
+                    {
+                        "name": "Affliction",
+                        "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_0
+                    },
+                    {
+                        "name": "Demonology",
+                        "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_1
+                    },
+                    {
+                        "name": "Destruction",
+                        "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.spec_2
+                    }
+
+                ];
+                return;
         }
     }
 
@@ -53,7 +89,6 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
     return (
         <div>
-            <h2>howdy</h2>
             <div>
                 <p>{equipment.mythic_plus_scores_by_season[currentSeason].scores.dps}</p>
                 <p>DPS</p>
