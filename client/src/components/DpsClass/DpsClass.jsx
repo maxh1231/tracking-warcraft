@@ -2,12 +2,24 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
     console.log(equipment)
 
-    let scores = [equipment.mythic_plus_scores_by_season[0].scores.spec_0, equipment.mythic_plus_scores_by_season[0].scores.spec_1, equipment.mythic_plus_scores_by_season[0].scores.spec_2]
+    let scores = [
+        {
+            "name": "Assassination",
+            "score": equipment.mythic_plus_scores_by_season[0].scores.spec_0
+        },
+        {
+            "name": "Outlaw",
+            "score": equipment.mythic_plus_scores_by_season[0].scores.spec_1
+        },
+        {
+            "name": "Subtlety",
+            "score": equipment.mythic_plus_scores_by_season[0].scores.spec_2
+        }
+
+    ];
 
 
-    scores.sort(function (a, b) {
-        return a - b;
-    })
+    scores.sort((a, b) => b.score - a.score)
 
     console.log(scores);
 
