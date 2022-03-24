@@ -33,9 +33,28 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
                         <p>DPS</p>
                         <p>Mythic+ Score</p>
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+
+                    <div>
+                        <p>{scores[0].score}</p>
+                        <p>{scores[0].name}</p>
+                        <p>Mythic+ Score</p>
+                    </div>
+
+                    {scores[1].score > 0 && (
+                        <div>
+                            <p>{scores[1].score}</p>
+                            <p>{scores[1].name}</p>
+                            <p>Mythic+ Score</p>
+                        </div>
+                    )}
+
+                    {scores[2].score > 0 && (
+                        <div>
+                            <p>{scores[2].score}</p>
+                            <p>{scores[2].name}</p>
+                            <p>Mythic+ Score</p>
+                        </div>
+                    )}
                 </div>
             )
         }
