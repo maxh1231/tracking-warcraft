@@ -656,7 +656,13 @@ const CharacterPage = () => {
                             <option>Season 1</option>
                         </select>
                     </div>
-                    <DpsClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
+                    {
+                        (equipment.class === 'Rogue' || equipment.class === 'Mage' || equipment.class === 'Hunter' || equipment.class === 'Warlock')
+                            ?
+                            <DpsClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
+                            :
+                            null
+                    }
                 </div>
             )}
 
