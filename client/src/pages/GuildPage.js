@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 const GuildPage = () => {
+    const [guild, setGuild] = useState(null)
     const params = useParams();
     console.log(params);
     const guildName = params.name.toLowerCase()
@@ -13,12 +14,24 @@ const GuildPage = () => {
             const response = await fetch(`https://raider.io/api/v1/guilds/profile?region=${params.region}&realm=${params.realm}&name=${guildName}&fields=raid_progression%2C%20raid_rankings`)
 
             const data = await response.json()
-            console.log(data);
+
+            setGuild(data)
+            console.log(guild)
         }
-    }, [])
+    }, [setGuild])
 
     return (
-        <section>hi guild page</section>
+        <section>
+            {guild == ! null && (
+                <div>
+                    <div>
+                        <div>
+                            <h2>{guild.name}</h2>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </section>
     )
 }
 
