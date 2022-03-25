@@ -688,24 +688,12 @@ const CharacterPage = () => {
                 </div>
             )}
 
-            {equipment !== null && (
-                <div>
-                    <table>
-                        <th>
-                            <tr>
-                                <th>Leaderboard</th>
-                                <th>World</th>
-                                <th>Region</th>
-                                <th>Realm</th>
-                                <th>({equipment.faction.toUpperCase().slice(0, 1)}) World</th>
-                                <th>({equipment.faction.toUpperCase().slice(0, 1)}) Region</th>
-                                <th>({equipment.faction.toUpperCase().slice(0, 1)}) Realm</th>
-                            </tr>
-                        </th>
-                    </table>
-                </div>
-            )}
-
+            {(equipment.class === 'Rogue' || equipment.class === 'Mage' || equipment.class === 'Hunter' || equipment.class === 'Warlock')
+                ?
+                <DpsRank equipment={equipment} />
+                :
+                null
+            }
             <div>
                 <table>
                     <th>
