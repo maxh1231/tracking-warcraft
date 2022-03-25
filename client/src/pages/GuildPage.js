@@ -22,7 +22,7 @@ const GuildPage = () => {
 
     return (
         <section>
-            {guild == ! null && (
+            {guild !== null && (
                 <div>
                     <div>
                         <div>

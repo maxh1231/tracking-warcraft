@@ -681,19 +681,22 @@ const CharacterPage = () => {
                     {
                         (equipment.class === 'Rogue' || equipment.class === 'Mage' || equipment.class === 'Hunter' || equipment.class === 'Warlock')
                             ?
-                            <DpsClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
+                            <div>
+                                <DpsClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
+                                <DpsRank equipment={equipment} />
+                            </div>
                             :
                             <HybridClass equipment={equipment} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
                     }
                 </div>
             )}
 
-            {(equipment.class === 'Rogue' || equipment.class === 'Mage' || equipment.class === 'Hunter' || equipment.class === 'Warlock')
+            {/* {(equipment.class === 'Rogue' || equipment.class === 'Mage' || equipment.class === 'Hunter' || equipment.class === 'Warlock')
                 ?
                 <DpsRank equipment={equipment} />
                 :
                 null
-            }
+            } */}
 
             <div>
                 <table>
