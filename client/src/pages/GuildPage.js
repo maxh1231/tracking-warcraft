@@ -27,6 +27,7 @@ const GuildPage = () => {
                     <div>
                         <div>
                             <h2>{guild.name}</h2>
+                            <span><span>({guild.region.toUpperCase()})</span> {guild.realm}</span>
                         </div>
                     </div>
                 </div>
