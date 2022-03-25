@@ -513,7 +513,7 @@ const CharacterPage = () => {
                             <span>{equipment.race}<span> {equipment.active_spec_name} {equipment.class}</span></span>
                         </div>
                         <div>
-                            <span>{equipment.mythic_plus_scores_by_season[0].scores.all} M+ Score</span>
+                            <span>{equipment.mythic_plus_scores_by_season[2].scores.all} M+ Score</span>
                         </div>
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sanctum-of-domination')).map(item => (
                             <div>

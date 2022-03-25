@@ -2,15 +2,15 @@ const HybridClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
     let scores = [
         {
-            "name": "tank",
+            "name": "Tank",
             "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.tank
         },
         {
-            "name": "healer",
+            "name": "Healer",
             "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.healer
         },
         {
-            "name": "dps",
+            "name": "DPS",
             "score": equipment.mythic_plus_scores_by_season[currentSeason].scores.dps
         }
     ]
@@ -21,17 +21,23 @@ const HybridClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
     return (
         <div>
-            <div>
-                <p>{equipment.mythic_plus_scores_by_season[currentSeason].scores.all}</p>
-                <p>Overall</p>
-                <p>Mythic+ Score</p>
-            </div>
 
-            <div>
-                <p>{scores[0].score}</p>
-                <p>{scores[0].name}</p>
-                <p>Mythic+ Score</p>
-            </div>
+
+            {equipment.mythic_plus_scores_by_season[currentSeason].scores.all > scores[0].score && (
+                <div>
+                    <p>{equipment.mythic_plus_scores_by_season[currentSeason].scores.all}</p>
+                    <p>Overall</p>
+                    <p>Mythic+ Score</p>
+                </div>
+            )}
+
+            {scores[0].score > 0 && (
+                <div>
+                    <p>{scores[0].score}</p>
+                    <p>{scores[0].name}</p>
+                    <p>Mythic+ Score</p>
+                </div>
+            )}
 
             {scores[1].score > 0 && (
                 <div>
@@ -48,7 +54,11 @@ const HybridClass = ({ equipment, currentSeason, setCurrentSeason }) => {
                     <p>Mythic+ Score</p>
                 </div>
             )}
+
+
+
         </div>
+
     )
 }
 
