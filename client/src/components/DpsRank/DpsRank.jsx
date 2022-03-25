@@ -17,7 +17,13 @@ const DpsRank = ({ equipment }) => {
                     </thead>
                     <tbody>
                         <tr>
-
+                            <td>All {equipment.class}s</td>
+                            <td>{equipment.mythic_plus_ranks.class.world}</td>
+                            <td>{equipment.mythic_plus_ranks.class.region}</td>
+                            <td>{equipment.mythic_plus_ranks.class.realm}</td>
+                            <td>{equipment.mythic_plus_ranks.faction_class.world}</td>
+                            <td>{equipment.mythic_plus_ranks.faction_class.region}</td>
+                            <td>{equipment.mythic_plus_ranks.faction_class.realm}</td>
                         </tr>
                     </tbody>
                 </table>

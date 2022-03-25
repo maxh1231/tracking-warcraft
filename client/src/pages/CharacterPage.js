@@ -694,6 +694,7 @@ const CharacterPage = () => {
                 :
                 null
             }
+
             <div>
                 <table>
                     <th>
