@@ -476,15 +476,31 @@ const CharacterPage = () => {
     const handleSeasonChange = (event) => {
         let value = event.target.value
 
-        if (value === 'Season 3') {
+        if (value === 'BFA Season 4') {
+            setCurrentSeason(6);
+        }
+
+        if (value === 'BFA Season 3') {
+            setCurrentSeason(5)
+        }
+
+        if (value === 'BFA Season 2') {
+            setCurrentSeason(4)
+        }
+
+        if (value === 'BFA Season 1') {
+            setCurrentSeason(3)
+        }
+
+        if (value === 'SL Season 3') {
             setCurrentSeason(2)
         }
 
-        if (value === 'Season 2') {
+        if (value === 'SL Season 2') {
             setCurrentSeason(1)
         }
 
-        if (value === 'Season 1') {
+        if (value === 'SL Season 1') {
             setCurrentSeason(0)
         }
     }
@@ -652,9 +668,13 @@ const CharacterPage = () => {
                     <div>
                         <h3>Mythic+ Progression</h3>
                         <select onChange={handleSeasonChange}>
-                            <option>Season 3</option>
-                            <option>Season 2</option>
-                            <option>Season 1</option>
+                            <option>SL Season 3</option>
+                            <option>SL Season 2</option>
+                            <option>SL Season 1</option>
+                            <option>BFA Season 4</option>
+                            <option>BFA Season 3</option>
+                            <option>BFA Season 2</option>
+                            <option>BFA Season 1</option>
                         </select>
                     </div>
                     {
