@@ -3,6 +3,7 @@ import { useParams, useLocation } from "react-router-dom"
 
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
+    const [roster, setRoster] = useState(null)
     const params = useParams();
     console.log(params);
     const location = useLocation();
@@ -21,6 +22,20 @@ const GuildPage = () => {
             console.log(guild)
         }
     }, [setGuild])
+
+    useEffect(() => {
+        rosterData()
+
+        async function rosterData() {
+            const response = await fetch(`https://${params.region}.api.blizzard.com/data/wow/guild/${params.realm}/${guildName}/roster?namespace=profile-${params.region}&locale=en_US&access_token=${location.state}`)
+
+            const data = await response.json()
+            setRoster(data)
+
+        }
+    }, [setRoster])
+
+    console.log(roster)
 
     return (
         <section>
