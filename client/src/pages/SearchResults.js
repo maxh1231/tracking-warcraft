@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 
-const SearchResults = ({ accessToken }) => {
+const SearchResults = () => {
     const [characters, setCharacters] = useState(null)
     const location = useLocation()
     console.log(location)

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
     const params = useParams();
     console.log(params);
+    const location = useLocation();
+    console.log(location)
     const guildName = params.name.toLowerCase()
 
     useEffect(() => {

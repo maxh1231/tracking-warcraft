@@ -520,7 +520,7 @@ const CharacterPage = () => {
                         </div>
                         {equipment.guild !== null && (
                             <div>
-                                <span><Link to={`/guild/${params.region}/${params.realm}/${equipment.guild.name}`}>{"<"}{equipment.guild.name}{">"}</Link></span>
+                                <span><Link to={`/guild/${params.region}/${params.realm}/${equipment.guild.name}`} state={location.state}>{"<"}{equipment.guild.name}{">"}</Link></span>
                             </div>
                         )}
                         <div>
