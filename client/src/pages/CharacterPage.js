@@ -1,7 +1,6 @@
 import { useParams, useLocation, Link } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
-
 import DpsClass from "../components/DpsClass";
 import HybridClass from "../components/HybridClass";
 import DpsRank from "../components/DpsRank";
@@ -24,13 +23,6 @@ const CharacterPage = () => {
         clientId: process.env.REACT_APP_client_id,
         clientSecret: process.env.REACT_APP_client_secret,
     });
-
-    // console.log(process.env.REACT_APP_client_id)
-    // console.log(process.env.REACT_APP_client_secret)
-
-    // const equipData = api.query(`/profile/wow/character/tichondrius/maxh/equipment?namespace=profile-us&locale=en_US`)
-    // console.log(equipData);
-
 
     useEffect(() => {
         ioFetch();
@@ -61,8 +53,6 @@ const CharacterPage = () => {
         }
     }, [setTalents])
 
-    let tyranArr = []
-    let fortArr = []
     useEffect(() => {
         dungeonFetch()
 
@@ -84,14 +74,9 @@ const CharacterPage = () => {
         }
     }, [setDungeons])
 
-    console.log(equipment)
-    console.log(talents)
-    console.log(dungeons)
-    console.log("Tazavesh: So'leah's Gambit")
-
-
-
     const addHelmParams = () => {
+        let x = 'head'
+        console.log(equipment.gear.items[x].gems[0])
         let bonusStr = '';
         let gemStr = '';
         let enchStr = '';
@@ -437,7 +422,7 @@ const CharacterPage = () => {
     }
 
     if (equipment) {
-        console.log(equipment.raid_progression[`sanctum-of-domination`].mythic_bosses_killed)
+        // console.log(equipment.raid_progression[`sanctum-of-domination`].mythic_bosses_killed)
     }
 
     const handleSelectChange = (event) => {
@@ -518,7 +503,7 @@ const CharacterPage = () => {
                         <div>
                             <span>{equipment.name}</span>
                         </div>
-                        {equipment.guild !== null && (
+                        {equipment.guild.name !== null && (
                             <div>
                                 <span><Link to={`/guild/${params.region}/${params.realm}/${equipment.guild.name}`} state={location.state}>{"<"}{equipment.guild.name}{">"}</Link></span>
                             </div>
