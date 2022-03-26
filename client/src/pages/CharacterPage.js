@@ -242,7 +242,7 @@ const CharacterPage = () => {
                     <div>
                         <span>{equipment.gear.item_level_equipped} Item Level</span>
                     </div>
-                    <div>
+                    <div style={{display: 'flex'}}>
                         {paramArr.map((param) => (
                             <div key={uuid()}>
                                 {paramAdder(param)}
@@ -257,7 +257,7 @@ const CharacterPage = () => {
                     <div>
                         <h3>Talents</h3>
                     </div>
-                    <div>
+                    <div style={{display: 'flex'}}>
                         {talents.map((item, index) => (
                             <div key={uuid()}>
                                 <a href="#" data-wowhead={`spell=${item.spell_tooltip.spell.id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.talents[index].icon}.jpg`}></img></a>
