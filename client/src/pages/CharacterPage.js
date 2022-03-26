@@ -18,6 +18,7 @@ const CharacterPage = () => {
     // console.log(params);
 
     const paramArr = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainhand', 'offhand'];
+    const dungeonArr = ['The Necrotic Wake', 'Mists of Tirna Scithe', 'Halls of Atonement', 'Spires of Ascension', 'De Other Side', 'Plaguefall', 'Theater of Pain', 'Sanguine Depths', 'Tazavesh: Streets of Wonder', 'Tazavesh: So\'leah\'s Gambit'];
 
     // unknown if will use
     const api = new BlizzAPI({
@@ -334,9 +335,35 @@ const CharacterPage = () => {
                         </tr>
                     </th>
                     <tbody>
-
-
                         {dungeons !== null && (
+                            dungeonArr.map((d) => (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes(d) && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
+                                    <tr>
+                                        <td>{item.dungeon}</td>
+                                        <td>{`+${item.mythic_level}`}</td>
+                                        <td>{item.affixes.map(affix => (
+                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                        ))}</td>
+                                        <td>{timeFormat(item.clear_time_ms)}</td>
+                                    </tr>
+                                ))
+                            ))
+                        )}
+                        {dungeons !== null && (
+                            dungeonArr.map((d) => (
+                                dungeons.filter(dungeon => dungeon.dungeon.includes(d) && dungeon.affixes[0].name.includes('Fortified')).map(item => (
+                                    <tr>
+                                        <td>{item.dungeon}</td>
+                                        <td>{`+${item.mythic_level}`}</td>
+                                        <td>{item.affixes.map(affix => (
+                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                        ))}</td>
+                                        <td>{timeFormat(item.clear_time_ms)}</td>
+                                    </tr>
+                                ))
+                            ))
+                        )}
+                        {/* {dungeons !== null && (
                             dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
                                 <tr>
                                     <td>{item.dungeon}</td>
@@ -604,7 +631,7 @@ const CharacterPage = () => {
                                     </tr>
                                 ))
                             )}
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
