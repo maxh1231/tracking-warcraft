@@ -168,35 +168,30 @@ const CharacterPage = () => {
 
     const handleSeasonChange = (event) => {
         let value = event.target.value
-
-        if (value === 'BFA Season 4') {
-            setCurrentSeason(6);
-        }
-
-        if (value === 'BFA Season 3') {
-            setCurrentSeason(5)
-        }
-
-        if (value === 'BFA Season 2') {
-            setCurrentSeason(4)
-        }
-
-        if (value === 'BFA Season 1') {
-            setCurrentSeason(3)
-        }
-
-        if (value === 'SL Season 3') {
-            setCurrentSeason(2)
-        }
-
-        if (value === 'SL Season 2') {
-            setCurrentSeason(1)
-        }
-
-        if (value === 'SL Season 1') {
-            setCurrentSeason(0)
-        }
-    }
+        switch (value) {
+            case 'BFA Season 4':
+                setCurrentSeason(6);
+                break;
+            case 'BFA Season 3':
+                setCurrentSeason(5);
+                break;
+            case 'BFA Season 2':
+                setCurrentSeason(4);
+                break;
+            case 'BFA Season 1':
+                setCurrentSeason(3);
+                break;
+            case 'SL Season 3':
+                setCurrentSeason(2);
+                break;
+            case 'SL Season 2':
+                setCurrentSeason(1);
+                break;
+            case 'SL Season 1':
+                setCurrentSeason(0);
+                break;
+        };
+    };
 
     return (
         <section>
