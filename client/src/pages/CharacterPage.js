@@ -15,7 +15,9 @@ const CharacterPage = () => {
     const params = useParams();
     const charName = params.name.toLowerCase()
     const upperCaseRegion = params.region.toUpperCase();
-    console.log(params)
+    // console.log(params);
+
+    const paramArr = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainhand', 'offhand'];
 
     // unknown if will use
     const api = new BlizzAPI({
@@ -74,327 +76,32 @@ const CharacterPage = () => {
         }
     }, [setDungeons])
 
-    const addHelmParams = () => {
-        let x = 'head'
-        console.log(equipment.gear.items[x].gems[0])
+    const paramAdder = (type) => {
+        if (type === 'offhand') {
+            if (equipment.gear.items[type] === undefined) {
+                return;
+            };
+        };
         let bonusStr = '';
         let gemStr = '';
-        let enchStr = '';
+        let enchantStr = '';
 
-        if (equipment.gear.items.head.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.head.bonuses.join(':')
-        }
+        if (equipment.gear.items[type].bonuses.length > 0) {
+            bonusStr = equipment.gear.items[type].bonuses.join(':');
+        };
 
-        if (equipment.gear.items.head.gems.length > 0) {
-            gemStr = equipment.gear.items.head.gems[0]
-        }
+        if (equipment.gear.items[type].gems.length > 0) {
+            gemStr = equipment.gear.items[type].gems[0];
+        };
 
-        if (equipment.gear.items.head.enchant !== undefined) {
-            enchStr = equipment.gear.items.head.enchant
-        }
+        if (equipment.gear.items[type].enchant !== undefined) {
+            enchantStr = equipment.gear.items[type].enchant;
+        };
 
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.head.item_id}&ilvl=${equipment.gear.items.head.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.head.icon}.jpg`}></img></a>
-    }
+        // console.log({bonusStr: bonusStr, gemStr: gemStr, enchantStr: enchantStr});
 
-    const addNeckParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.neck.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.neck.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.neck.gems.length > 0) {
-            gemStr = equipment.gear.items.neck.gems[0]
-        }
-
-        if (equipment.gear.items.neck.enchant !== undefined) {
-            enchStr = equipment.gear.items.neck.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.neck.item_id}&ilvl=${equipment.gear.items.neck.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.neck.icon}.jpg`}></img></a>
-    }
-
-    const addShoulderParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.shoulder.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.shoulder.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.shoulder.gems.length > 0) {
-            gemStr = equipment.gear.items.shoulder.gems[0]
-        }
-
-        if (equipment.gear.items.shoulder.enchant !== undefined) {
-            enchStr = equipment.gear.items.shoulder.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.shoulder.item_id}&ilvl=${equipment.gear.items.shoulder.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.shoulder.icon}.jpg`}></img></a>
-    }
-
-    const addBackParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.back.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.back.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.back.gems.length > 0) {
-            gemStr = equipment.gear.items.back.gems[0]
-        }
-
-        if (equipment.gear.items.back.enchant !== undefined) {
-            enchStr = equipment.gear.items.back.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.back.item_id}&ilvl=${equipment.gear.items.back.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.back.icon}.jpg`}></img></a>
-    }
-
-    const addChestParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.chest.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.chest.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.chest.gems.length > 0) {
-            gemStr = equipment.gear.items.chest.gems[0]
-        }
-
-        if (equipment.gear.items.chest.enchant !== undefined) {
-            enchStr = equipment.gear.items.chest.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.chest.item_id}&ilvl=${equipment.gear.items.chest.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.chest.icon}.jpg`}></img></a>
-    }
-
-    const addWristParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.wrist.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.wrist.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.wrist.gems.length > 0) {
-            gemStr = equipment.gear.items.wrist.gems[0]
-        }
-
-        if (equipment.gear.items.wrist.enchant !== undefined) {
-            enchStr = equipment.gear.items.wrist.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.wrist.item_id}&ilvl=${equipment.gear.items.wrist.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.wrist.icon}.jpg`}></img></a>
-    }
-
-    const addHandsParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.hands.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.hands.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.hands.gems.length > 0) {
-            gemStr = equipment.gear.items.hands.gems[0]
-        }
-
-        if (equipment.gear.items.hands.enchant !== undefined) {
-            enchStr = equipment.gear.items.hands.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.hands.item_id}&ilvl=${equipment.gear.items.hands.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.hands.icon}.jpg`}></img></a>
-    }
-
-    const addWaistParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.waist.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.waist.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.waist.gems.length > 0) {
-            gemStr = equipment.gear.items.waist.gems[0]
-        }
-
-        if (equipment.gear.items.waist.enchant !== undefined) {
-            enchStr = equipment.gear.items.waist.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.waist.item_id}&ilvl=${equipment.gear.items.waist.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.waist.icon}.jpg`}></img></a>
-    }
-
-    const addLegsParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.legs.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.legs.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.legs.gems.length > 0) {
-            gemStr = equipment.gear.items.legs.gems[0]
-        }
-
-        if (equipment.gear.items.legs.enchant !== undefined) {
-            enchStr = equipment.gear.items.legs.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.legs.item_id}&ilvl=${equipment.gear.items.legs.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.legs.icon}.jpg`}></img></a>
-    }
-
-    const addFeetParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.feet.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.feet.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.feet.gems.length > 0) {
-            gemStr = equipment.gear.items.feet.gems[0]
-        }
-
-        if (equipment.gear.items.feet.enchant !== undefined) {
-            enchStr = equipment.gear.items.feet.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.feet.item_id}&ilvl=${equipment.gear.items.feet.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.feet.icon}.jpg`}></img></a>
-    }
-
-    const addFinger1Params = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.finger1.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.finger1.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.finger1.gems.length > 0) {
-            gemStr = equipment.gear.items.finger1.gems[0]
-        }
-
-        if (equipment.gear.items.finger1.enchant !== undefined) {
-            enchStr = equipment.gear.items.finger1.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.finger1.item_id}&ilvl=${equipment.gear.items.finger1.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger1.icon}.jpg`}></img></a>
-    }
-
-    const addFinger2Params = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.finger2.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.finger2.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.finger2.gems.length > 0) {
-            gemStr = equipment.gear.items.finger2.gems[0]
-        }
-
-        if (equipment.gear.items.finger2.enchant !== undefined) {
-            enchStr = equipment.gear.items.finger2.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.finger2.item_id}&ilvl=${equipment.gear.items.finger2.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.finger2.icon}.jpg`}></img></a>
-    }
-
-    const addTrinket1Params = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.trinket1.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.trinket1.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.trinket1.gems.length > 0) {
-            gemStr = equipment.gear.items.trinket1.gems[0]
-        }
-
-        if (equipment.gear.items.trinket1.enchant !== undefined) {
-            enchStr = equipment.gear.trinket1.wrist.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket1.item_id}&ilvl=${equipment.gear.items.trinket1.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket1.icon}.jpg`}></img></a>
-    }
-
-    const addTrinket2Params = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.trinket2.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.trinket2.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.trinket2.gems.length > 0) {
-            gemStr = equipment.gear.items.trinket2.gems[0]
-        }
-
-        if (equipment.gear.items.trinket2.enchant !== undefined) {
-            enchStr = equipment.gear.items.trinket2.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.trinket2.item_id}&ilvl=${equipment.gear.items.trinket2.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.trinket2.icon}.jpg`}></img></a>
-    }
-
-    const addMainhandParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.mainhand.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.mainhand.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.mainhand.gems.length > 0) {
-            gemStr = equipment.gear.items.mainhand.gems[0]
-        }
-
-        if (equipment.gear.items.mainhand.enchant !== undefined) {
-            enchStr = equipment.gear.items.mainhand.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.mainhand.item_id}&ilvl=${equipment.gear.items.mainhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.mainhand.icon}.jpg`}></img></a>
-    }
-
-    const addOffhandParams = () => {
-        let bonusStr = '';
-        let gemStr = '';
-        let enchStr = '';
-
-        if (equipment.gear.items.offhand.bonuses.length > 0) {
-            bonusStr = equipment.gear.items.offhand.bonuses.join(':')
-        }
-
-        if (equipment.gear.items.offhand.gems.length > 0) {
-            gemStr = equipment.gear.items.offhand.gems[0]
-        }
-
-        if (equipment.gear.items.offhand.enchant !== undefined) {
-            enchStr = equipment.gear.items.offhand.enchant
-        }
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items.offhand.item_id}&ilvl=${equipment.gear.items.offhand.item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items.offhand.icon}.jpg`}></img></a>
-    }
+        return <a href="#" data-wowhead={`item=${equipment.gear.items[type].item_id}&ilvl=${equipment.gear.items[type].item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchantStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items[type].icon}.jpg`}></img></a>
+    };
 
     const timeFormat = (value) => {
         const date = new Date(value)
@@ -539,73 +246,11 @@ const CharacterPage = () => {
                         <span>{equipment.gear.item_level_equipped} Item Level</span>
                     </div>
                     <div>
-
-                        <div>
-                            {addHelmParams()}
-                        </div>
-
-                        <div>
-                            {addNeckParams()}
-                        </div>
-
-                        <div>
-                            {addShoulderParams()}
-                        </div>
-
-                        <div>
-                            {addBackParams()}
-                        </div>
-
-                        <div>
-                            {addChestParams()}
-                        </div>
-
-                        <div>
-                            {addWristParams()}
-                        </div>
-
-                        <div>
-                            {addHandsParams()}
-                        </div>
-
-                        <div>
-                            {addWaistParams()}
-                        </div>
-
-                        <div>
-                            {addLegsParams()}
-                        </div>
-
-                        <div>
-                            {addFeetParams()}
-                        </div>
-
-                        <div>
-                            {addFinger1Params()}
-                        </div>
-
-                        <div>
-                            {addFinger2Params()}
-                        </div>
-
-                        <div>
-                            {addTrinket1Params()}
-                        </div>
-
-                        <div>
-                            {addTrinket2Params()}
-                        </div>
-
-                        <div>
-                            {addMainhandParams()}
-                        </div>
-
-                        {equipment.gear.items.offhand !== undefined && (
+                        {paramArr.map((param) => (
                             <div>
-                                {addOffhandParams()}
+                                {paramAdder(param)}
                             </div>
-                        )}
-
+                        ))}
                     </div>
                 </div>
             )}
