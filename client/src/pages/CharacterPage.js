@@ -1,6 +1,7 @@
 import { useParams, useLocation, Link } from "react-router-dom"
 import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
+import { v4 as uuid } from 'uuid';
 import DpsClass from "../components/DpsClass";
 import HybridClass from "../components/HybridClass";
 import DpsRank from "../components/DpsRank";
@@ -221,7 +222,7 @@ const CharacterPage = () => {
                             <span>{equipment.mythic_plus_scores_by_season[2].scores.all} M+ Score</span>
                         </div>
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sanctum-of-domination')).map(item => (
-                            <div>
+                            <div key={uuid()}>
                                 <span>{calcProg()} </span>
                                 <span>Sanctum of Domination AOTC on {aotcFormat(item.aotc)}</span>
                             </div>
@@ -229,7 +230,7 @@ const CharacterPage = () => {
                         ))}
 
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sepulcher-of-the-first-ones')).map(item => (
-                            <div>
+                            <div key={uuid()}>
                                 <span>Sepulcher of the First Ones AOTC on {aotcFormat(item.aotc)}</span>
                             </div>
                         ))}
@@ -243,7 +244,7 @@ const CharacterPage = () => {
                     </div>
                     <div>
                         {paramArr.map((param) => (
-                            <div>
+                            <div key={uuid()}>
                                 {paramAdder(param)}
                             </div>
                         ))}
@@ -258,7 +259,7 @@ const CharacterPage = () => {
                     </div>
                     <div>
                         {talents.map((item, index) => (
-                            <div key={index}>
+                            <div key={uuid()}>
                                 <a href="#" data-wowhead={`spell=${item.spell_tooltip.spell.id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.talents[index].icon}.jpg`}></img></a>
                             </div>
                         ))}
@@ -326,23 +327,23 @@ const CharacterPage = () => {
 
             <div>
                 <table>
-                    <th>
+                    <thead>
                         <tr>
-                            <td>Dungeon</td>
-                            <td>Level</td>
-                            <td>Affixes</td>
-                            <td>Time</td>
+                            <th>Dungeon</th>
+                            <th>Level</th>
+                            <th>Affixes</th>
+                            <th>Time</th>
                         </tr>
-                    </th>
+                    </thead>
                     <tbody>
                         {dungeons !== null && (
                             dungeonArr.map((d) => (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes(d) && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
+                                    <tr key={uuid()}>
                                         <td>{item.dungeon}</td>
                                         <td>{`+${item.mythic_level}`}</td>
                                         <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                            <a href="#" data-wowhead={affix.wowhead_url} key={uuid()}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a>
                                         ))}</td>
                                         <td>{timeFormat(item.clear_time_ms)}</td>
                                     </tr>
@@ -352,290 +353,20 @@ const CharacterPage = () => {
                         {dungeons !== null && (
                             dungeonArr.map((d) => (
                                 dungeons.filter(dungeon => dungeon.dungeon.includes(d) && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
+                                    <tr key={uuid()}>
                                         <td>{item.dungeon}</td>
                                         <td>{`+${item.mythic_level}`}</td>
                                         <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
+                                            <a href="#" data-wowhead={affix.wowhead_url} key={uuid()}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a>
                                         ))}</td>
                                         <td>{timeFormat(item.clear_time_ms)}</td>
                                     </tr>
                                 ))
                             ))
                         )}
-                        {/* {dungeons !== null && (
-                            dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                <tr>
-                                    <td>{item.dungeon}</td>
-                                    <td>{`+${item.mythic_level}`}</td>
-                                    <td>{item.affixes.map(affix => (
-                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                    ))}</td>
-                                    <td>{timeFormat(item.clear_time_ms)}</td>
-                                </tr>
-                            ))
-                        )}
-
-                        {dungeons !== null && (
-                            dungeons.filter(dungeon => dungeon.dungeon.includes('The Necrotic Wake') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                <tr>
-                                    <td>{item.dungeon}</td>
-                                    <td>{`+${item.mythic_level}`}</td>
-                                    <td>{item.affixes.map(affix => (
-                                        <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                    ))}</td>
-                                    <td>{timeFormat(item.clear_time_ms)}</td>
-                                </tr>
-                            ))
-                        )}
-
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Mists of Tirna Scithe') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Mists of Tirna Scithe') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Halls of Atonement') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Halls of Atonement') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Spires of Ascension') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Spires of Ascension') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('De Other Side') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('De Other Side') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Plaguefall') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Plaguefall') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Theater of Pain') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Theater of Pain') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Sanguine Depths') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Sanguine Depths') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Tazavesh: Streets of Wonder') && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes('Tazavesh: Streets of Wonder') && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr>
-                        <tr>
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes("Tazavesh: So'leah's Gambit") && dungeon.affixes[0].name.includes('Tyrannical')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-
-                            {dungeons !== null && (
-                                dungeons.filter(dungeon => dungeon.dungeon.includes("Tazavesh: So'leah's Gambit") && dungeon.affixes[0].name.includes('Fortified')).map(item => (
-                                    <tr>
-                                        <td>{item.dungeon}</td>
-                                        <td>{`+${item.mythic_level}`}</td>
-                                        <td>{item.affixes.map(affix => (
-                                            <td><a href="#" data-wowhead={affix.wowhead_url}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${affix.icon}.jpg`}></img></a></td>
-                                        ))}</td>
-                                        <td>{timeFormat(item.clear_time_ms)}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tr> */}
                     </tbody>
                 </table>
             </div>
-
         </section>
     )
 }
