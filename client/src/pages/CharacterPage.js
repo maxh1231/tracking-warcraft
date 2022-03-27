@@ -141,31 +141,27 @@ const CharacterPage = () => {
     }
 
     const handleRaidInfo = () => {
-        if (currentRaid === 'Sepulcher of the First Ones') {
-            return (
-                <ol>
-                    <li>Mythic: {equipment.raid_progression['sepulcher-of-the-first-ones'].mythic_bosses_killed}/11 M</li>
-                    <li>Heroic: {equipment.raid_progression['sepulcher-of-the-first-ones'].heroic_bosses_killed}/11 H</li>
-                    <li>Normal: {equipment.raid_progression['sepulcher-of-the-first-ones'].normal_bosses_killed}/11 N</li>
-                </ol>
-            )
-        } else if (currentRaid === 'Sanctum of Domination') {
-            return (
-                <ol>
-                    <li>Mythic: {equipment.raid_progression['sanctum-of-domination'].mythic_bosses_killed}/11 M</li>
-                    <li>Heroic: {equipment.raid_progression['sanctum-of-domination'].heroic_bosses_killed}/11 H</li>
-                    <li>Normal: {equipment.raid_progression['sanctum-of-domination'].normal_bosses_killed}/11 N</li>
-                </ol>
-            )
-        } else if (currentRaid === 'Castle Nathria') {
-            return (
-                <ol>
-                    <li>Mythic: {equipment.raid_progression['castle-nathria'].mythic_bosses_killed}/10 M</li>
-                    <li>Heroic: {equipment.raid_progression['castle-nathria'].heroic_bosses_killed}/10 H</li>
-                    <li>Normal: {equipment.raid_progression['castle-nathria'].normal_bosses_killed}/10 N</li>
-                </ol>
-            )
-        }
+        let raid = '';
+        let n = 11;
+        switch (currentRaid) {
+            case 'Sepulcher of the First Ones':
+                raid = 'sepulcher-of-the-first-ones';
+                break;
+            case 'Sanctum of Domination':
+                raid = 'sanctum-of-domination';
+                break;
+            case 'Castle Nathria':
+                raid = 'castle-nathria';
+                n = 10
+                break;
+        };
+        return (
+            <ol>
+                <li>Mythic: {equipment.raid_progression[raid].mythic_bosses_killed}/{n} M</li>
+                <li>Heroic: {equipment.raid_progression[raid].heroic_bosses_killed}/{n} H</li>
+                <li>Normal: {equipment.raid_progression[raid].normal_bosses_killed}/{n} N</li>
+            </ol>
+        )
     }
 
     const handleSeasonChange = (event) => {
