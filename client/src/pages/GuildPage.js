@@ -32,9 +32,9 @@ const GuildPage = () => {
 
             const data = await response.json()
             setRoster(data.members)
-            setOfficers(roster.filter((item) => item.rank < 2).sort((a, b) => b.rank + a.rank));
+            setOfficers(data.members.filter((item) => item.rank < 2).sort((a, b) => b.rank + a.rank));
         }
-    }, [setRoster])
+    }, [setOfficers])
 
     console.log(roster)
     console.log(officers)
@@ -43,13 +43,13 @@ const GuildPage = () => {
         <section>
             {guild !== null && (
                 <div>
-                    <div>
+                    <div className="flex">
                         <div>
                             <h2>{guild.name}</h2>
                             <span><span>({guild.region.toUpperCase()})</span> {guild.realm}</span>
                         </div>
 
-                        <div>
+                        <div className="flex ">
                             <div>
                                 <div>
                                     <span>{guild.raid_progression['sepulcher-of-the-first-ones'].mythic_bosses_killed}/11 M</span>
@@ -91,6 +91,18 @@ const GuildPage = () => {
                         </div>
 
                     </div>
+                </div>
+            )}
+
+            {officers !== null && (
+
+                <div>
+                    <h1>not null</h1>
+                    <p>Guild Master: {officers[0].character.name}</p>
+                    <span>Officers: </span>
+                    {officers.filter(item => item.rank > 0).map((character, index) => (
+                        <span key={index}>{character.character.name} </span>
+                    ))}
                 </div>
             )}
         </section>
