@@ -5,6 +5,7 @@ const GuildPage = () => {
     const [guild, setGuild] = useState(null)
     const [roster, setRoster] = useState(null)
     const [officers, setOfficers] = useState(null)
+    const [IoData, setIoData] = useState(null)
     const params = useParams();
     console.log(params);
     const location = useLocation();
@@ -16,6 +17,7 @@ const GuildPage = () => {
 
         async function guildData() {
             const response = await fetch(`https://raider.io/api/v1/guilds/profile?region=${params.region}&realm=${params.realm}&name=${guildName}&fields=raid_progression%2C%20raid_rankings`)
+
 
             const data = await response.json()
 
@@ -36,8 +38,20 @@ const GuildPage = () => {
         }
     }, [setOfficers])
 
+    useEffect(() => {
+        IOData()
+
+        async function IOData() {
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/guilds/roster?region=eu&realm=tarren-mill&guild=Echo`)
+
+            const data = await response.json()
+            setIoData(data)
+        }
+    }, [setIoData])
+
     console.log(roster)
     console.log(officers)
+    console.log(IoData)
 
     return (
         <section>
@@ -95,7 +109,6 @@ const GuildPage = () => {
             )}
 
             {officers !== null && (
-
                 <div>
                     <h1>not null</h1>
                     <p>Guild Master: <Link to={`/character/${params.region}/${params.realm}/${officers[0].character.name}`} state={location.state}>{officers[0].character.name}</Link></p>
@@ -105,6 +118,8 @@ const GuildPage = () => {
                     ))}
                 </div>
             )}
+
+
         </section>
     )
 }
