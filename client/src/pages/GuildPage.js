@@ -42,7 +42,7 @@ const GuildPage = () => {
         IOData()
 
         async function IOData() {
-            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/guilds/roster?region=eu&realm=tarren-mill&guild=Echo`)
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/guilds/roster?region=${params.region}&realm=${params.realm}&guild=${params.name}`)
 
             const data = await response.json()
             setIoData(data)
@@ -121,7 +121,33 @@ const GuildPage = () => {
 
             {IoData !== null && (
                 <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Name</th>
+                            <th>ilvl</th>
+                            <th>Covenant</th>
+                            <th>M+</th>
+                            <th>Prog</th>
+                            <th>Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                        {IoData.guildRoster.roster.sort((a, b) => b.rank + a.rank).map((item, index) => (
+                            <tr>
+                                <td>{item.character.class.name}</td>
+                                <td>{item.character.spec.name}</td>
+                                <td>{item.character.name}</td>
+                                <td>{item.character.items.item_level_equipped}</td>
+                                {item.character.expansionData !== null ? <td>{item.character.expansionData.covenant.name}</td> : <td>-</td>}
+                                <td>{item.keystoneScores.allScore}</td>
+                                {/* add guild rank */}
+                                <td>{item.rank}</td>
+                            </tr>
+                        ))}
+
+                    </tbody>
                 </table>
             )}
 
