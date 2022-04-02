@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom"
+import { useParams, useLocation, Link } from "react-router-dom"
 
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
@@ -101,7 +101,7 @@ const GuildPage = () => {
                     <p>Guild Master: {officers[0].character.name}</p>
                     <span>Officers: </span>
                     {officers.filter(item => item.rank > 0).map((character, index) => (
-                        <span key={index}>{character.character.name} </span>
+                        <span key={index}><Link to={`/character/${params.region}/${params.realm}/${character.character.name}`} state={location.state}>{character.character.name}</Link> </span>
                     ))}
                 </div>
             )}
