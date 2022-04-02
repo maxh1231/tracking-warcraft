@@ -119,6 +119,11 @@ const GuildPage = () => {
                 </div>
             )}
 
+            {IoData !== null && (
+                <table>
+
+                </table>
+            )}
 
         </section>
     )
