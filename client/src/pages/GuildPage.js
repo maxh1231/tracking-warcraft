@@ -98,7 +98,7 @@ const GuildPage = () => {
 
                 <div>
                     <h1>not null</h1>
-                    <p>Guild Master: {officers[0].character.name}</p>
+                    <p>Guild Master: <Link to={`/character/${params.region}/${params.realm}/${officers[0].character.name}`} state={location.state}>{officers[0].character.name}</Link></p>
                     <span>Officers: </span>
                     {officers.filter(item => item.rank > 0).map((character, index) => (
                         <span key={index}><Link to={`/character/${params.region}/${params.realm}/${character.character.name}`} state={location.state}>{character.character.name}</Link> </span>
