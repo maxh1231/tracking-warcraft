@@ -138,7 +138,7 @@ const GuildPage = () => {
                             <tr>
                                 <td>{item.character.class.name}</td>
                                 <td>{item.character.spec.name}</td>
-                                <td>{item.character.name}</td>
+                                <td><Link to={`/character/${params.region}/${params.realm}/${item.character.name}`}>{item.character.name}</Link></td>
                                 <td>{item.character.items.item_level_equipped}</td>
                                 {item.character.expansionData !== null ? <td>{item.character.expansionData.covenant.name}</td> : <td>-</td>}
                                 <td>{item.keystoneScores.allScore}</td>
