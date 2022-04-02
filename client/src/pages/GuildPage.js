@@ -32,10 +32,7 @@ const GuildPage = () => {
 
             const data = await response.json()
             setRoster(data.members)
-            setOfficers(roster.filter((item) => item.rank < 2))
-
-
-
+            setOfficers(roster.filter((item) => item.rank < 2).sort((a, b) => b.rank + a.rank));
         }
     }, [setRoster])
 
