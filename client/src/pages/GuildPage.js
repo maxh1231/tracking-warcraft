@@ -136,13 +136,13 @@ const GuildPage = () => {
 
                         {IoData.guildRoster.roster.sort((a, b) => b.rank + a.rank).map((item, index) => (
                             <tr>
-                                <td>{item.character.class.name}</td>
-                                <td>{item.character.spec.name}</td>
+                                <td>{item.character.class.name} {item.character.spec.name}</td>
+
                                 <td><Link to={`/character/${params.region}/${params.realm}/${item.character.name}`}>{item.character.name}</Link></td>
                                 <td>{item.character.items.item_level_equipped}</td>
                                 {item.character.expansionData !== null ? <td><img src={`https://wow.zamimg.com/images/wow/icons/medium/${item.character.expansionData.covenant.icon}.jpg`}></img>R{item.character.expansionData.renownLevel}</td> : <td>-</td>}
                                 <td>{item.keystoneScores.allScore}</td>
-                                {/* add guild rank */}
+                                {/* prog */}
                                 <td>{item.rank}</td>
                             </tr>
                         ))}
