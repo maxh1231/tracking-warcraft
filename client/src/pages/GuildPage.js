@@ -140,7 +140,7 @@ const GuildPage = () => {
                                 <td>{item.character.spec.name}</td>
                                 <td><Link to={`/character/${params.region}/${params.realm}/${item.character.name}`}>{item.character.name}</Link></td>
                                 <td>{item.character.items.item_level_equipped}</td>
-                                {item.character.expansionData !== null ? <td>{item.character.expansionData.covenant.name}</td> : <td>-</td>}
+                                {item.character.expansionData !== null ? <td><img src={`https://wow.zamimg.com/images/wow/icons/medium/${item.character.expansionData.covenant.icon}.jpg`}></img>R{item.character.expansionData.renownLevel}</td> : <td>-</td>}
                                 <td>{item.keystoneScores.allScore}</td>
                                 {/* add guild rank */}
                                 <td>{item.rank}</td>
