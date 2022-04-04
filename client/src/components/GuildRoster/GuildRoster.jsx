@@ -53,6 +53,17 @@ const GuildRoster = ({ IoData }) => {
 
         return (
             <>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Class</th>
+                            <th>Name</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
                 <Items currentItems={currentItems} page={itemOffset} />
                 <ReactPaginate
                     breakLabel="..."
@@ -62,13 +73,14 @@ const GuildRoster = ({ IoData }) => {
                     pageCount={pageCount}
                     previousLabel="< previous"
                     renderOnZeroPageCount={null}
+                    containerClassName="flex mx-2"
                 />
             </>
         );
     }
 
     return (
-        <section>
+        <section className=''>
             <PaginatedItems itemsPerPage={10} />
         </section>
     )
