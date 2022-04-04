@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 
 const GuildRoster = ({ IoData }) => {
+    const location = useLocation();
     const params = useParams()
     let tempArr = [];
     if (IoData) {
@@ -19,7 +19,7 @@ const GuildRoster = ({ IoData }) => {
                             <tr key={index}>
                                 <td>{item.character.class.name} {item.character.spec.name}</td>
 
-                                <td><Link to={`/character/${params.region}/${params.realm}/${item.character.name}`}>{item.character.name}</Link></td>
+                                <td><Link to={`/character/${params.region}/${params.realm}/${item.character.name}`} state={location.state}>{item.character.name}</Link></td>
                                 <td>{item.character.items.item_level_equipped}</td>
                                 {item.character.expansionData !== null ? <td><img src={`https://wow.zamimg.com/images/wow/icons/medium/${item.character.expansionData.covenant.icon}.jpg`}></img>R{item.character.expansionData.renownLevel}</td> : <td>-</td>}
                                 <td>{item.keystoneScores.allScore}</td>
