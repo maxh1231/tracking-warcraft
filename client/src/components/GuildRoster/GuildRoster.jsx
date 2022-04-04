@@ -4,23 +4,13 @@ import ReactPaginate from 'react-paginate';
 
 const GuildRoster = ({ IoData }) => {
 
-    // Example items, to simulate fetching from another resources.
+    // Example items, to simulate fetching from another resources..
     // const items = [roster];
     const items = ["hi", "hi", "hello"];
-    console.log(IoData)
-
-    // useEffect(() => {
-    //     IOData()
-
-    //     async function IOData() {
-    //         const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/guilds/roster?region=us&realm=illidan&guild=liquid`)
-
-    //         const data = await response.json()
-    //         setIoData(data)
-    //     }
-    // }, [setIoData])
-
-
+    let tempArr = [];
+    if (IoData) {
+        tempArr = IoData;
+    }
 
     function Items({ currentItems }) {
         return (
@@ -28,7 +18,7 @@ const GuildRoster = ({ IoData }) => {
                 {currentItems &&
                     currentItems.map((item) => (
                         <div>
-                            <h3>Item #{item}</h3>
+                            <h3>Item #{item.character.name}</h3>
                         </div>
                     ))}
             </>
@@ -36,24 +26,20 @@ const GuildRoster = ({ IoData }) => {
     }
 
     function PaginatedItems({ itemsPerPage, roster }) {
-        // We start with an empty list of items.
         const [currentItems, setCurrentItems] = useState(null);
         const [pageCount, setPageCount] = useState(0);
-        // Here we use item offsets; we could also use page offsets
-        // following the API or data you're working with.
         const [itemOffset, setItemOffset] = useState(0);
 
         useEffect(() => {
-            // Fetch items from another resources.
             const endOffset = itemOffset + itemsPerPage;
             console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-            setCurrentItems(IoData.guildRoster.roster.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(IoData.guildRoster.roster.length / itemsPerPage));
+            setCurrentItems(tempArr.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(tempArr.length / itemsPerPage));
+            console.log(currentItems)
         }, [itemOffset, itemsPerPage]);
 
-        // Invoke when user click to request another page.
         const handlePageClick = (event) => {
-            const newOffset = (event.selected * itemsPerPage) % IoData.guildRoster.roster.length;
+            const newOffset = (event.selected * itemsPerPage) % tempArr.length;
             console.log(
                 `User requested page number ${event.selected}, which is offset ${newOffset}`
             );

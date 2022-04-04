@@ -121,7 +121,7 @@ const GuildPage = () => {
                 </div>
             )}
 
-            {/* <GuildRoster IoData={IoData} /> */}
+            <GuildRoster IoData={IoData} />
 
             {IoData !== null && (
                 <table>
