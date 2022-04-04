@@ -12,15 +12,20 @@ const GuildRoster = ({ IoData }) => {
         tempArr = IoData;
     }
 
-    function Items({ currentItems }) {
+    function Items({ currentItems, page }) {
         return (
             <>
-                {currentItems &&
-                    currentItems.map((item) => (
-                        <div>
-                            <h3>Item #{item.character.name}</h3>
-                        </div>
-                    ))}
+                <tbody>
+                    {currentItems &&
+
+                        currentItems.map((item, index) => (
+                            <tr key={index}>
+                                <td>#{index + 1 + page}</td>
+                                <td>{item.character.name}</td>
+                            </tr>
+                        ))}
+
+                </tbody>
             </>
         );
     }
