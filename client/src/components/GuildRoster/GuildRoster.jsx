@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
+import { useParams, Link } from 'react-router-dom'
 
 const GuildRoster = ({ IoData }) => {
-
-    // Example items, to simulate fetching from another resources..
-    // const items = [roster];
-    const items = ["hi", "hi", "hello"];
+    const params = useParams()
     let tempArr = [];
     if (IoData) {
         tempArr = IoData;
@@ -17,11 +15,16 @@ const GuildRoster = ({ IoData }) => {
             <>
                 <tbody>
                     {currentItems &&
-
                         currentItems.map((item, index) => (
                             <tr key={index}>
-                                <td>#{index + 1 + page}</td>
-                                <td>{item.character.name}</td>
+                                <td>{item.character.class.name} {item.character.spec.name}</td>
+
+                                <td><Link to={`/character/${params.region}/${params.realm}/${item.character.name}`}>{item.character.name}</Link></td>
+                                <td>{item.character.items.item_level_equipped}</td>
+                                {item.character.expansionData !== null ? <td><img src={`https://wow.zamimg.com/images/wow/icons/medium/${item.character.expansionData.covenant.icon}.jpg`}></img>R{item.character.expansionData.renownLevel}</td> : <td>-</td>}
+                                <td>{item.keystoneScores.allScore}</td>
+                                <td>Placeholder</td>
+                                <td>{item.rank}</td>
                             </tr>
                         ))}
 
@@ -59,8 +62,11 @@ const GuildRoster = ({ IoData }) => {
                             <th>#</th>
                             <th>Class</th>
                             <th>Name</th>
-                            <th></th>
-                            <th></th>
+                            <th>ilvl</th>
+                            <th>Covenant</th>
+                            <th>M+</th>
+                            <th>Prog</th>
+                            <th>Rank</th>
                         </tr>
                     </thead>
                 </table>
