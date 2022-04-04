@@ -3,12 +3,26 @@ import ReactPaginate from 'react-paginate';
 import { useParams, Link, useLocation } from 'react-router-dom'
 
 const GuildRoster = ({ IoData }) => {
+    const [filter, setFilter] = useState(IoData)
+    const [title, setTitle] = useState('')
     const location = useLocation();
     const params = useParams()
     let tempArr = [];
     if (IoData) {
         tempArr = IoData;
     }
+
+    // useEffect(() => {
+
+    const handleClick = () => {
+        if (title === 'ilvl') {
+            setFilter(filter.sort((a, b) => b.character.items.item_level_equipped - a.character.items.item_level_equipped))
+            console.log(filter);
+            console.log('click');
+        }
+    }
+
+    // }, [title])
 
     function Items({ currentItems, page }) {
         return (
@@ -41,13 +55,13 @@ const GuildRoster = ({ IoData }) => {
         useEffect(() => {
             const endOffset = itemOffset + itemsPerPage;
             console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-            setCurrentItems(tempArr.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(tempArr.length / itemsPerPage));
+            setCurrentItems(filter.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(filter.length / itemsPerPage));
             console.log(currentItems)
-        }, [itemOffset, itemsPerPage]);
+        }, [itemOffset, itemsPerPage, setTitle]);
 
         const handlePageClick = (event) => {
-            const newOffset = (event.selected * itemsPerPage) % tempArr.length;
+            const newOffset = (event.selected * itemsPerPage) % filter.length;
             console.log(
                 `User requested page number ${event.selected}, which is offset ${newOffset}`
             );
@@ -62,7 +76,10 @@ const GuildRoster = ({ IoData }) => {
                             <th>#</th>
                             <th>Class</th>
                             <th>Name</th>
-                            <th>ilvl</th>
+                            <th onClick={(() => {
+                                setTitle('ilvl');
+                                handleClick();
+                            })}>ilvl</th>
                             <th>Covenant</th>
                             <th>M+</th>
                             <th>Prog</th>
