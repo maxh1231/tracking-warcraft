@@ -1,3 +1,3 @@
-import PaginatedItems from "./GuildRoster";
+import GuildRoster from "./GuildRoster";
 
-export default PaginatedItems;
+export default GuildRoster;

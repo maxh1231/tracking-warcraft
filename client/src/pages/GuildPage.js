@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom"
 
-import PaginatedItems from "../components/GuildRoster";
+import GuildRoster from "../components/GuildRoster";
 
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
@@ -47,7 +47,7 @@ const GuildPage = () => {
             const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/guilds/roster?region=${params.region}&realm=${params.realm}&guild=${params.name}`)
 
             const data = await response.json()
-            setIoData(data)
+            setIoData(data.guildRoster.roster)
         }
     }, [setIoData])
 
@@ -121,7 +121,7 @@ const GuildPage = () => {
                 </div>
             )}
 
-            <PaginatedItems />
+            {/* <GuildRoster IoData={IoData} /> */}
 
             {IoData !== null && (
                 <table>
@@ -138,7 +138,7 @@ const GuildPage = () => {
                     </thead>
                     <tbody>
 
-                        {IoData.guildRoster.roster.sort((a, b) => b.rank + a.rank).map((item, index) => (
+                        {IoData.sort((a, b) => b.rank + a.rank).map((item, index) => (
                             <tr>
                                 <td>{item.character.class.name} {item.character.spec.name}</td>
 
