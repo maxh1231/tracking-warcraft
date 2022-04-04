@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom"
 
+import PaginatedItems from "../components/GuildRoster";
+
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
     const [roster, setRoster] = useState(null)
@@ -118,6 +120,8 @@ const GuildPage = () => {
                     ))}
                 </div>
             )}
+
+            <PaginatedItems />
 
             {IoData !== null && (
                 <table>
