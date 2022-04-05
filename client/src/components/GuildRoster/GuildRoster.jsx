@@ -12,17 +12,16 @@ const GuildRoster = ({ IoData }) => {
         tempArr = IoData;
     }
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    const handleClick = () => {
         if (title === 'ilvl') {
             setFilter(filter.sort((a, b) => b.character.items.item_level_equipped - a.character.items.item_level_equipped))
             console.log(filter);
             console.log('click');
         }
-    }
 
-    // }, [title])
+
+    }, [title])
 
     function Items({ currentItems, page }) {
         return (
@@ -76,10 +75,7 @@ const GuildRoster = ({ IoData }) => {
                             <th>#</th>
                             <th>Class</th>
                             <th>Name</th>
-                            <th onClick={(() => {
-                                setTitle('ilvl');
-                                handleClick();
-                            })}>ilvl</th>
+                            <th onClick={setTitle('ilvl')}>ilvl</th>
                             <th>Covenant</th>
                             <th>M+</th>
                             <th>Prog</th>
