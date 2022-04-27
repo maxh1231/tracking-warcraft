@@ -1,6 +1,14 @@
 const Nav = () => {
     return (
-        <section></section>
+        <div>
+            <div>
+                <ul>
+                    <li>Home</li>
+                    <li>Leaderboards</li>
+                    <li>Profile</li>
+                </ul>
+            </div>
+        </div>
     )
 }
 
