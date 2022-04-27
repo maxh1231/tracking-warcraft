@@ -10,6 +10,8 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
 
+import Nav from './components/Nav';
+
 
 import Home from './pages/Home';
 import SearchResults from './pages/SearchResults'
@@ -42,6 +44,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Nav />
         <Routes>
 
           <Route exact path="/" element={<Home />} />
