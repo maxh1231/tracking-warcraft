@@ -1,6 +1,10 @@
+import RunLeaderboard from "../components/RunLeaderboard";
+
 const Leaderboard = () => {
     return (
-        <section></section>
+        <div>
+            <RunLeaderboard />
+        </div>
     )
 }
 
