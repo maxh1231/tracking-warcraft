@@ -14,6 +14,7 @@ import Nav from './components/Nav';
 
 
 import Home from './pages/Home';
+import Leaderboard from './pages/Leaderboard';
 import SearchResults from './pages/SearchResults'
 import GuildPage from './pages/GuildPage'
 import CharacterPage from './pages/CharacterPage'
@@ -48,6 +49,7 @@ function App() {
         <Routes>
 
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/leaderboards" element={<Leaderboard />} />
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
