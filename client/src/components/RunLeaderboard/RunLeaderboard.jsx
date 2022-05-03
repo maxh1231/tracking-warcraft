@@ -41,13 +41,11 @@ const RunLeaderboard = () => {
 
     const dpsFinder = (array) => {
         const damage = array.filter(item => item.role === 'dps')
-        console.log(damage)
-
         return (
             <>
-                <td><Link to={`/character/${damage[0].character.region.slug}/${damage[0].character.realm.altSlug}/${damage[0].character.name}`}>{damage[0].character.name}</Link></td>
-                <td><Link to={`/character/${damage[1].character.region.slug}/${damage[1].character.realm.altSlug}/${damage[1].character.name}`}>{damage[1].character.name}</Link></td>
-                <td><Link to={`/character/${damage[2].character.region.slug}/${damage[2].character.realm.altSlug}/${damage[2].character.name}`}>{damage[2].character.name}</Link></td>
+                <td><Link to={`/character/${damage[0].character.region.slug}/${damage[0].character.realm.altSlug}/${damage[0].character.name}`}>{damage[0].character.name} </Link>
+                    <Link to={`/character/${damage[1].character.region.slug}/${damage[1].character.realm.altSlug}/${damage[1].character.name}`}>{damage[1].character.name} </Link>
+                    <Link to={`/character/${damage[2].character.region.slug}/${damage[2].character.realm.altSlug}/${damage[2].character.name}`}>{damage[2].character.name}</Link></td>
             </>
         )
     }
@@ -80,6 +78,7 @@ const RunLeaderboard = () => {
                             {tankFinder(item.run.roster)}
                             {healerFinder(item.run.roster)}
                             {dpsFinder(item.run.roster)}
+                            <td>{item.score}</td>
                         </tr>
                     ))}
                 </tbody>
