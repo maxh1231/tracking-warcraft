@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const RunLeaderboard = () => {
     const [board, setBoard] = useState(null)
@@ -44,9 +45,9 @@ const RunLeaderboard = () => {
 
         return (
             <>
-                <td>{damage[0].character.name}</td>
-                <td>{damage[1].character.name}</td>
-                <td>{damage[2].character.name}</td>
+                <td><Link to={`/character/${damage[0].character.region.slug}/${damage[0].character.realm.altSlug}/${damage[0].character.name}`}>{damage[0].character.name}</Link></td>
+                <td><Link to={`/character/${damage[1].character.region.slug}/${damage[1].character.realm.altSlug}/${damage[1].character.name}`}>{damage[1].character.name}</Link></td>
+                <td><Link to={`/character/${damage[2].character.region.slug}/${damage[2].character.realm.altSlug}/${damage[2].character.name}`}>{damage[2].character.name}</Link></td>
             </>
         )
     }
