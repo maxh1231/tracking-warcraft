@@ -15,6 +15,9 @@ import Home from './pages/Home';
 import SearchResults from './pages/SearchResults'
 import GuildPage from './pages/GuildPage'
 import CharacterPage from './pages/CharacterPage'
+import Login from './pages/Login';
+import Logout from './pages/Logout';
+import Signup from './pages/Signup';
 
 const uploadLink = createUploadLink({
   uri: '/graphql',
@@ -48,7 +51,10 @@ function App() {
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
-
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/logout" element={<Logout />} />
+          
         </Routes>
       </Router>
     </ApolloProvider>
