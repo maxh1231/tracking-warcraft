@@ -19,19 +19,27 @@ const RunLeaderboard = () => {
     console.log(board);
 
     return (
-        <table>
-            <tr>
-                <th>Rank</th>
-                <th>Dungeon</th>
-                <th>Level</th>
-                <th>Time</th>
-                <th>Affixes</th>
-                <th>Tank</th>
-                <th>Healer</th>
-                <th>DPS</th>
-                <th>Score</th>
-            </tr>
-        </table>
+
+        (board &&
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Dungeon</th>
+                        <th>Level</th>
+                        <th>Time</th>
+                        <th>Affixes</th>
+                        <th>Tank</th>
+                        <th>Healer</th>
+                        <th>DPS</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        )
     )
 }
 
