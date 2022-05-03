@@ -3,19 +3,20 @@ import { Link } from 'react-router-dom'
 
 const RunLeaderboard = () => {
     const [board, setBoard] = useState(null)
+    const [page, setPage] = useState(0)
 
     useEffect(() => {
         runFetch()
 
         async function runFetch() {
-            const response = await fetch(`https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=world&dungeon=all&page=0`);
+            const response = await fetch(`https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=world&dungeon=all&page=${page}`);
             const data = await response.json()
 
             setBoard(data)
 
         }
 
-    }, [setBoard])
+    }, [setBoard, page])
 
     console.log(board);
 
@@ -50,39 +51,52 @@ const RunLeaderboard = () => {
         )
     }
 
+    const nextPage = () => {
+        setPage(page + 1)
+        console.log(page)
+    }
+
+
     return (
 
         (board &&
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Dungeon</th>
-                        <th>Level</th>
-                        <th>Time</th>
-                        <th>Affixes</th>
-                        <th>Tank</th>
-                        <th>Healer</th>
-                        <th>DPS</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {board.rankings.map((item, index) => (
-                        <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{item.run.dungeon.short_name}</td>
-                            <td>{item.run.mythic_level}</td>
-                            <td>{item.run.clear_time_ms}</td>
-                            <td>icons</td>
-                            {tankFinder(item.run.roster)}
-                            {healerFinder(item.run.roster)}
-                            {dpsFinder(item.run.roster)}
-                            <td>{item.score}</td>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Dungeon</th>
+                            <th>Level</th>
+                            <th>Time</th>
+                            <th>Affixes</th>
+                            <th>Tank</th>
+                            <th>Healer</th>
+                            <th>DPS</th>
+                            <th>Score</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {board.rankings.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.rank}</td>
+                                <td>{item.run.dungeon.short_name}</td>
+                                <td>{item.run.mythic_level}</td>
+                                <td>{item.run.clear_time_ms}</td>
+                                <td>icons</td>
+                                {tankFinder(item.run.roster)}
+                                {healerFinder(item.run.roster)}
+                                {dpsFinder(item.run.roster)}
+                                <td>{item.score}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+
+                </table>
+                <div>
+                    <button >Previous </button>
+                    <button onClick={nextPage}> Next</button>
+                </div>
+            </section>
         )
     )
 }
