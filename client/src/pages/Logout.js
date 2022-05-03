@@ -1,7 +1,9 @@
+import { LogoutForm } from '../components/Forms'
+
 const Logout = () => {
     return (
         <main>
-            <p>Logout Page</p>
+            <LogoutForm />
         </main>
     );
 };
