@@ -100,7 +100,9 @@ const RunLeaderboard = () => {
                                 <td>{item.run.dungeon.short_name}</td>
                                 <td>{item.run.mythic_level}</td>
                                 <td>{item.run.clear_time_ms}</td>
-                                <td>icons</td>
+                                <td className='flex'>{item.run.weekly_modifiers.map((affix) => (
+                                    <img src={`https://wow.zamimg.com/images/wow/icons/small/${affix.icon}.jpg`}></img>
+                                ))}</td>
                                 {tankFinder(item.run.roster)}
                                 {healerFinder(item.run.roster)}
                                 {dpsFinder(item.run.roster)}
