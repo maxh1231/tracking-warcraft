@@ -19,7 +19,19 @@ const RunLeaderboard = () => {
     console.log(board);
 
     return (
-        <section></section>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Dungeon</th>
+                <th>Level</th>
+                <th>Time</th>
+                <th>Affixes</th>
+                <th>Tank</th>
+                <th>Healer</th>
+                <th>DPS</th>
+                <th>Score</th>
+            </tr>
+        </table>
     )
 }
 
