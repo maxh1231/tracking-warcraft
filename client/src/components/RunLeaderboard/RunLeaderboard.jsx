@@ -28,6 +28,16 @@ const RunLeaderboard = () => {
         }
     }
 
+    const healerFinder = (array) => {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i].role === 'healer') {
+                return (
+                    <td>{array[i].character.name}</td>
+                )
+            }
+        }
+    }
+
     return (
 
         (board &&
@@ -54,6 +64,7 @@ const RunLeaderboard = () => {
                             <td>{item.run.clear_time_ms}</td>
                             <td>icons</td>
                             {tankFinder(item.run.roster)}
+                            {healerFinder(item.run.roster)}
                         </tr>
                     ))}
                 </tbody>
