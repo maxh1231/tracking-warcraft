@@ -5,6 +5,7 @@ const RunLeaderboard = () => {
     const [board, setBoard] = useState(null)
     const [page, setPage] = useState(0)
 
+    // regular raider io api data
     // useEffect(() => {
     //     runFetch()
 
@@ -18,15 +19,14 @@ const RunLeaderboard = () => {
 
     // }, [setBoard, page])
 
+    // killcors proxy server api data
     useEffect(() => {
         runFetch()
 
         async function runFetch() {
             const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/runs?region=world&season=season-sl-3&dungeon=all&strict=false&page=${page}&limit=0&minMythicLevel=0&maxMythicLevel=0&eventId=0&faction=&realm=&period=0&recent=false`);
             const data = await response.json()
-
             setBoard(data)
-
         }
 
     }, [setBoard, page])
@@ -64,9 +64,14 @@ const RunLeaderboard = () => {
         )
     }
 
-    const nextPage = () => {
-        setPage(page + 1)
-        console.log(page)
+    const handlePage = (event) => {
+        console.log(event.target.id)
+        if (event.target.id === 'next') {
+            setPage(page + 1)
+        } else if (event.target.id === 'previous' && page > 0) {
+            setPage(page - 1)
+        }
+
     }
 
 
@@ -106,8 +111,8 @@ const RunLeaderboard = () => {
 
                 </table>
                 <div>
-                    <button >Previous </button>
-                    <button onClick={nextPage}> Next</button>
+                    <button id='previous' onClick={handlePage}>Previous</button>
+                    <button id='next' onClick={handlePage}>Next</button>
                 </div>
             </section>
         )
