@@ -38,6 +38,19 @@ const RunLeaderboard = () => {
         }
     }
 
+    const dpsFinder = (array) => {
+        const damage = array.filter(item => item.role === 'dps')
+        console.log(damage)
+
+        return (
+            <>
+                <td>{damage[0].character.name}</td>
+                <td>{damage[1].character.name}</td>
+                <td>{damage[2].character.name}</td>
+            </>
+        )
+    }
+
     return (
 
         (board &&
@@ -65,6 +78,7 @@ const RunLeaderboard = () => {
                             <td>icons</td>
                             {tankFinder(item.run.roster)}
                             {healerFinder(item.run.roster)}
+                            {dpsFinder(item.run.roster)}
                         </tr>
                     ))}
                 </tbody>
