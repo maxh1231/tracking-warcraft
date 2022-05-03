@@ -5,11 +5,24 @@ const RunLeaderboard = () => {
     const [board, setBoard] = useState(null)
     const [page, setPage] = useState(0)
 
+    // useEffect(() => {
+    //     runFetch()
+
+    //     async function runFetch() {
+    //         const response = await fetch(`https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=world&dungeon=all&page=${page}`);
+    //         const data = await response.json()
+
+    //         setBoard(data)
+
+    //     }
+
+    // }, [setBoard, page])
+
     useEffect(() => {
         runFetch()
 
         async function runFetch() {
-            const response = await fetch(`https://raider.io/api/v1/mythic-plus/runs?season=season-sl-3&region=world&dungeon=all&page=${page}`);
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/runs?region=world&season=season-sl-3&dungeon=all&strict=false&page=${page}&limit=0&minMythicLevel=0&maxMythicLevel=0&eventId=0&faction=&realm=&period=0&recent=false`);
             const data = await response.json()
 
             setBoard(data)
@@ -76,7 +89,7 @@ const RunLeaderboard = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {board.rankings.map((item, index) => (
+                        {board.rankings.rankedGroups.map((item, index) => (
                             <tr key={index}>
                                 <td>{item.rank}</td>
                                 <td>{item.run.dungeon.short_name}</td>
