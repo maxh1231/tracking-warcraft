@@ -37,7 +37,7 @@ const RunLeaderboard = () => {
         for (let i = 0; i < array.length; i++) {
             if (array[i].role === 'tank') {
                 return (
-                    <td>{array[i].character.name}</td>
+                    <td><Link to={`/character/${array[i].character.region.slug}/${array[i].character.realm.altSlug}/${array[i].character.name}`}>{array[i].character.name}</Link></td>
                 )
             }
         }
