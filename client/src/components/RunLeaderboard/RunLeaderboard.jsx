@@ -18,14 +18,13 @@ const RunLeaderboard = () => {
 
     console.log(board);
 
-    const roleFinder = (array) => {
+    const tankFinder = (array) => {
         for (let i = 0; i < array.length; i++) {
             if (array[i].role === 'tank') {
                 return (
                     <td>{array[i].character.name}</td>
                 )
             }
-
         }
     }
 
@@ -54,7 +53,7 @@ const RunLeaderboard = () => {
                             <td>{item.run.mythic_level}</td>
                             <td>{item.run.clear_time_ms}</td>
                             <td>icons</td>
-                            {roleFinder(item.run.roster)}
+                            {tankFinder(item.run.roster)}
                         </tr>
                     ))}
                 </tbody>
