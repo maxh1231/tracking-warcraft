@@ -1,10 +1,16 @@
 import RunLeaderboard from "../components/RunLeaderboard";
+import RoleLeaderboard from "../components/RoleLeaderboard";
 
 const Leaderboard = () => {
     return (
-        <div>
-            <RunLeaderboard />
-        </div>
+        <section>
+            <div>
+                <RunLeaderboard />
+            </div>
+            <div>
+                <RoleLeaderboard />
+            </div>
+        </section>
     )
 }
 

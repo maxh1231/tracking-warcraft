@@ -31,7 +31,7 @@ const RunLeaderboard = () => {
 
     }, [setBoard, page])
 
-    console.log(board);
+    // console.log(board);
 
     const tankFinder = (array) => {
         for (let i = 0; i < array.length; i++) {
