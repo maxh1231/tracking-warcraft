@@ -14,26 +14,47 @@ const RoleLeaderboard = () => {
 
             setRole(data)
         }
-    }, [setRole])
+    }, [setRole, filter])
 
     console.log(role)
+
+    const handleRole = (event) => {
+        if (event.target.id === 'tank') {
+            setFilter('tank')
+        }
+
+        if (event.target.id === 'healer') {
+            setFilter('healer')
+        }
+
+        if (event.target.id === 'dps') {
+            setFilter('dps')
+        }
+    }
 
     return (
         (role && (
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Character</th>
-                            <th>Runs</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div>
+                    <button id='tank' onClick={handleRole}>Tank</button>
+                    <button id='healer' onClick={handleRole}>Healer</button>
+                    <button id='dps' onClick={handleRole}>DPS</button>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Character</th>
+                                <th>Runs</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         ))
     )
