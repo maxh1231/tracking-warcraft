@@ -5,7 +5,6 @@ const RoleLeaderboard = () => {
     const [role, setRole] = useState(null)
     const [page, setPage] = useState(0);
 
-
     useEffect(() => {
         roleFetch()
 
