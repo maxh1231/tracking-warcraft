@@ -39,8 +39,21 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [user, setUser] = useState('');
 
+  const getUser = async () => {
+    const response = await fetch('/auth/user');
+    const data = await response.json();
+    if (data.message) {
+      setUser(null);
+    } else {
+      setUser(data);
+    };
+  };
 
+  useEffect(() => {
+    getUser();
+  }, [setUser]);
 
   return (
     <ApolloProvider client={client}>
@@ -51,9 +64,9 @@ function App() {
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/logout" element={<Logout />} />
+          <Route exact path="/login" element={<Login setUser={setUser} />} />
+          <Route exact path="/signup" element={<Signup setUser={setUser} />} />
+          <Route exact path="/logout" element={<Logout setUser={setUser} />} />
           
         </Routes>
       </Router>

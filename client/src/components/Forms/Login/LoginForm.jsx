@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import validator from 'validator';
 
-const LoginForm = () => {
+const LoginForm = ({setUser}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);

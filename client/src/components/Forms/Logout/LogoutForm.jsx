@@ -1,4 +1,4 @@
-const LogoutForm = () => {
+const LogoutForm = ({setUser}) => {
     const handleLogout = async () => {
         const response = await fetch('/auth/logout', {
             method: 'POST',
