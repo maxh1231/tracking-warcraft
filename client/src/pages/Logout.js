@@ -1,9 +1,9 @@
 import { LogoutForm } from '../components/Forms'
 
-const Logout = () => {
+const Logout = ({ setUser }) => {
     return (
         <main>
-            <LogoutForm />
+            <LogoutForm setUser={setUser} />
         </main>
     );
 };

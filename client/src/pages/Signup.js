@@ -1,9 +1,9 @@
 import { SignupForm } from '../components/Forms'
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
     return (
         <main>
-            <SignupForm />
+            <SignupForm setUser={setUser} />
         </main>
     );
 };
