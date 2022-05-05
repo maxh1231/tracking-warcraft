@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {
   ApolloClient,
@@ -41,6 +41,10 @@ const client = new ApolloClient({
 function App() {
   const [user, setUser] = useState('');
 
+  const wrapperSetUser = useCallback(val => {
+    setUser(val);
+  }, [setUser]);
+
   const getUser = async () => {
     const response = await fetch('/auth/user');
     const data = await response.json();
@@ -52,8 +56,12 @@ function App() {
   };
 
   useEffect(() => {
-    getUser();
-  }, [setUser]);
+    if (localStorage.getItem('warcraftID')) {
+      setUser(localStorage.getItem('warcraftID'));
+    } else {
+      getUser();
+    }
+  }, []);
 
   return (
     <ApolloProvider client={client}>
@@ -64,9 +72,9 @@ function App() {
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
-          <Route exact path="/login" element={<Login setUser={setUser} />} />
-          <Route exact path="/signup" element={<Signup setUser={setUser} />} />
-          <Route exact path="/logout" element={<Logout setUser={setUser} />} />
+          <Route exact path="/login" element={<Login user={user} setUser={wrapperSetUser} />} />
+          <Route exact path="/signup" element={<Signup setUser={wrapperSetUser} />} />
+          <Route exact path="/logout" element={<Logout setUser={wrapperSetUser} />} />
           
         </Routes>
       </Router>

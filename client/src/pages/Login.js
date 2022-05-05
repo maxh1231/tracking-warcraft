@@ -1,9 +1,9 @@
 import { LoginForm } from '../components/Forms'
 
-const Login = () => {
+const Login = ({ setUser }) => {
     return (
         <main>
-            <LoginForm />
+            <LoginForm setUser={setUser} />
         </main>
     );
 };
