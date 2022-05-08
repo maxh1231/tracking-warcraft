@@ -18,15 +18,30 @@ const Leaderboard = () => {
                 <RoleLeaderboard />
             )
         }
+
+        // conditional for class component
     }
 
+    const handleFilter = (event) => {
+        if (event.target.id === 'run') {
+            setFilter('run')
+        }
+
+        if (event.target.id === 'role') {
+            setFilter('role')
+        }
+
+        if (event.target.id === 'class') {
+            setFilter('class')
+        }
+    }
 
     return (
         <section>
             <div>
-                <button>Runs</button>
-                <button>Role</button>
-                <button>Class</button>
+                <button id='run' onClick={handleFilter}>Runs</button>
+                <button id='role' onClick={handleFilter}>Role</button>
+                <button id='class' onClick={handleFilter}>Class</button>
             </div>
             <div>
                 {renderComponent()}
