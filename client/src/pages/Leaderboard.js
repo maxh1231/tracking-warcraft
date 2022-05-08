@@ -6,6 +6,21 @@ import RoleLeaderboard from "../components/RoleLeaderboard";
 const Leaderboard = () => {
     const [filter, setFilter] = useState('run');
 
+    const renderComponent = () => {
+        if (filter === 'run') {
+            return (
+                <RunLeaderboard />
+            )
+        };
+
+        if (filter === 'role') {
+            return (
+                <RoleLeaderboard />
+            )
+        }
+    }
+
+
     return (
         <section>
             <div>
@@ -14,10 +29,7 @@ const Leaderboard = () => {
                 <button>Class</button>
             </div>
             <div>
-                <RunLeaderboard />
-            </div>
-            <div>
-                <RoleLeaderboard />
+                {renderComponent()}
             </div>
         </section>
     )
