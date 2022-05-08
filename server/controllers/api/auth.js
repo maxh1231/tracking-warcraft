@@ -64,4 +64,15 @@ router.post('/logout', (req, res) => {
     }
 });
 
+router.get('/auth/bnet',
+    passport.authenticate('bnet')
+);
+
+router.get('/auth/bnet/callback',
+    passport.authenticate('bnet', { failureRedirect: '/' }),
+    function(req, res){
+        res.redirect('/');
+    }
+);
+
 module.exports = router;
