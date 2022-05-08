@@ -12,7 +12,7 @@ const RoleLeaderboard = () => {
             const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=all&role=${filter}&page=${page}`)
             const data = await response.json()
 
-            setRole(data)
+            setRole(data.rankings.rankedCharacters)
         }
     }, [setRole, filter, page])
 
@@ -61,7 +61,14 @@ const RoleLeaderboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                            {role.map((item, index) => (
+                                <tr>
+                                    <td>{item.rank}</td>
+                                    <td>{item.character.name}</td>
+                                    <td>runs</td>
+                                    <td>{item.score}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
