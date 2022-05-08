@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import RunLeaderboard from "../components/RunLeaderboard";
 import RoleLeaderboard from "../components/RoleLeaderboard";
+import ClassLeaderboard from '../components/ClassLeaderboard';
 
 const Leaderboard = () => {
     const [filter, setFilter] = useState('run');
@@ -16,6 +17,12 @@ const Leaderboard = () => {
         if (filter === 'role') {
             return (
                 <RoleLeaderboard />
+            )
+        }
+
+        if (filter === 'class') {
+            return (
+                <ClassLeaderboard />
             )
         }
 
