@@ -93,6 +93,36 @@ const ClassLeaderboard = () => {
                 </div>
             )
         }
+
+        if (activeClass === 'druid') {
+            return (
+                <div>
+                    <span>Guardian</span>
+                    <span>Restoration</span>
+                    <span>Feral</span>
+                    <span>Balance</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'demon hunter') {
+            return (
+                <div>
+                    <span>Vengeance</span>
+                    <span>Havoc</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'death knight') {
+            return (
+                <div>
+                    <span>Blood</span>
+                    <span>Frost</span>
+                    <span>unholy</span>
+                </div>
+            )
+        }
     }
 
     return (
