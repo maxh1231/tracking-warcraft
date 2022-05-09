@@ -1,4 +1,20 @@
+import { useState, useEffect } from 'react';
+
 const ClassLeaderboard = () => {
+    const [activeClass, setActiveClass] = useState('warrior')
+
+    const renderSpecs = () => {
+        if (activeClass === 'warrior') {
+            return (
+                <div>
+                    <span>Protection</span>
+                    <span>Fury</span>
+                    <span>Arms</span>
+                </div>
+            )
+        }
+    }
+
     return (
         <section>
             <div>
