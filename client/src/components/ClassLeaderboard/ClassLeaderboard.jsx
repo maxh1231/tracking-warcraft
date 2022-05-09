@@ -6,7 +6,7 @@ const ClassLeaderboard = () => {
 
     const renderSpecs = () => {
 
-        if (activeClass === 'warrior') {
+        if (activeClass === 'war') {
             return (
                 <div>
                     <span>Protection</span>
@@ -16,7 +16,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'paladin') {
+        if (activeClass === 'pal') {
             return (
                 <div>
                     <span>Protection</span>
@@ -26,7 +26,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'hunter') {
+        if (activeClass === 'hunt') {
             return (
                 <div>
                     <span>Beast Mastery</span>
@@ -56,7 +56,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'shaman') {
+        if (activeClass === 'sham') {
             return (
                 <div>
                     <span>Restoration</span>
@@ -76,7 +76,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'warlock') {
+        if (activeClass === 'lock') {
             return (
                 <div>
                     <span>Affliction</span>
@@ -107,7 +107,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'demon hunter') {
+        if (activeClass === 'dh') {
             return (
                 <div>
                     <span>Vengeance</span>
@@ -116,7 +116,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'death knight') {
+        if (activeClass === 'dk') {
             return (
                 <div>
                     <span>Blood</span>
@@ -131,18 +131,18 @@ const ClassLeaderboard = () => {
     return (
         <section>
             <div>
-                <button>Warrior</button>
-                <button>Paladin</button>
-                <button>Hunter</button>
-                <button>Rogue</button>
-                <button>Priest</button>
-                <button>Shaman</button>
-                <button>Mage</button>
-                <button>Warlock</button>
-                <button>Monk</button>
-                <button>Druid</button>
-                <button>Demon Hunter</button>
-                <button>Death Knight</button>
+                <button id='war'>Warrior</button>
+                <button id='pal'>Paladin</button>
+                <button id='hunt'>Hunter</button>
+                <button id='rogue'>Rogue</button>
+                <button id='priest'>Priest</button>
+                <button id='sham'>Shaman</button>
+                <button id='mage'>Mage</button>
+                <button id='lock'>Warlock</button>
+                <button id='monk'>Monk</button>
+                <button id='druid'>Druid</button>
+                <button id='dh'>Demon Hunter</button>
+                <button id='dk'>Death Knight</button>
             </div>
 
             <div>
