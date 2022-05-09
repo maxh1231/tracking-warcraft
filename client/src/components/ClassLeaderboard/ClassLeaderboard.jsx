@@ -43,6 +43,26 @@ const ClassLeaderboard = () => {
                 </div>
             )
         }
+
+        if (activeClass === 'priest') {
+            return (
+                <div>
+                    <span>Shadow</span>
+                    <span>Holy</span>
+                    <span>Discipline</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'shaman') {
+            return (
+                <div>
+                    <span>Restoration</span>
+                    <span>Elemental</span>
+                    <span>Enhancement</span>
+                </div>
+            )
+        }
     }
 
     return (
