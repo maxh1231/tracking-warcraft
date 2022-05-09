@@ -13,6 +13,36 @@ const ClassLeaderboard = () => {
                 </div>
             )
         }
+
+        if (activeClass === 'paladin') {
+            return (
+                <div>
+                    <span>Protection</span>
+                    <span>Holy</span>
+                    <span>Retribution</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'hunter') {
+            return (
+                <div>
+                    <span>Beast Mastery</span>
+                    <span>Survival</span>
+                    <span>Marksmanship</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'rogue') {
+            return (
+                <div>
+                    <span>Subtlety</span>
+                    <span>Assassination</span>
+                    <span>Outlaw</span>
+                </div>
+            )
+        }
     }
 
     return (
