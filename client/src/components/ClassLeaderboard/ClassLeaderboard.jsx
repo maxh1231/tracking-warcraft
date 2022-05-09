@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { renderSpecs } from '../../utils/helpers';
 
 const ClassLeaderboard = () => {
-    const [activeClass, setActiveClass] = useState('warrior')
+    const [activeClass, setActiveClass] = useState('war')
 
     const renderSpecs = () => {
 
@@ -127,26 +127,65 @@ const ClassLeaderboard = () => {
         }
     }
 
+    const handleClassChange = (event) => {
+        if (event.target.id === 'war') {
+            setActiveClass('war')
+        }
+        if (event.target.id === 'pal') {
+            setActiveClass('pal')
+        }
+        if (event.target.id === 'hunt') {
+            setActiveClass('hunt')
+        }
+        if (event.target.id === 'rogue') {
+            setActiveClass('rogue')
+        }
+        if (event.target.id === 'priest') {
+            setActiveClass('priest')
+        }
+        if (event.target.id === 'sham') {
+            setActiveClass('sham')
+        }
+        if (event.target.id === 'mage') {
+            setActiveClass('mage')
+        }
+        if (event.target.id === 'lock') {
+            setActiveClass('lock')
+        }
+        if (event.target.id === 'monk') {
+            setActiveClass('monk')
+        }
+        if (event.target.id === 'druid') {
+            setActiveClass('druid')
+        }
+        if (event.target.id === 'dh') {
+            setActiveClass('dh')
+        }
+        if (event.target.id === 'dk') {
+            setActiveClass('dk')
+        }
+    }
+
 
     return (
         <section>
             <div>
-                <button id='war'>Warrior</button>
-                <button id='pal'>Paladin</button>
-                <button id='hunt'>Hunter</button>
-                <button id='rogue'>Rogue</button>
-                <button id='priest'>Priest</button>
-                <button id='sham'>Shaman</button>
-                <button id='mage'>Mage</button>
-                <button id='lock'>Warlock</button>
-                <button id='monk'>Monk</button>
-                <button id='druid'>Druid</button>
-                <button id='dh'>Demon Hunter</button>
-                <button id='dk'>Death Knight</button>
+                <button id='war' onClick={handleClassChange}>Warrior</button>
+                <button id='pal' onClick={handleClassChange}>Paladin</button>
+                <button id='hunt' onClick={handleClassChange}>Hunter</button>
+                <button id='rogue' onClick={handleClassChange}>Rogue</button>
+                <button id='priest' onClick={handleClassChange}>Priest</button>
+                <button id='sham' onClick={handleClassChange}>Shaman</button>
+                <button id='mage' onClick={handleClassChange}>Mage</button>
+                <button id='lock' onClick={handleClassChange}>Warlock</button>
+                <button id='monk' onClick={handleClassChange}>Monk</button>
+                <button id='druid' onClick={handleClassChange}>Druid</button>
+                <button id='dh' onClick={handleClassChange}>Demon Hunter</button>
+                <button id='dk' onClick={handleClassChange}>Death Knight</button>
             </div>
 
             <div>
-                {renderSpecs}
+                {renderSpecs()}
             </div>
         </section>
     )
