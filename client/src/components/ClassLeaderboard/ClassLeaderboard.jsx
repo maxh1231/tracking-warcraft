@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { renderSpecs } from '../../utils/helpers';
 
 const ClassLeaderboard = () => {
     const [activeClass, setActiveClass] = useState('warrior')
 
     const renderSpecs = () => {
+
         if (activeClass === 'warrior') {
             return (
                 <div>
@@ -125,6 +127,7 @@ const ClassLeaderboard = () => {
         }
     }
 
+
     return (
         <section>
             <div>
@@ -140,6 +143,10 @@ const ClassLeaderboard = () => {
                 <button>Druid</button>
                 <button>Demon Hunter</button>
                 <button>Death Knight</button>
+            </div>
+
+            <div>
+                {renderSpecs}
             </div>
         </section>
     )
