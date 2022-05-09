@@ -63,6 +63,36 @@ const ClassLeaderboard = () => {
                 </div>
             )
         }
+
+        if (activeClass === 'mage') {
+            return (
+                <div>
+                    <span>Frost</span>
+                    <span>Fire</span>
+                    <span>Arcane</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'warlock') {
+            return (
+                <div>
+                    <span>Affliction</span>
+                    <span>Destruction</span>
+                    <span>Demonology</span>
+                </div>
+            )
+        }
+
+        if (activeClass === 'monk') {
+            return (
+                <div>
+                    <span>Brewmaster</span>
+                    <span>Windwalker</span>
+                    <span>Mistweaver</span>
+                </div>
+            )
+        }
     }
 
     return (
