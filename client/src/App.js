@@ -73,18 +73,14 @@ function App() {
         <Routes>
 
           <Route exact path="/" element={<Home />} />
-<<<<<<< HEAD
-          <Route exact path="/leaderboards" element={<Leaderboard />} />
-=======
           <Route path="/:code" element={<Home />} />
->>>>>>> 72441c34761ea5d581d8b20d7e0ab06013f549e8
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
           <Route exact path="/login" element={<Login user={user} setUser={wrapperSetUser} />} />
           <Route exact path="/signup" element={<Signup setUser={wrapperSetUser} />} />
           <Route exact path="/logout" element={<Logout setUser={wrapperSetUser} />} />
-          
+
         </Routes>
       </Router>
     </ApolloProvider>
