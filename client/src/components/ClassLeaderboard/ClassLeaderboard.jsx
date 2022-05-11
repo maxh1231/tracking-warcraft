@@ -1,8 +1,19 @@
 import { useState, useEffect } from 'react';
-import { renderSpecs } from '../../utils/helpers';
 
 const ClassLeaderboard = () => {
     const [activeClass, setActiveClass] = useState('war')
+    const [currentData, setCurrentData] = useState(null);
+
+    useEffect(() => {
+        fetchData();
+
+        async function fetchData() {
+            const response = await fetch(`https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=death-knight&role=all&page=1`)
+
+            const data = await response.json();
+            setCurrentData(data)
+        }
+    }, [setCurrentData])
 
     const renderSpecs = () => {
 
