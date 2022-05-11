@@ -9,12 +9,22 @@ const ClassLeaderboard = () => {
         fetchData();
 
         async function fetchData() {
-            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=${activeClass}&role=all&page=0`)
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=${activeClass}&role=all&page=${page}`)
 
             const data = await response.json();
             setCurrentData(data.rankings.rankedCharacters)
         }
-    }, [setCurrentData, activeClass])
+    }, [setCurrentData, activeClass, page])
+
+    const handlePageChange = (event) => {
+        if (event.target.id === 'next') {
+            setPage(page + 1)
+        }
+
+        if (event.target.id === 'prev' && page > 0) {
+            setPage(page - 1)
+        }
+    }
 
     console.log(currentData)
 
@@ -229,8 +239,8 @@ const ClassLeaderboard = () => {
             )}
 
             <div>
-                <button id='prev'>Previous</button>
-                <button id='next'>Next</button>
+                <button id='prev' onClick={handlePageChange}>Previous</button>
+                <button id='next' onClick={handlePageChange}>Next</button>
             </div>
 
         </section>
