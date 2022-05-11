@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/maxh1231/tracking-warcraft#readme",
   "dependencies": {
-    "concurrently": "^7.0.0",
-    "passport-bnet": "^2.0.0"
+    "concurrently": "^7.0.0"
   }
 }
