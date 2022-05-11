@@ -36,9 +36,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost/turtle',
+    mongoUrl: 'mongodb://localhost/warcraft',
   })
-}))
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === 'production') {
   var corsOptions = {
       origin: 'http://localhost:3000',
   };
-}
+};
 app.use(cors(corsOptions));
 
 app.use('/', authRouter);
