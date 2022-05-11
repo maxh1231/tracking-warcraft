@@ -7,7 +7,7 @@ import Search from '../components/Search'
 
 const Home = () => {
     const bnetAuth = async () => {
-        const response = await fetch('/auth/auth/bnet');
+        const response = await fetch('http://localhost:3001/auth/auth/bnet');
         console.log(response);
     };
 
@@ -18,7 +18,7 @@ const Home = () => {
             <Link to={'/login'}><button className='border m-1 p-1'>Login</button></Link>
             <Link to={'/signup'}><button className='border m-1 p-1'>Signup</button></Link>
             <Link to={'/logout'}><button className='border m-1 p-1'>Logout</button></Link>
-            <button onClick={bnetAuth}>Battle.net</button>
+            <a href='http://localhost:3001/auth/auth/bnet'>Battle.net</a>
         </section>
     );
 };

@@ -40,9 +40,10 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, async (username, pass
 passport.use(new BnetStrategy({
     clientID: BNET_ID,
     clientSecret: BNET_SECRET,
-    callbackURL: "https://localhost:3001/auth/bnet/callback",
+    callbackURL: "http://localhost:3000/",
     region: "us"
 }, function(accessToken, refreshToken, profile, done) {
+    console.log(accessToken)
     return done(null, profile);
 }));
 

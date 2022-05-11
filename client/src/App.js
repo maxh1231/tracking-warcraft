@@ -69,6 +69,7 @@ function App() {
         <Routes>
 
           <Route exact path="/" element={<Home />} />
+          <Route path="/:code" element={<Home />} />
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
