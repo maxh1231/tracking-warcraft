@@ -201,8 +201,27 @@ const ClassLeaderboard = () => {
                 {renderSpecs()}
             </div>
 
-            <div>
-            </div>
+
+            {currentData && (
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Character</th>
+                                <th>Runs</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentData.map((item, index) => (
+                                <tr></tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
+
         </section>
     )
 }
