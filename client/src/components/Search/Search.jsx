@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TOKEN } from '../../utils/queries';
 import { ADD_BLIZZTOKEN } from '../../utils/mutations';
+import { selectionSetMatchesResult } from '@apollo/client/cache/inmemory/helpers';
 
 const Search = () => {
     const [field, setField] = useState('')
@@ -11,13 +12,45 @@ const Search = () => {
     const { loading, data } = useQuery(QUERY_TOKEN);
     const [addToken] = useMutation(ADD_BLIZZTOKEN)
 
+    // useEffect(() => {
+    //     if (!loading && data.getToken.length === 0) {
+    //         fetchToken()
+    //     } else if (!loading && data.getToken.length > 0) {
+    //         setAccessToken(data.getToken[0].access_token)
+    //     }
+    // }, [data])
+
+
+    // const fetchToken = async () => {
+    //     const response = await fetch("https://us.battle.net/oauth/token", {
+    //         body: "grant_type=client_credentials",
+    //         headers: {
+    //             Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+    //             "Content-Type": "application/x-www-form-urlencoded"
+    //         },
+    //         method: "POST"
+    //     })
+
+    //     const token = await response.json();
+    //     console.log(token)
+
+
+    //     addToken({
+    //         variables: token
+    //     })
+
+    //     setAccessToken(token.access_token)
+    //     localStorage.setItem('key', 'howdy')
+    // }
+
     useEffect(() => {
-        if (!loading && data.getToken.length === 0) {
+        if (!localStorage.getItem('access_token')) {
             fetchToken()
-        } else if (!loading && data.getToken.length > 0) {
-            setAccessToken(data.getToken[0].access_token)
+            console.log('not found in storage')
+        } else {
+            console.log('found in storage')
         }
-    }, [data])
+    }, [])
 
     const fetchToken = async () => {
         const response = await fetch("https://us.battle.net/oauth/token", {
@@ -30,14 +63,13 @@ const Search = () => {
         })
 
         const token = await response.json();
-        console.log(token)
-
-        addToken({
-            variables: token
-        })
-
         setAccessToken(token.access_token)
+
+        localStorage.setItem('access_token', accessToken)
+
     }
+
+    // fetchToken();
 
 
     const handleChange = (event) => {
