@@ -5,6 +5,7 @@ const typeDefs = gql`
     _id: ID
     username: String!
     email: String!
+    password: String!
     createdAt: String!
   }
 
@@ -20,6 +21,8 @@ const typeDefs = gql`
   
   type Query {
     me: User
+    users: [User]
+    user(username: String!): User
     getToken: [blizzToken]
   }
 
