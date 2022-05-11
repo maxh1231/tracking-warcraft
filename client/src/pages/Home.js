@@ -6,11 +6,6 @@ import { Link } from 'react-router-dom';
 import Search from '../components/Search'
 
 const Home = () => {
-    const bnetAuth = async () => {
-        const response = await fetch('http://localhost:3001/auth/auth/bnet');
-        console.log(response);
-    };
-
     return (
         <section className='p-4'>
             <h1>Hello</h1>
