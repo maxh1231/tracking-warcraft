@@ -8,12 +8,12 @@ const ClassLeaderboard = () => {
         fetchData();
 
         async function fetchData() {
-            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=${activeClass}&role=all&page=1`)
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=${activeClass}&role=all&page=0`)
 
             const data = await response.json();
             setCurrentData(data.rankings.rankedCharacters)
         }
-    }, [setCurrentData])
+    }, [setCurrentData, activeClass])
 
     console.log(currentData)
 
@@ -215,7 +215,12 @@ const ClassLeaderboard = () => {
                         </thead>
                         <tbody>
                             {currentData.map((item, index) => (
-                                <tr></tr>
+                                <tr key={index}>
+                                    <td>{item.rank}</td>
+                                    <td>{item.character.name}</td>
+                                    <td>runs</td>
+                                    <td>{item.score}</td>
+                                </tr>
                             ))}
                         </tbody>
                     </table>
