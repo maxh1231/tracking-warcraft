@@ -17,7 +17,7 @@ const ClassLeaderboard = () => {
 
     const renderSpecs = () => {
 
-        if (activeClass === 'war') {
+        if (activeClass === 'warrior') {
             return (
                 <div>
                     <span>Protection</span>
@@ -27,7 +27,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'pal') {
+        if (activeClass === 'paladin') {
             return (
                 <div>
                     <span>Protection</span>
@@ -37,7 +37,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'hunt') {
+        if (activeClass === 'hunter') {
             return (
                 <div>
                     <span>Beast Mastery</span>
@@ -67,7 +67,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'sham') {
+        if (activeClass === 'shaman') {
             return (
                 <div>
                     <span>Restoration</span>
@@ -87,7 +87,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'lock') {
+        if (activeClass === 'warlock') {
             return (
                 <div>
                     <span>Affliction</span>
@@ -118,7 +118,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'dh') {
+        if (activeClass === 'demon-hunter') {
             return (
                 <div>
                     <span>Vengeance</span>
@@ -127,7 +127,7 @@ const ClassLeaderboard = () => {
             )
         }
 
-        if (activeClass === 'dk') {
+        if (activeClass === 'death-knight') {
             return (
                 <div>
                     <span>Blood</span>
@@ -140,13 +140,13 @@ const ClassLeaderboard = () => {
 
     const handleClassChange = (event) => {
         if (event.target.id === 'war') {
-            setActiveClass('war')
+            setActiveClass('warrior')
         }
         if (event.target.id === 'pal') {
-            setActiveClass('pal')
+            setActiveClass('paladin')
         }
         if (event.target.id === 'hunt') {
-            setActiveClass('hunt')
+            setActiveClass('hunter')
         }
         if (event.target.id === 'rogue') {
             setActiveClass('rogue')
@@ -155,13 +155,13 @@ const ClassLeaderboard = () => {
             setActiveClass('priest')
         }
         if (event.target.id === 'sham') {
-            setActiveClass('sham')
+            setActiveClass('shaman')
         }
         if (event.target.id === 'mage') {
             setActiveClass('mage')
         }
         if (event.target.id === 'lock') {
-            setActiveClass('lock')
+            setActiveClass('warlock')
         }
         if (event.target.id === 'monk') {
             setActiveClass('monk')
@@ -170,10 +170,10 @@ const ClassLeaderboard = () => {
             setActiveClass('druid')
         }
         if (event.target.id === 'dh') {
-            setActiveClass('dh')
+            setActiveClass('demon-hunter')
         }
         if (event.target.id === 'dk') {
-            setActiveClass('dk')
+            setActiveClass('death-knight')
         }
     }
 
