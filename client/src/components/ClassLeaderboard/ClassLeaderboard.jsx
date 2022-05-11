@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 const ClassLeaderboard = () => {
-    const [activeClass, setActiveClass] = useState('warrior')
+    const [activeClass, setActiveClass] = useState('warrior');
     const [currentData, setCurrentData] = useState(null);
+    const [page, setPage] = useState(0);
 
     useEffect(() => {
         fetchData();
@@ -226,6 +227,11 @@ const ClassLeaderboard = () => {
                     </table>
                 </div>
             )}
+
+            <div>
+                <button id='prev'>Previous</button>
+                <button id='next'>Next</button>
+            </div>
 
         </section>
     )
