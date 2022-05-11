@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const cors = require('cors');
 const MongoStore = require('connect-mongo');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
@@ -42,7 +43,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', authRouter)
+// set url to allow origin (client URL)
+if (process.env.NODE_ENV === 'production') {
+  var corsOptions = {
+      origin: 'http://localhost:3000',
+  };
+} else {
+  var corsOptions = {
+      origin: 'http://localhost:3000',
+  };
+}
+app.use(cors(corsOptions));
+
+app.use('/', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));

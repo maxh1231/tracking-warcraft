@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom';
 import Search from '../components/Search'
 
 const Home = () => {
+    const bnetAuth = async () => {
+        const response = await fetch('/auth/auth/bnet');
+        console.log(response);
+    };
+
     return (
         <section className='p-4'>
             <h1>Hello</h1>
@@ -13,6 +18,7 @@ const Home = () => {
             <Link to={'/login'}><button className='border m-1 p-1'>Login</button></Link>
             <Link to={'/signup'}><button className='border m-1 p-1'>Signup</button></Link>
             <Link to={'/logout'}><button className='border m-1 p-1'>Logout</button></Link>
+            <button onClick={bnetAuth}>Battle.net</button>
         </section>
     );
 };
