@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 
 const ClassLeaderboard = () => {
-    const [activeClass, setActiveClass] = useState('war')
+    const [activeClass, setActiveClass] = useState('warrior')
     const [currentData, setCurrentData] = useState(null);
 
     useEffect(() => {
         fetchData();
 
         async function fetchData() {
-            const response = await fetch(`https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=death-knight&role=all&page=1`)
+            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-sl-3&class=${activeClass}&role=all&page=1`)
 
             const data = await response.json();
-            setCurrentData(data)
+            setCurrentData(data.rankings.rankedCharacters)
         }
     }, [setCurrentData])
+
+    console.log(currentData)
 
     const renderSpecs = () => {
 
@@ -197,6 +199,9 @@ const ClassLeaderboard = () => {
 
             <div>
                 {renderSpecs()}
+            </div>
+
+            <div>
             </div>
         </section>
     )
