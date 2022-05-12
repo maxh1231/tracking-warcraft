@@ -65,7 +65,8 @@ const Search = () => {
         const token = await response.json();
         setAccessToken(token.access_token)
 
-        localStorage.setItem('access_token', accessToken)
+        localStorage.setItem('access_token', token.access_token)
+        localStorage.setItem('access_token_exp', Date.now())
 
     }
 
