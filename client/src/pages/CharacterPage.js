@@ -1,5 +1,4 @@
 import { useParams, useLocation, Link } from "react-router-dom"
-import { BlizzAPI } from 'blizzapi'
 import { useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid';
 import DpsClass from "../components/DpsClass";
@@ -21,13 +20,7 @@ const CharacterPage = () => {
     const paramArr = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainhand', 'offhand'];
     const dungeonArr = ['The Necrotic Wake', 'Mists of Tirna Scithe', 'Halls of Atonement', 'Spires of Ascension', 'De Other Side', 'Plaguefall', 'Theater of Pain', 'Sanguine Depths', 'Tazavesh: Streets of Wonder', 'Tazavesh: So\'leah\'s Gambit'];
 
-    // unknown if will use
-    const api = new BlizzAPI({
-        region: `${params.region}`,
-        clientId: process.env.REACT_APP_client_id,
-        clientSecret: process.env.REACT_APP_client_secret,
-    });
-
+    // fetches character info, M+ info, Raid info form RIO
     useEffect(() => {
         ioFetch();
 
@@ -46,6 +39,7 @@ const CharacterPage = () => {
         }
     }, [setEquipment], [setDungeons])
 
+    // fetches character's current talent and specialization info 
     useEffect(() => {
         blizzFetch()
 
@@ -56,7 +50,6 @@ const CharacterPage = () => {
             setTalents(data.specializations[0].talents)
         }
     }, [setTalents])
-
 
 
     const paramAdder = (type) => {
