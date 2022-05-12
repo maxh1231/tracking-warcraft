@@ -57,26 +57,7 @@ const CharacterPage = () => {
         }
     }, [setTalents])
 
-    useEffect(() => {
-        dungeonFetch()
 
-        async function dungeonFetch() {
-            // const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/mythic-keystone-profile/season/7?namespace=profile-us&locale=en_US&access_token=${location.state}`)
-
-            const response = await fetch(`https://killcors.herokuapp.com/https://raider.io/api/characters/mythic-plus-runs?season=season-sl-3&characterId=91057123&role=all&mode=timed&affixes=tyrannical&dung=plaguefall&date=all`)
-
-            const data = await response.json()
-
-            // for (let i = 0; i < data.best_runs.length; i++) {
-            //     if (data.best_runs[i].keystone_affixes[0].name === 'Tyrannical') {
-            //         tyranArr.push(data.best_runs[i])
-            //     } else {
-            //         fortArr.push(data.best_runs[i])
-            //     }
-            // }
-            // setDungeons(data);
-        }
-    }, [setDungeons])
 
     const paramAdder = (type) => {
         if (type === 'offhand') {
@@ -238,7 +219,7 @@ const CharacterPage = () => {
                     <div>
                         <span>{equipment.gear.item_level_equipped} Item Level</span>
                     </div>
-                    <div style={{display: 'flex'}}>
+                    <div style={{ display: 'flex' }}>
                         {paramArr.map((param) => (
                             <div key={uuid()}>
                                 {paramAdder(param)}
@@ -253,7 +234,7 @@ const CharacterPage = () => {
                     <div>
                         <h3>Talents</h3>
                     </div>
-                    <div style={{display: 'flex'}}>
+                    <div style={{ display: 'flex' }}>
                         {talents.map((item, index) => (
                             <div key={uuid()}>
                                 <a href="#" data-wowhead={`spell=${item.spell_tooltip.spell.id}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.talents[index].icon}.jpg`}></img></a>
