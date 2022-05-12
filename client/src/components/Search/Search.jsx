@@ -12,45 +12,14 @@ const Search = () => {
     const { loading, data } = useQuery(QUERY_TOKEN);
     const [addToken] = useMutation(ADD_BLIZZTOKEN)
 
-    // useEffect(() => {
-    //     if (!loading && data.getToken.length === 0) {
-    //         fetchToken()
-    //     } else if (!loading && data.getToken.length > 0) {
-    //         setAccessToken(data.getToken[0].access_token)
-    //     }
-    // }, [data])
-
-
-    // const fetchToken = async () => {
-    //     const response = await fetch("https://us.battle.net/oauth/token", {
-    //         body: "grant_type=client_credentials",
-    //         headers: {
-    //             Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
-    //             "Content-Type": "application/x-www-form-urlencoded"
-    //         },
-    //         method: "POST"
-    //     })
-
-    //     const token = await response.json();
-    //     console.log(token)
-
-
-    //     addToken({
-    //         variables: token
-    //     })
-
-    //     setAccessToken(token.access_token)
-    //     localStorage.setItem('key', 'howdy')
-    // }
-
     useEffect(() => {
-        if (!localStorage.getItem('access_token')) {
+        if (!loading && data.getToken.length === 0) {
             fetchToken()
-            console.log('not found in storage')
-        } else {
-            console.log('found in storage')
+        } else if (!loading && data.getToken.length > 0) {
+            setAccessToken(data.getToken[0].access_token)
         }
-    }, [])
+    }, [data])
+
 
     const fetchToken = async () => {
         const response = await fetch("https://us.battle.net/oauth/token", {
@@ -63,15 +32,16 @@ const Search = () => {
         })
 
         const token = await response.json();
+        console.log(token)
+
+
+        addToken({
+            variables: token
+        })
+
         setAccessToken(token.access_token)
-
-        localStorage.setItem('access_token', token.access_token)
-        localStorage.setItem('access_token_exp', Date.now())
-
+        localStorage.setItem('key', 'howdy')
     }
-
-    // fetchToken();
-
 
     const handleChange = (event) => {
         setField(event.target.value);
