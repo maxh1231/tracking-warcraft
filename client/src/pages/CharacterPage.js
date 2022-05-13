@@ -5,7 +5,7 @@ import DpsClass from "../components/DpsClass";
 import HybridClass from "../components/HybridClass";
 import DpsRank from "../components/DpsRank";
 
-import { CharacterInfo, Gear, Talents } from "../components/CharacterPageComponents";
+import { CharacterInfo, Gear, Talents, Progression } from "../components/CharacterPageComponents";
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
