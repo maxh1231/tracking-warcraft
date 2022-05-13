@@ -12,12 +12,9 @@ const CharacterPage = () => {
     const params = useParams();
     const charName = params.name.toLowerCase()
 
-
-
     // fetches character info, M+ info, Raid info form RIO
     useEffect(() => {
         ioFetch();
-
         async function ioFetch() {
             const response = await fetch(`https://raider-io.p.rapidapi.com/api/v1/characters/profile?region=${params.region}&realm=${params.realm}&fields=gear%2Ccovenant%2Craid%2Cguild%2Ctalents%2Cmythic_plus_best_runs%2Cmythic_plus_scores_by_season:season-sl-1:season-sl-2:season-sl-3:season-bfa-1:season-bfa-2:season-bfa-3:season-bfa-4%2Cmythic_plus_ranks%2Craid_progression%2Craid_achievement_curve:sepulcher-of-the-first-ones:sanctum-of-domination&name=${charName}`, {
                 "method": "GET",
@@ -36,7 +33,6 @@ const CharacterPage = () => {
     // fetches character's current talent and specialization info 
     useEffect(() => {
         blizzFetch()
-
         async function blizzFetch() {
             const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${location.state}`)
 
@@ -45,18 +41,13 @@ const CharacterPage = () => {
         }
     }, [setTalents])
 
-
-
     return (
         <section>
-
             <CharacterInfo equipment={equipment} />
             <Gear equipment={equipment} />
             <Talents equipment={equipment} talents={talents} />
             <Progression equipment={equipment} currentRaid={currentRaid} setCurrentRaid={setCurrentRaid} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
             <TopRuns dungeons={dungeons} />
-
-
         </section>
     )
 }
