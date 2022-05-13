@@ -1,8 +1,6 @@
 import { useParams, useLocation, Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid';
-
-
 import { CharacterInfo, Gear, Talents, Progression } from "../components/CharacterPageComponents";
 
 const CharacterPage = () => {
@@ -14,9 +12,6 @@ const CharacterPage = () => {
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
-
-    // console.log(params);
-
 
     const dungeonArr = ['The Necrotic Wake', 'Mists of Tirna Scithe', 'Halls of Atonement', 'Spires of Ascension', 'De Other Side', 'Plaguefall', 'Theater of Pain', 'Sanguine Depths', 'Tazavesh: Streets of Wonder', 'Tazavesh: So\'leah\'s Gambit'];
 
@@ -51,9 +46,6 @@ const CharacterPage = () => {
         }
     }, [setTalents])
 
-
-
-
     const timeFormat = (value) => {
         const date = new Date(value)
 
@@ -65,14 +57,6 @@ const CharacterPage = () => {
 
     }
 
-
-
-    if (equipment) {
-        // console.log(equipment.raid_progression[`sanctum-of-domination`].mythic_bosses_killed)
-    }
-
-
-
     return (
         <section>
 
@@ -80,16 +64,6 @@ const CharacterPage = () => {
             <Gear equipment={equipment} />
             <Talents equipment={equipment} talents={talents} />
             <Progression equipment={equipment} currentRaid={currentRaid} setCurrentRaid={setCurrentRaid} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
-
-
-
-
-            {/* {(equipment.class === 'Rogue' || equipment.class === 'Mage' || equipment.class === 'Hunter' || equipment.class === 'Warlock')
-                ?
-                <DpsRank equipment={equipment} />
-                :
-                null
-            } */}
 
             <div>
                 <table>
