@@ -13,6 +13,12 @@ const resolvers = {
             }
             throw new AuthenticationError('Log in required');
         },
+        users: async () => {
+            return await User.find();
+        },
+        user: async (parent, { username }, context) => {
+            return await User.findOne({ username: username});
+        },
         getToken: async () => {
             return await BlizzToken.find()
         },
