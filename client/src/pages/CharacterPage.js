@@ -5,7 +5,7 @@ import DpsClass from "../components/DpsClass";
 import HybridClass from "../components/HybridClass";
 import DpsRank from "../components/DpsRank";
 
-import { CharacterInfo } from "../components/CharacterPageComponents";
+import { CharacterInfo, Gear } from "../components/CharacterPageComponents";
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
@@ -19,7 +19,7 @@ const CharacterPage = () => {
 
     // console.log(params);
 
-    const paramArr = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainhand', 'offhand'];
+
     const dungeonArr = ['The Necrotic Wake', 'Mists of Tirna Scithe', 'Halls of Atonement', 'Spires of Ascension', 'De Other Side', 'Plaguefall', 'Theater of Pain', 'Sanguine Depths', 'Tazavesh: Streets of Wonder', 'Tazavesh: So\'leah\'s Gambit'];
 
     // fetches character info, M+ info, Raid info form RIO
@@ -54,32 +54,7 @@ const CharacterPage = () => {
     }, [setTalents])
 
 
-    const paramAdder = (type) => {
-        if (type === 'offhand') {
-            if (equipment.gear.items[type] === undefined) {
-                return;
-            };
-        };
-        let bonusStr = '';
-        let gemStr = '';
-        let enchantStr = '';
 
-        if (equipment.gear.items[type].bonuses.length > 0) {
-            bonusStr = equipment.gear.items[type].bonuses.join(':');
-        };
-
-        if (equipment.gear.items[type].gems.length > 0) {
-            gemStr = equipment.gear.items[type].gems[0];
-        };
-
-        if (equipment.gear.items[type].enchant !== undefined) {
-            enchantStr = equipment.gear.items[type].enchant;
-        };
-
-        // console.log({bonusStr: bonusStr, gemStr: gemStr, enchantStr: enchantStr});
-
-        return <a href="#" data-wowhead={`item=${equipment.gear.items[type].item_id}&ilvl=${equipment.gear.items[type].item_level}&bonus=${bonusStr}&gems=${gemStr}&ench=${enchantStr}`}><img src={`https://wow.zamimg.com/images/wow/icons/medium/${equipment.gear.items[type].icon}.jpg`}></img></a>
-    };
 
     const timeFormat = (value) => {
         const date = new Date(value)
@@ -159,8 +134,9 @@ const CharacterPage = () => {
         <section>
 
             <CharacterInfo equipment={equipment} />
+            <Gear equipment={equipment} />
 
-            {equipment !== null && (
+            {/* {equipment !== null && (
                 <div>
                     <div>
                         <span>{equipment.gear.item_level_equipped} Item Level</span>
@@ -173,7 +149,7 @@ const CharacterPage = () => {
                         ))}
                     </div>
                 </div>
-            )}
+            )} */}
 
             {(talents && equipment) !== null && (
                 <div>
