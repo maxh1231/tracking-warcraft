@@ -5,7 +5,7 @@ import DpsClass from "../components/DpsClass";
 import HybridClass from "../components/HybridClass";
 import DpsRank from "../components/DpsRank";
 
-import { CharacterInfo, Gear } from "../components/CharacterPageComponents";
+import { CharacterInfo, Gear, Talents } from "../components/CharacterPageComponents";
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
@@ -135,21 +135,6 @@ const CharacterPage = () => {
 
             <CharacterInfo equipment={equipment} />
             <Gear equipment={equipment} />
-
-            {/* {equipment !== null && (
-                <div>
-                    <div>
-                        <span>{equipment.gear.item_level_equipped} Item Level</span>
-                    </div>
-                    <div style={{ display: 'flex' }}>
-                        {paramArr.map((param) => (
-                            <div key={uuid()}>
-                                {paramAdder(param)}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )} */}
 
             {(talents && equipment) !== null && (
                 <div>
