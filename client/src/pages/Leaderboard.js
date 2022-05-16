@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
-import RunLeaderboard from "../components/Leaderboards";
-import RoleLeaderboard from "../components/RoleLeaderboard";
-import ClassLeaderboard from '../components/ClassLeaderboard';
+import { RunLeaderboard, RoleLeaderboard, ClassLeaderboard } from "../components/Leaderboards";
 
 const Leaderboard = () => {
     const [filter, setFilter] = useState('run');
