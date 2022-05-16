@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation, Link } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 
-import { GuildProgression, GuildRoster } from "../components/GuildPageComponents";
+import { GuildProgression, GuildRoster, GuildOfficers } from "../components/GuildPageComponents";
 
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
@@ -59,18 +59,7 @@ const GuildPage = () => {
         <section>
 
             <GuildProgression guild={guild} />
-
-            {officers !== null && (
-                <div>
-                    <h1>not null</h1>
-                    <p>Guild Master: <Link to={`/character/${params.region}/${params.realm}/${officers[0].character.name}`} state={location.state}>{officers[0].character.name}</Link></p>
-                    <span>Officers: </span>
-                    {officers.filter(item => item.rank > 0).map((character, index) => (
-                        <span key={index}><Link to={`/character/${params.region}/${params.realm}/${character.character.name}`} state={location.state}>{character.character.name}</Link> </span>
-                    ))}
-                </div>
-            )}
-
+            <GuildOfficers officers={officers} />
             {IoData !== null && (
                 <GuildRoster IoData={IoData} />
             )}
