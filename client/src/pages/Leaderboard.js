@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import RunLeaderboard from "../components/RunLeaderboard";
+import RunLeaderboard from "../components/Leaderboards";
 import RoleLeaderboard from "../components/RoleLeaderboard";
 import ClassLeaderboard from '../components/ClassLeaderboard';
 
