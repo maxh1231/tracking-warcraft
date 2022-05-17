@@ -16,14 +16,19 @@ const CharacterPage = () => {
     const charName = params.name.toLowerCase()
     const { loading, data } = useQuery(QUERY_TOKEN);
     const [addToken] = useMutation(ADD_BLIZZTOKEN)
+    const [blizzToken, setBlizzToken] = useState(null);
 
-    console.log(data)
+    // console.log(data)
 
     useEffect(() => {
-        if (data.getToken.length === 0) {
+        if (!loading && data.getToken.length === 0) {
             fetchToken();
+            console.log('fetch token')
+        } else if (!loading && data.getToken.length > 0) {
+            setBlizzToken(data.getToken[0].access_token)
+            console.log('found token')
         }
-    }, [])
+    }, [data])
 
     const fetchToken = async () => {
         const response = await fetch("https://us.battle.net/oauth/token", {
@@ -42,7 +47,11 @@ const CharacterPage = () => {
         addToken({
             variables: token
         })
+
+        setBlizzToken(token.access_token);
     }
+
+    console.log(blizzToken)
 
     // fetches character info, M+ info, Raid info form RIO
     useEffect(() => {
