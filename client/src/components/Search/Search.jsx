@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_TOKEN } from '../../utils/queries';
 import { ADD_BLIZZTOKEN } from '../../utils/mutations';
+import { selectionSetMatchesResult } from '@apollo/client/cache/inmemory/helpers';
 
 const Search = () => {
     const [field, setField] = useState('')
@@ -19,6 +20,7 @@ const Search = () => {
         }
     }, [data])
 
+
     const fetchToken = async () => {
         const response = await fetch("https://us.battle.net/oauth/token", {
             body: "grant_type=client_credentials",
@@ -32,13 +34,14 @@ const Search = () => {
         const token = await response.json();
         console.log(token)
 
+
         addToken({
             variables: token
         })
 
         setAccessToken(token.access_token)
+        localStorage.setItem('key', 'howdy')
     }
-
 
     const handleChange = (event) => {
         setField(event.target.value);
