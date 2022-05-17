@@ -19,6 +19,31 @@ const CharacterPage = () => {
 
     console.log(data)
 
+    useEffect(() => {
+        if (data.getToken.length === 0) {
+            fetchToken();
+        }
+    }, [])
+
+    const fetchToken = async () => {
+        const response = await fetch("https://us.battle.net/oauth/token", {
+            body: "grant_type=client_credentials",
+            headers: {
+                Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST"
+        })
+
+        const token = await response.json();
+        console.log(token)
+
+
+        addToken({
+            variables: token
+        })
+    }
+
     // fetches character info, M+ info, Raid info form RIO
     useEffect(() => {
         ioFetch();
