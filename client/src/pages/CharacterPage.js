@@ -17,6 +17,7 @@ const CharacterPage = () => {
     const { loading, data } = useQuery(QUERY_TOKEN);
     const [addToken] = useMutation(ADD_BLIZZTOKEN)
     const [blizzToken, setBlizzToken] = useState(null);
+    const [media, setMedia] = useState(null);
 
     // console.log(data)
 
@@ -73,14 +74,28 @@ const CharacterPage = () => {
 
     // fetches character's current talent and specialization info 
     useEffect(() => {
-        blizzFetch()
+        if (blizzToken !== null) {
+            blizzFetch()
+        }
         async function blizzFetch() {
-            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${location.state}`)
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${blizzToken}`)
 
             const data = await response.json()
             setTalents(data.specializations[0].talents)
         }
-    }, [setTalents])
+    }, [setTalents, blizzToken])
+
+    useEffect(() => {
+        if (blizzToken !== null) {
+            characterMedia()
+        }
+        async function characterMedia() {
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/character-media?namespace=profile-${params.region}&locale=en_US&access_token=${blizzToken}`)
+
+            const data = await response.json()
+            setMedia(data)
+        }
+    }, [setMedia, blizzToken])
 
     return (
         <section>
