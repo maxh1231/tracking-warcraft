@@ -93,17 +93,27 @@ const CharacterPage = () => {
             const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/character-media?namespace=profile-${params.region}&locale=en_US&access_token=${blizzToken}`)
 
             const data = await response.json()
-            setMedia(data)
+            setMedia("bg-[url('" + data.assets[2].value + "')]")
         }
     }, [setMedia, blizzToken])
 
+    console.log(media)
+
     return (
+
         <section>
-            <CharacterInfo equipment={equipment} />
-            <Gear equipment={equipment} />
+
+
+            <div className={`${media}`}>
+                <CharacterInfo equipment={equipment} />
+                <Gear equipment={equipment} media={media} />
+            </div>
             <Talents equipment={equipment} talents={talents} />
             <Progression equipment={equipment} currentRaid={currentRaid} setCurrentRaid={setCurrentRaid} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
             <TopRuns dungeons={dungeons} />
+
+
+
         </section>
     )
 }
