@@ -1,6 +1,9 @@
 import { useParams, useLocation, Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { CharacterInfo, Gear, Talents, Progression, TopRuns } from "../components/CharacterPageComponents";
+import { useQuery, useMutation } from '@apollo/client'
+import { QUERY_TOKEN } from "../utils/queries";
+import { ADD_BLIZZTOKEN } from "../utils/mutations";
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
@@ -11,6 +14,10 @@ const CharacterPage = () => {
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
+    const { loading, data } = useQuery(QUERY_TOKEN);
+    const [addToken] = useMutation(ADD_BLIZZTOKEN)
+
+    console.log(data)
 
     // fetches character info, M+ info, Raid info form RIO
     useEffect(() => {
