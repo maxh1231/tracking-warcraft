@@ -35,9 +35,7 @@ const Gear = ({ equipment }) => {
         <section>
             {equipment !== null && (
                 <div>
-                    <div>
-                        <span>{equipment.gear.item_level_equipped} Item Level</span>
-                    </div>
+
                     <div style={{ display: 'flex' }}>
                         {paramArr.map((param) => (
                             <div key={uuid()}>
