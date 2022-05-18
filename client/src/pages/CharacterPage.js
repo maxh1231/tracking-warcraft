@@ -103,11 +103,12 @@ const CharacterPage = () => {
 
         <section>
 
-
-            <div className={`${media}`}>
-                <CharacterInfo equipment={equipment} />
-                <Gear equipment={equipment} media={media} />
-            </div>
+            {media &&
+                <div className={media}>
+                    <CharacterInfo equipment={equipment} />
+                    <Gear equipment={equipment} media={media} />
+                </div>
+            }
             <Talents equipment={equipment} talents={talents} />
             <Progression equipment={equipment} currentRaid={currentRaid} setCurrentRaid={setCurrentRaid} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
             <TopRuns dungeons={dungeons} />
