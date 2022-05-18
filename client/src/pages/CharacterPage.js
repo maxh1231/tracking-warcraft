@@ -101,11 +101,12 @@ const CharacterPage = () => {
 
     return (
 
-        <section>
+        <section className="h-screen">
 
+            <CharacterInfo equipment={equipment} />
             {media &&
-                <div className={media}>
-                    <CharacterInfo equipment={equipment} />
+                <div className={`${media} bg-contain bg-no-repeat h-full`}>
+
                     <Gear equipment={equipment} media={media} />
                 </div>
             }
