@@ -41,7 +41,7 @@ const Gear = ({ equipment }) => {
     return (
         <section>
             {equipment !== null && (
-                <div>
+                <div className='flex justify-evenly'>
 
                     <div className='flex flex-col'>
                         {paramArrOne.map((param) => (
@@ -59,6 +59,15 @@ const Gear = ({ equipment }) => {
                                 {paramAdder(param)}
                             </div>
                         ))}
+                    </div>
+
+                    <div className='flex flex-col justify-end'>
+                        {paramArrFour.map((param) => (
+                            <div key={uuid()}>
+                                {paramAdder(param)}
+                            </div>
+                        ))}
+
                     </div>
 
                     <div className='flex flex-col'>
