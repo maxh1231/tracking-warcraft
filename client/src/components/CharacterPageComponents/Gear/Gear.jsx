@@ -43,12 +43,31 @@ const Gear = ({ equipment }) => {
             {equipment !== null && (
                 <div>
 
-                    <div style={{ display: 'flex' }}>
-                        {paramArr.map((param) => (
+                    <div className='flex flex-col'>
+                        {paramArrOne.map((param) => (
                             <div key={uuid()}>
                                 {paramAdder(param)}
                             </div>
                         ))}
+
+
+                        <div className='w-[36px] h-[36px] bg-slate-500'></div>
+                        <div className='w-[36px] h-[36px] bg-slate-500'></div>
+
+                        {paramArrTwo.map((param) => (
+                            <div key={uuid()}>
+                                {paramAdder(param)}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='flex flex-col'>
+                        {paramArrThree.map((param) => (
+                            <div key={uuid()}>
+                                {paramAdder(param)}
+                            </div>
+                        ))}
+
                     </div>
                 </div>
             )}
