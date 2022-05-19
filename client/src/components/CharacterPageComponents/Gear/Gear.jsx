@@ -2,9 +2,13 @@ import { v4 as uuid } from 'uuid';
 
 const Gear = ({ equipment }) => {
 
-    const paramArrOne = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainhand', 'offhand'];
+    const paramArrOne = ['head', 'neck', 'shoulder', 'back', 'chest'];
 
-    const paramArrTwo = ['hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2']
+    const paramArrTwo = ['wrist']
+
+    const paramArrThree = ['hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2']
+
+    const paramArrFour = ['mainhand', 'offhand']
 
 
     const paramAdder = (type) => {
