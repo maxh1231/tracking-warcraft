@@ -1,6 +1,6 @@
-import DpsClass from "../../DpsClass";
-import HybridClass from "../../HybridClass";
-import DpsRank from "../../DpsRank";
+import DpsClass from "../DpsClass";
+import HybridClass from "../HybridClass";
+import DpsRank from "../DpsRank";
 
 const Progression = ({ equipment, currentRaid, setCurrentRaid, currentSeason, setCurrentSeason }) => {
 

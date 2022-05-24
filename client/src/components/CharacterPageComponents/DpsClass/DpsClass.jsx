@@ -1,7 +1,5 @@
 const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
-    console.log(equipment)
-
     let scores = []
 
     const classSelect = (value) => {
@@ -85,7 +83,6 @@ const DpsClass = ({ equipment, currentSeason, setCurrentSeason }) => {
 
     scores.sort((a, b) => b.score - a.score)
 
-    console.log(scores);
 
     return (
         <div>

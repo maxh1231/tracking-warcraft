@@ -77,6 +77,7 @@ function App() {
           <Route exact path="/search-results/:name" element={<SearchResults />} />
           <Route exact path="/guild/:region/:realm/:name" element={<GuildPage />} />
           <Route exact path="/character/:region/:realm/:name" element={<CharacterPage />} />
+          <Route exact path="/leaderboards" element={<Leaderboard />} />
           <Route exact path="/login" element={<Login user={user} setUser={wrapperSetUser} />} />
           <Route exact path="/signup" element={<Signup setUser={wrapperSetUser} />} />
           <Route exact path="/logout" element={<Logout setUser={wrapperSetUser} />} />
