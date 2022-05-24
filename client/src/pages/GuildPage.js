@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation, Link } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 
-import GuildRoster from "../components/GuildRoster";
+import { GuildProgression, GuildRoster, GuildOfficers } from "../components/GuildPageComponents";
 
 const GuildPage = () => {
     const [guild, setGuild] = useState(null)
@@ -57,70 +57,9 @@ const GuildPage = () => {
 
     return (
         <section>
-            {guild !== null && (
-                <div>
-                    <div className="flex">
-                        <div>
-                            <h2>{guild.name}</h2>
-                            <span><span>({guild.region.toUpperCase()})</span> {guild.realm}</span>
-                        </div>
 
-                        <div className="flex ">
-                            <div>
-                                <div>
-                                    <span>{guild.raid_progression['sepulcher-of-the-first-ones'].mythic_bosses_killed}/11 M</span>
-                                </div>
-                                <div>
-                                    <span>{guild.raid_progression['sepulcher-of-the-first-ones'].heroic_bosses_killed}/11 H</span>
-                                </div>
-                                <div>
-                                    <span>{guild.raid_progression['sepulcher-of-the-first-ones'].normal_bosses_killed}/11 N</span>
-                                </div>
-                                <h3>Sepulcher</h3>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <span>{guild.raid_progression['sanctum-of-domination'].mythic_bosses_killed}/10 M</span>
-                                </div>
-                                <div>
-                                    <span>{guild.raid_progression['sanctum-of-domination'].heroic_bosses_killed}/10 H</span>
-                                </div>
-                                <div>
-                                    <span>{guild.raid_progression['sanctum-of-domination'].normal_bosses_killed}/10 N</span>
-                                </div>
-                                <h3>Sanctum</h3>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <span>{guild.raid_progression['castle-nathria'].mythic_bosses_killed}/10 M</span>
-                                </div>
-                                <div>
-                                    <span>{guild.raid_progression['castle-nathria'].heroic_bosses_killed}/10 H</span>
-                                </div>
-                                <div>
-                                    <span>{guild.raid_progression['castle-nathria'].normal_bosses_killed}/10 N</span>
-                                </div>
-                                <h3>Nathria</h3>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            )}
-
-            {officers !== null && (
-                <div>
-                    <h1>not null</h1>
-                    <p>Guild Master: <Link to={`/character/${params.region}/${params.realm}/${officers[0].character.name}`} state={location.state}>{officers[0].character.name}</Link></p>
-                    <span>Officers: </span>
-                    {officers.filter(item => item.rank > 0).map((character, index) => (
-                        <span key={index}><Link to={`/character/${params.region}/${params.realm}/${character.character.name}`} state={location.state}>{character.character.name}</Link> </span>
-                    ))}
-                </div>
-            )}
-
+            <GuildProgression guild={guild} />
+            <GuildOfficers officers={officers} />
             {IoData !== null && (
                 <GuildRoster IoData={IoData} />
             )}

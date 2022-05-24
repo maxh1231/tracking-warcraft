@@ -2,7 +2,14 @@ import { v4 as uuid } from 'uuid';
 
 const Gear = ({ equipment }) => {
 
-    const paramArr = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainhand', 'offhand'];
+    const paramArrOne = ['head', 'neck', 'shoulder', 'back', 'chest'];
+
+    const paramArrTwo = ['wrist']
+
+    const paramArrThree = ['hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2']
+
+    const paramArrFour = ['mainhand', 'offhand']
+
 
     const paramAdder = (type) => {
         if (type === 'offhand') {
@@ -34,16 +41,42 @@ const Gear = ({ equipment }) => {
     return (
         <section>
             {equipment !== null && (
-                <div>
-                    <div>
-                        <span>{equipment.gear.item_level_equipped} Item Level</span>
-                    </div>
-                    <div style={{ display: 'flex' }}>
-                        {paramArr.map((param) => (
+                <div className='flex justify-evenly'>
+
+                    <div className='flex flex-col'>
+                        {paramArrOne.map((param) => (
                             <div key={uuid()}>
                                 {paramAdder(param)}
                             </div>
                         ))}
+
+
+                        <div className='w-[36px] h-[36px] bg-slate-500'></div>
+                        <div className='w-[36px] h-[36px] bg-slate-500'></div>
+
+                        {paramArrTwo.map((param) => (
+                            <div key={uuid()}>
+                                {paramAdder(param)}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='flex flex-col justify-end'>
+                        {paramArrFour.map((param) => (
+                            <div key={uuid()}>
+                                {paramAdder(param)}
+                            </div>
+                        ))}
+
+                    </div>
+
+                    <div className='flex flex-col'>
+                        {paramArrThree.map((param) => (
+                            <div key={uuid()}>
+                                {paramAdder(param)}
+                            </div>
+                        ))}
+
                     </div>
                 </div>
             )}

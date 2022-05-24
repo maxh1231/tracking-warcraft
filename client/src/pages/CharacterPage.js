@@ -1,6 +1,9 @@
 import { useParams, useLocation, Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { CharacterInfo, Gear, Talents, Progression, TopRuns } from "../components/CharacterPageComponents";
+import { useQuery, useMutation } from '@apollo/client'
+import { QUERY_TOKEN } from "../utils/queries";
+import { ADD_BLIZZTOKEN } from "../utils/mutations";
 
 const CharacterPage = () => {
     const [equipment, setEquipment] = useState(null)
@@ -11,6 +14,45 @@ const CharacterPage = () => {
     const location = useLocation()
     const params = useParams();
     const charName = params.name.toLowerCase()
+    const { loading, data } = useQuery(QUERY_TOKEN);
+    const [addToken] = useMutation(ADD_BLIZZTOKEN)
+    const [blizzToken, setBlizzToken] = useState(null);
+    const [media, setMedia] = useState(null);
+
+    // console.log(data)
+
+    useEffect(() => {
+        if (!loading && data.getToken.length === 0) {
+            fetchToken();
+            console.log('fetch token')
+        } else if (!loading && data.getToken.length > 0) {
+            setBlizzToken(data.getToken[0].access_token)
+            console.log('found token')
+        }
+    }, [data])
+
+    const fetchToken = async () => {
+        const response = await fetch("https://us.battle.net/oauth/token", {
+            body: "grant_type=client_credentials",
+            headers: {
+                Authorization: `Basic ${process.env.REACT_APP_client_id_secret}=`,
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST"
+        })
+
+        const token = await response.json();
+        console.log(token)
+
+
+        addToken({
+            variables: token
+        })
+
+        setBlizzToken(token.access_token);
+    }
+
+    console.log(blizzToken)
 
     // fetches character info, M+ info, Raid info form RIO
     useEffect(() => {
@@ -32,22 +74,48 @@ const CharacterPage = () => {
 
     // fetches character's current talent and specialization info 
     useEffect(() => {
-        blizzFetch()
+        if (blizzToken !== null) {
+            blizzFetch()
+        }
         async function blizzFetch() {
-            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${location.state}`)
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/specializations?namespace=profile-${params.region}&locale=en_US&access_token=${blizzToken}`)
 
             const data = await response.json()
             setTalents(data.specializations[0].talents)
         }
-    }, [setTalents])
+    }, [setTalents, blizzToken])
+
+    useEffect(() => {
+        if (blizzToken !== null) {
+            characterMedia()
+        }
+        async function characterMedia() {
+            const response = await fetch(`https://${params.region}.api.blizzard.com/profile/wow/character/${params.realm}/${charName}/character-media?namespace=profile-${params.region}&locale=en_US&access_token=${blizzToken}`)
+
+            const data = await response.json()
+            setMedia("bg-[url('" + data.assets[2].value + "')]")
+        }
+    }, [setMedia, blizzToken])
+
+    console.log(media)
 
     return (
-        <section>
+
+        <section className="h-screen">
+
             <CharacterInfo equipment={equipment} />
-            <Gear equipment={equipment} />
+            {media &&
+                <div className={`${media} bg-contain bg-no-repeat h-full`}>
+
+                    <Gear equipment={equipment} media={media} />
+                </div>
+            }
             <Talents equipment={equipment} talents={talents} />
             <Progression equipment={equipment} currentRaid={currentRaid} setCurrentRaid={setCurrentRaid} currentSeason={currentSeason} setCurrentSeason={setCurrentSeason} />
             <TopRuns dungeons={dungeons} />
+
+
+
         </section>
     )
 }

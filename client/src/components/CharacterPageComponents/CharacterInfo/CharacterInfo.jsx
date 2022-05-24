@@ -26,27 +26,36 @@ const CharacterInfo = ({ equipment }) => {
 
             {equipment !== null &&
                 <div>
-                    <div>
-                        <img src={equipment.thumbnail_url} ></img>
-                    </div>
-                    <div>
-                        <div>
-                            <span>{equipment.name}</span>
+                    <div className="flex items-center">
+                        <div className="border-r-2 border-black p-4">
+                            <span className="text-4xl">{equipment.name}</span>
                         </div>
-                        {equipment.guild.name !== null && (
-                            <div>
-                                <span><Link to={`/guild/${params.region}/${params.realm}/${equipment.guild.name}`} state={location.state}>{"<"}{equipment.guild.name}{">"}</Link></span>
+                        <div className="flex flex-col">
+                            <div className="flex">
+                                <div>
+                                    <span>{equipment.gear.item_level_equipped} Item Level</span>
+                                </div>
+
+                                <div>
+                                    <span>{equipment.mythic_plus_scores_by_season[2].scores.all} M+ Score</span>
+                                </div>
                             </div>
-                        )}
-                        <div>
-                            <span>({upperCaseRegion}) {equipment.realm}</span>
+                            <div className="flex">
+                                <div>
+                                    <span>{equipment.race}<span> {equipment.active_spec_name} {equipment.class}</span></span>
+                                </div>
+                                {equipment.guild.name !== null && (
+                                    <div>
+                                        <span><Link to={`/guild/${params.region}/${params.realm}/${equipment.guild.name}`} state={location.state}>{"<"}{equipment.guild.name}{">"}</Link></span>
+                                    </div>
+                                )}
+                                <div>
+                                    <span>({upperCaseRegion}) {equipment.realm}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <span>{equipment.race}<span> {equipment.active_spec_name} {equipment.class}</span></span>
-                        </div>
-                        <div>
-                            <span>{equipment.mythic_plus_scores_by_season[2].scores.all} M+ Score</span>
-                        </div>
+
+
                         {equipment.raid_achievement_curve.filter(raid => raid.raid.includes('sanctum-of-domination')).map(item => (
                             <div key={uuid()}>
                                 <span>{calcProg()} </span>
